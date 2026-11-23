@@ -13,4 +13,22 @@ namespace Tetris {
             NextBlocs = nextBlocs;
         }
     }
+
+    /// <summary>
+    /// Publié quand des lignes sont supprimées : nouveau score, total de lignes et lignes supprimées par ce coup.
+    /// </summary>
+    public readonly struct ScoreChangedEvent : IEvent {
+        public readonly int Score;
+        public readonly int Lines;
+        public readonly int LinesCleared;
+
+        public ScoreChangedEvent(int score, int lines, int linesCleared) {
+            Score = score;
+            Lines = lines;
+            LinesCleared = linesCleared;
+        }
+    }
+
+    /// <summary>Publié quand la partie est perdue.</summary>
+    public readonly struct GameOverEvent : IEvent { }
 }

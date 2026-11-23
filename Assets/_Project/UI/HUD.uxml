@@ -1,0 +1,81 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="Common.uss" />
+    <Style src="HUD.uss" />
+    <ui:VisualElement name="root" class="root" picking-mode="Ignore">
+
+        <!-- Colonne gauche : score et lignes -->
+        <ui:VisualElement class="side side--left" picking-mode="Ignore">
+            <ui:VisualElement class="glass stat">
+                <ui:VisualElement class="glass__sheen" />
+                <ui:Label text="SCORE" class="label-caption" />
+                <ui:Label name="score-value" text="0" class="stat__value" />
+            </ui:VisualElement>
+            <ui:VisualElement class="glass stat">
+                <ui:VisualElement class="glass__sheen" />
+                <ui:Label text="LIGNES" class="label-caption" />
+                <ui:Label name="lines-value" text="0" class="stat__value" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Emplacement du Board (rendu dans la scène) -->
+        <ui:VisualElement class="board-space" picking-mode="Ignore" />
+
+        <!-- Colonne droite : prochaines pièces et contrôles -->
+        <ui:VisualElement class="side side--right" picking-mode="Ignore">
+            <ui:VisualElement class="glass next">
+                <ui:VisualElement class="glass__sheen" />
+                <ui:Label text="SUIVANTES" class="label-caption" />
+                <ui:VisualElement name="next-list" class="next__list" />
+            </ui:VisualElement>
+            <ui:VisualElement class="glass controls">
+                <ui:VisualElement class="glass__sheen" />
+                <ui:Label text="CONTRÔLES" class="label-caption" />
+                <ui:VisualElement class="controls__row"><ui:Label text="Q / D" class="key" /><ui:Label text="Déplacer" class="controls__action" /></ui:VisualElement>
+                <ui:VisualElement class="controls__row"><ui:Label text="R" class="key" /><ui:Label text="Tourner" class="controls__action" /></ui:VisualElement>
+                <ui:VisualElement class="controls__row"><ui:Label text="Espace" class="key" /><ui:Label text="Descendre" class="controls__action" /></ui:VisualElement>
+                <ui:VisualElement class="controls__row"><ui:Label text="Échap" class="key" /><ui:Label text="Pause" class="controls__action" /></ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Mèmes : chat aux Ruffles (image rémanente, derrière tout le reste du HUD) -->
+        <ui:VisualElement name="chips-cat" class="meme-chips meme-chips--hidden" picking-mode="Ignore" />
+
+        <!-- Mèmes : Cursed Plankton -->
+        <ui:VisualElement name="plankton" class="glass meme-plankton meme-plankton--hidden" picking-mode="Ignore">
+            <ui:VisualElement class="meme-plankton__image" picking-mode="Ignore" />
+        </ui:VisualElement>
+
+        <!-- Pause / Game Over -->
+        <ui:VisualElement name="overlay" class="overlay overlay--hidden" picking-mode="Ignore">
+            <ui:VisualElement class="glass overlay__card">
+                <ui:VisualElement class="glass__sheen" />
+                <ui:Label name="overlay-title" text="PAUSE" class="overlay__title" />
+                <ui:Label name="overlay-subtitle" text="Échap pour reprendre" class="overlay__subtitle" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Mèmes : Scuba Cat (game over, au-dessus de l'écran de fin) -->
+        <ui:VisualElement name="scuba-cat" class="meme-scuba meme-scuba--hidden" picking-mode="Ignore" />
+
+        <!-- Easter egg (touche J) -->
+        <ui:VisualElement name="maxwell" class="maxwell maxwell--hidden" picking-mode="Ignore">
+            <ui:VisualElement name="maxwell-halo" class="maxwell__halo" picking-mode="Ignore" />
+            <ui:VisualElement name="maxwell-cat" class="maxwell__cat" picking-mode="Ignore" />
+            <ui:Label text="OIIA OIIA" class="maxwell__text" picking-mode="Ignore" />
+        </ui:VisualElement>
+
+        <!-- Combo de vitesse de Maxwell -->
+        <ui:VisualElement name="combo" class="combo combo--hidden" picking-mode="Ignore">
+            <ui:Label name="combo-label" text="SPEED x1.0" class="combo__label" picking-mode="Ignore" />
+            <ui:VisualElement class="combo__bar" picking-mode="Ignore">
+                <ui:VisualElement name="combo-fill" class="combo__fill" picking-mode="Ignore">
+                    <ui:VisualElement class="combo__shine" picking-mode="Ignore" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="combo__timer" picking-mode="Ignore">
+                <ui:VisualElement name="combo-timer-fill" class="combo__timer-fill" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

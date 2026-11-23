@@ -1,0 +1,44 @@
+/* =====================================================================
+   Styles partagés - "liquid glass"
+   Panneaux translucides, coins très arrondis, liseré clair en haut à
+   gauche (reflet) et reflet doux dans la moitié haute (glass__sheen).
+   Le fond animé (LiquidBackground) donne la couleur à travers le verre.
+   Utilisé par HUD.uxml et MainMenu.uxml.
+   ===================================================================== */
+
+/* ---------- Typographie ---------- */
+
+.label-caption {
+    font-size: 17px;
+    letter-spacing: 5px;
+    color: rgba(225, 232, 255, 0.6);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    margin: 0 0 6px 2px;
+    padding: 0;
+}
+
+/* ---------- Verre ---------- */
+
+.glass {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-width: 1.5px;
+    border-color: rgba(255, 255, 255, 0.14);
+    border-top-color: rgba(255, 255, 255, 0.45);
+    border-left-color: rgba(255, 255, 255, 0.28);
+    border-radius: 34px;
+    padding: 26px 30px 28px 30px;
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.glass__sheen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 46%;
+    background-color: rgba(255, 255, 255, 0.055);
+    border-bottom-left-radius: 120px;
+    border-bottom-right-radius: 120px;
+}

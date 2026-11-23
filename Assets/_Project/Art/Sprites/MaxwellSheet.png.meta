@@ -1,0 +1,4812 @@
+fileFormatVersion: 2
+guid: 17559d482fd04f8f81917bd29642eba2
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5000000000000000000
+    second: Maxwell_000
+  - first:
+      213: 5000000000000000001
+    second: Maxwell_001
+  - first:
+      213: 5000000000000000002
+    second: Maxwell_002
+  - first:
+      213: 5000000000000000003
+    second: Maxwell_003
+  - first:
+      213: 5000000000000000004
+    second: Maxwell_004
+  - first:
+      213: 5000000000000000005
+    second: Maxwell_005
+  - first:
+      213: 5000000000000000006
+    second: Maxwell_006
+  - first:
+      213: 5000000000000000007
+    second: Maxwell_007
+  - first:
+      213: 5000000000000000008
+    second: Maxwell_008
+  - first:
+      213: 5000000000000000009
+    second: Maxwell_009
+  - first:
+      213: 5000000000000000010
+    second: Maxwell_010
+  - first:
+      213: 5000000000000000011
+    second: Maxwell_011
+  - first:
+      213: 5000000000000000012
+    second: Maxwell_012
+  - first:
+      213: 5000000000000000013
+    second: Maxwell_013
+  - first:
+      213: 5000000000000000014
+    second: Maxwell_014
+  - first:
+      213: 5000000000000000015
+    second: Maxwell_015
+  - first:
+      213: 5000000000000000016
+    second: Maxwell_016
+  - first:
+      213: 5000000000000000017
+    second: Maxwell_017
+  - first:
+      213: 5000000000000000018
+    second: Maxwell_018
+  - first:
+      213: 5000000000000000019
+    second: Maxwell_019
+  - first:
+      213: 5000000000000000020
+    second: Maxwell_020
+  - first:
+      213: 5000000000000000021
+    second: Maxwell_021
+  - first:
+      213: 5000000000000000022
+    second: Maxwell_022
+  - first:
+      213: 5000000000000000023
+    second: Maxwell_023
+  - first:
+      213: 5000000000000000024
+    second: Maxwell_024
+  - first:
+      213: 5000000000000000025
+    second: Maxwell_025
+  - first:
+      213: 5000000000000000026
+    second: Maxwell_026
+  - first:
+      213: 5000000000000000027
+    second: Maxwell_027
+  - first:
+      213: 5000000000000000028
+    second: Maxwell_028
+  - first:
+      213: 5000000000000000029
+    second: Maxwell_029
+  - first:
+      213: 5000000000000000030
+    second: Maxwell_030
+  - first:
+      213: 5000000000000000031
+    second: Maxwell_031
+  - first:
+      213: 5000000000000000032
+    second: Maxwell_032
+  - first:
+      213: 5000000000000000033
+    second: Maxwell_033
+  - first:
+      213: 5000000000000000034
+    second: Maxwell_034
+  - first:
+      213: 5000000000000000035
+    second: Maxwell_035
+  - first:
+      213: 5000000000000000036
+    second: Maxwell_036
+  - first:
+      213: 5000000000000000037
+    second: Maxwell_037
+  - first:
+      213: 5000000000000000038
+    second: Maxwell_038
+  - first:
+      213: 5000000000000000039
+    second: Maxwell_039
+  - first:
+      213: 5000000000000000040
+    second: Maxwell_040
+  - first:
+      213: 5000000000000000041
+    second: Maxwell_041
+  - first:
+      213: 5000000000000000042
+    second: Maxwell_042
+  - first:
+      213: 5000000000000000043
+    second: Maxwell_043
+  - first:
+      213: 5000000000000000044
+    second: Maxwell_044
+  - first:
+      213: 5000000000000000045
+    second: Maxwell_045
+  - first:
+      213: 5000000000000000046
+    second: Maxwell_046
+  - first:
+      213: 5000000000000000047
+    second: Maxwell_047
+  - first:
+      213: 5000000000000000048
+    second: Maxwell_048
+  - first:
+      213: 5000000000000000049
+    second: Maxwell_049
+  - first:
+      213: 5000000000000000050
+    second: Maxwell_050
+  - first:
+      213: 5000000000000000051
+    second: Maxwell_051
+  - first:
+      213: 5000000000000000052
+    second: Maxwell_052
+  - first:
+      213: 5000000000000000053
+    second: Maxwell_053
+  - first:
+      213: 5000000000000000054
+    second: Maxwell_054
+  - first:
+      213: 5000000000000000055
+    second: Maxwell_055
+  - first:
+      213: 5000000000000000056
+    second: Maxwell_056
+  - first:
+      213: 5000000000000000057
+    second: Maxwell_057
+  - first:
+      213: 5000000000000000058
+    second: Maxwell_058
+  - first:
+      213: 5000000000000000059
+    second: Maxwell_059
+  - first:
+      213: 5000000000000000060
+    second: Maxwell_060
+  - first:
+      213: 5000000000000000061
+    second: Maxwell_061
+  - first:
+      213: 5000000000000000062
+    second: Maxwell_062
+  - first:
+      213: 5000000000000000063
+    second: Maxwell_063
+  - first:
+      213: 5000000000000000064
+    second: Maxwell_064
+  - first:
+      213: 5000000000000000065
+    second: Maxwell_065
+  - first:
+      213: 5000000000000000066
+    second: Maxwell_066
+  - first:
+      213: 5000000000000000067
+    second: Maxwell_067
+  - first:
+      213: 5000000000000000068
+    second: Maxwell_068
+  - first:
+      213: 5000000000000000069
+    second: Maxwell_069
+  - first:
+      213: 5000000000000000070
+    second: Maxwell_070
+  - first:
+      213: 5000000000000000071
+    second: Maxwell_071
+  - first:
+      213: 5000000000000000072
+    second: Maxwell_072
+  - first:
+      213: 5000000000000000073
+    second: Maxwell_073
+  - first:
+      213: 5000000000000000074
+    second: Maxwell_074
+  - first:
+      213: 5000000000000000075
+    second: Maxwell_075
+  - first:
+      213: 5000000000000000076
+    second: Maxwell_076
+  - first:
+      213: 5000000000000000077
+    second: Maxwell_077
+  - first:
+      213: 5000000000000000078
+    second: Maxwell_078
+  - first:
+      213: 5000000000000000079
+    second: Maxwell_079
+  - first:
+      213: 5000000000000000080
+    second: Maxwell_080
+  - first:
+      213: 5000000000000000081
+    second: Maxwell_081
+  - first:
+      213: 5000000000000000082
+    second: Maxwell_082
+  - first:
+      213: 5000000000000000083
+    second: Maxwell_083
+  - first:
+      213: 5000000000000000084
+    second: Maxwell_084
+  - first:
+      213: 5000000000000000085
+    second: Maxwell_085
+  - first:
+      213: 5000000000000000086
+    second: Maxwell_086
+  - first:
+      213: 5000000000000000087
+    second: Maxwell_087
+  - first:
+      213: 5000000000000000088
+    second: Maxwell_088
+  - first:
+      213: 5000000000000000089
+    second: Maxwell_089
+  - first:
+      213: 5000000000000000090
+    second: Maxwell_090
+  - first:
+      213: 5000000000000000091
+    second: Maxwell_091
+  - first:
+      213: 5000000000000000092
+    second: Maxwell_092
+  - first:
+      213: 5000000000000000093
+    second: Maxwell_093
+  - first:
+      213: 5000000000000000094
+    second: Maxwell_094
+  - first:
+      213: 5000000000000000095
+    second: Maxwell_095
+  - first:
+      213: 5000000000000000096
+    second: Maxwell_096
+  - first:
+      213: 5000000000000000097
+    second: Maxwell_097
+  - first:
+      213: 5000000000000000098
+    second: Maxwell_098
+  - first:
+      213: 5000000000000000099
+    second: Maxwell_099
+  - first:
+      213: 5000000000000000100
+    second: Maxwell_100
+  - first:
+      213: 5000000000000000101
+    second: Maxwell_101
+  - first:
+      213: 5000000000000000102
+    second: Maxwell_102
+  - first:
+      213: 5000000000000000103
+    second: Maxwell_103
+  - first:
+      213: 5000000000000000104
+    second: Maxwell_104
+  - first:
+      213: 5000000000000000105
+    second: Maxwell_105
+  - first:
+      213: 5000000000000000106
+    second: Maxwell_106
+  - first:
+      213: 5000000000000000107
+    second: Maxwell_107
+  - first:
+      213: 5000000000000000108
+    second: Maxwell_108
+  - first:
+      213: 5000000000000000109
+    second: Maxwell_109
+  - first:
+      213: 5000000000000000110
+    second: Maxwell_110
+  - first:
+      213: 5000000000000000111
+    second: Maxwell_111
+  - first:
+      213: 5000000000000000112
+    second: Maxwell_112
+  - first:
+      213: 5000000000000000113
+    second: Maxwell_113
+  - first:
+      213: 5000000000000000114
+    second: Maxwell_114
+  - first:
+      213: 5000000000000000115
+    second: Maxwell_115
+  - first:
+      213: 5000000000000000116
+    second: Maxwell_116
+  - first:
+      213: 5000000000000000117
+    second: Maxwell_117
+  - first:
+      213: 5000000000000000118
+    second: Maxwell_118
+  - first:
+      213: 5000000000000000119
+    second: Maxwell_119
+  - first:
+      213: 5000000000000000120
+    second: Maxwell_120
+  - first:
+      213: 5000000000000000121
+    second: Maxwell_121
+  - first:
+      213: 5000000000000000122
+    second: Maxwell_122
+  - first:
+      213: 5000000000000000123
+    second: Maxwell_123
+  - first:
+      213: 5000000000000000124
+    second: Maxwell_124
+  - first:
+      213: 5000000000000000125
+    second: Maxwell_125
+  - first:
+      213: 5000000000000000126
+    second: Maxwell_126
+  - first:
+      213: 5000000000000000127
+    second: Maxwell_127
+  - first:
+      213: 5000000000000000128
+    second: Maxwell_128
+  - first:
+      213: 5000000000000000129
+    second: Maxwell_129
+  - first:
+      213: 5000000000000000130
+    second: Maxwell_130
+  - first:
+      213: 5000000000000000131
+    second: Maxwell_131
+  - first:
+      213: 5000000000000000132
+    second: Maxwell_132
+  - first:
+      213: 5000000000000000133
+    second: Maxwell_133
+  - first:
+      213: 5000000000000000134
+    second: Maxwell_134
+  - first:
+      213: 5000000000000000135
+    second: Maxwell_135
+  - first:
+      213: 5000000000000000136
+    second: Maxwell_136
+  - first:
+      213: 5000000000000000137
+    second: Maxwell_137
+  - first:
+      213: 5000000000000000138
+    second: Maxwell_138
+  - first:
+      213: 5000000000000000139
+    second: Maxwell_139
+  - first:
+      213: 5000000000000000140
+    second: Maxwell_140
+  - first:
+      213: 5000000000000000141
+    second: Maxwell_141
+  - first:
+      213: 5000000000000000142
+    second: Maxwell_142
+  - first:
+      213: 5000000000000000143
+    second: Maxwell_143
+  - first:
+      213: 5000000000000000144
+    second: Maxwell_144
+  - first:
+      213: 5000000000000000145
+    second: Maxwell_145
+  - first:
+      213: 5000000000000000146
+    second: Maxwell_146
+  - first:
+      213: 5000000000000000147
+    second: Maxwell_147
+  - first:
+      213: 5000000000000000148
+    second: Maxwell_148
+  - first:
+      213: 5000000000000000149
+    second: Maxwell_149
+  - first:
+      213: 5000000000000000150
+    second: Maxwell_150
+  - first:
+      213: 5000000000000000151
+    second: Maxwell_151
+  - first:
+      213: 5000000000000000152
+    second: Maxwell_152
+  - first:
+      213: 5000000000000000153
+    second: Maxwell_153
+  - first:
+      213: 5000000000000000154
+    second: Maxwell_154
+  - first:
+      213: 5000000000000000155
+    second: Maxwell_155
+  - first:
+      213: 5000000000000000156
+    second: Maxwell_156
+  - first:
+      213: 5000000000000000157
+    second: Maxwell_157
+  - first:
+      213: 5000000000000000158
+    second: Maxwell_158
+  - first:
+      213: 5000000000000000159
+    second: Maxwell_159
+  - first:
+      213: 5000000000000000160
+    second: Maxwell_160
+  - first:
+      213: 5000000000000000161
+    second: Maxwell_161
+  - first:
+      213: 5000000000000000162
+    second: Maxwell_162
+  - first:
+      213: 5000000000000000163
+    second: Maxwell_163
+  - first:
+      213: 5000000000000000164
+    second: Maxwell_164
+  - first:
+      213: 5000000000000000165
+    second: Maxwell_165
+  - first:
+      213: 5000000000000000166
+    second: Maxwell_166
+  - first:
+      213: 5000000000000000167
+    second: Maxwell_167
+  - first:
+      213: 5000000000000000168
+    second: Maxwell_168
+  - first:
+      213: 5000000000000000169
+    second: Maxwell_169
+  - first:
+      213: 5000000000000000170
+    second: Maxwell_170
+  - first:
+      213: 5000000000000000171
+    second: Maxwell_171
+  - first:
+      213: 5000000000000000172
+    second: Maxwell_172
+  - first:
+      213: 5000000000000000173
+    second: Maxwell_173
+  - first:
+      213: 5000000000000000174
+    second: Maxwell_174
+  - first:
+      213: 5000000000000000175
+    second: Maxwell_175
+  - first:
+      213: 5000000000000000176
+    second: Maxwell_176
+  - first:
+      213: 5000000000000000177
+    second: Maxwell_177
+  - first:
+      213: 5000000000000000178
+    second: Maxwell_178
+  - first:
+      213: 5000000000000000179
+    second: Maxwell_179
+  - first:
+      213: 5000000000000000180
+    second: Maxwell_180
+  - first:
+      213: 5000000000000000181
+    second: Maxwell_181
+  - first:
+      213: 5000000000000000182
+    second: Maxwell_182
+  - first:
+      213: 5000000000000000183
+    second: Maxwell_183
+  - first:
+      213: 5000000000000000184
+    second: Maxwell_184
+  - first:
+      213: 5000000000000000185
+    second: Maxwell_185
+  - first:
+      213: 5000000000000000186
+    second: Maxwell_186
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMasterTextureLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 4096
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 0
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 1
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Maxwell_000
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cae18881325d4c6383d4da935301e4ff
+      internalID: 5000000000000000000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_001
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b129997909f4bab8eeb5dad83e2f288
+      internalID: 5000000000000000001
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_002
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f830a5952ea4e3b8e301039fae0d7eb
+      internalID: 5000000000000000002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_003
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44033d8fb3114db2b38f113eba5df672
+      internalID: 5000000000000000003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_004
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e44c0b8f94f45f48e8ed0d005bc0e21
+      internalID: 5000000000000000004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_005
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dfdb5e23135e4d04b6d059508e52c89a
+      internalID: 5000000000000000005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_006
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62cc97ea4bea4a1189e45ce44a0de485
+      internalID: 5000000000000000006
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_007
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b25821648cc49a1aaa41b912f913990
+      internalID: 5000000000000000007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_008
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4dd0a098994e4769a9e908e1b077bf85
+      internalID: 5000000000000000008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_009
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0b8eee61cae4a58bc72daaa99bc145f
+      internalID: 5000000000000000009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_010
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a34ef03473141bc854820079db21b65
+      internalID: 5000000000000000010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_011
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4b74c94698b49d3a428ccd2fd5ed27a
+      internalID: 5000000000000000011
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_012
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 426c9eaec6694efeb3b49176e1ec8b73
+      internalID: 5000000000000000012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_013
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1833
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ea71ba1fe104fe5b99c450da1fe55ef
+      internalID: 5000000000000000013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_014
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a8ecf3e5444d5f99d0d80298eb2349
+      internalID: 5000000000000000014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_015
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ee9ccd9e6dc46fe8afeb74f71e3aae1
+      internalID: 5000000000000000015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_016
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f29c37b2011d414899a0e0797c4cc9b3
+      internalID: 5000000000000000016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_017
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45e9a5f8cb99469aa60e40b7523fb1a2
+      internalID: 5000000000000000017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_018
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bc3c1044c074b60b6417de8f06f3ebc
+      internalID: 5000000000000000018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_019
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4f6792fe24a4b52b03bd414299b1785
+      internalID: 5000000000000000019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_020
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ae41a02863543bbbc32968b20b2c9a4
+      internalID: 5000000000000000020
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_021
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b0a5506148c4511be166c5eea041d02
+      internalID: 5000000000000000021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_022
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ffba7b5b6fb4b3ba28b3b3bfcdb86a5
+      internalID: 5000000000000000022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_023
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33b9406231dc4d0085ca9cfeebf32677
+      internalID: 5000000000000000023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_024
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83088f2d05434248a600c1271dcc9ceb
+      internalID: 5000000000000000024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_025
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a81a1c2a35b64a59aa13e2a22faf59f4
+      internalID: 5000000000000000025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_026
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0f729ec34b14289a7f75c9f7936dbbd
+      internalID: 5000000000000000026
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_027
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1692
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07d224bafa484ea0af266bae78eb753e
+      internalID: 5000000000000000027
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_028
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57eb6bbc9c4f44849e942433be2136c7
+      internalID: 5000000000000000028
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_029
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bfdd516ffe614ae6a38af11a4f37206d
+      internalID: 5000000000000000029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_030
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8e6fd2555bc4e319e72985ffea9b011
+      internalID: 5000000000000000030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_031
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31c98181b1604da1ac34e7379a4e1bc4
+      internalID: 5000000000000000031
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_032
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a345bca03632448987585028f3e05182
+      internalID: 5000000000000000032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_033
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d27f34ec7d314586bac1cbeac40069f9
+      internalID: 5000000000000000033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_034
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab078f40ff3242d5872f8a4717ed926e
+      internalID: 5000000000000000034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_035
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cef3cfa66bf14173920d62a6101ad45c
+      internalID: 5000000000000000035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_036
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d953e2aa74a34327ae36381b223bec22
+      internalID: 5000000000000000036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_037
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 717bc451386b4192976b8a8ecb0797e1
+      internalID: 5000000000000000037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_038
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e832c0abfbd54f27ad9fbf86a0ddfae7
+      internalID: 5000000000000000038
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_039
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ed529c12db3464aa86789363bd025ba
+      internalID: 5000000000000000039
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_040
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db4db3b2478849639cadc4b982715815
+      internalID: 5000000000000000040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_041
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1551
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fbf4e61d7da4504a05a713d6ce2a3c7
+      internalID: 5000000000000000041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_042
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf8a117f438548b0bccbdaa6d68e25b6
+      internalID: 5000000000000000042
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_043
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30b1c3a336b14abfb527db120fc31b7c
+      internalID: 5000000000000000043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_044
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25e55ce19b044d238299032b55f4a81b
+      internalID: 5000000000000000044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_045
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 316eb5a034904d81a2134b87c1725820
+      internalID: 5000000000000000045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_046
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9edad58c6b24492ae99f2b4e09e2571
+      internalID: 5000000000000000046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_047
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd13dcf63734431e921404c57af62bc2
+      internalID: 5000000000000000047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_048
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54204623d7f14829a35e9b633317b905
+      internalID: 5000000000000000048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_049
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b11c951b0be469c9f4aa1879b76947c
+      internalID: 5000000000000000049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_050
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5acdcddd114f48e394d2bc894b72fe27
+      internalID: 5000000000000000050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_051
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7ecc788d267474da17ca7074a89f698
+      internalID: 5000000000000000051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_052
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d926c9290aca46e4a6af0a510cbd554c
+      internalID: 5000000000000000052
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_053
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 36f7a8297d7f443d81cbaa425f88e67f
+      internalID: 5000000000000000053
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_054
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4fe01e63f2946bfa465a802a5198827
+      internalID: 5000000000000000054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_055
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1410
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5228bfaae14445489faa7e4379c2230e
+      internalID: 5000000000000000055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_056
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb45ef9da28b43f49475fb2e68716a35
+      internalID: 5000000000000000056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_057
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff9ab157732c4bccab983b4f55c5ec16
+      internalID: 5000000000000000057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_058
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7125ee7b547e412fb86479508ab3a9f2
+      internalID: 5000000000000000058
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_059
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95b19f9e03d64418b57ae45c38505955
+      internalID: 5000000000000000059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_060
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e61c7e4f7ea4753b403c691161e8f73
+      internalID: 5000000000000000060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_061
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1edc4e514094b80bb557508cea99ff7
+      internalID: 5000000000000000061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_062
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6b9d6136e314e298b37d995e12cdb31
+      internalID: 5000000000000000062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_063
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 015f597bf7e94fd992504c37b46f3a23
+      internalID: 5000000000000000063
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_064
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3692da262d9245619f84f5ef87088064
+      internalID: 5000000000000000064
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_065
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a93b0b9bc810413690cc994fcee813bf
+      internalID: 5000000000000000065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_066
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cf627c4655d4de7ab76454f35077062
+      internalID: 5000000000000000066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_067
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebb16054682040da8fb447987d709a4d
+      internalID: 5000000000000000067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_068
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c50239f02bc2485ba2aaa5f8f4b5d2ab
+      internalID: 5000000000000000068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_069
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1269
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca3b404e61a6422580a8d0b96f56252f
+      internalID: 5000000000000000069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_070
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0e7448c54741402198a34513e73cfd3c
+      internalID: 5000000000000000070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_071
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c1e8814cb9e414a8bdd0673d9d9c3e1
+      internalID: 5000000000000000071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_072
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cac98153051444fcaf2851c8ee0d9c19
+      internalID: 5000000000000000072
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_073
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10bc39afc074455a8147451832d29346
+      internalID: 5000000000000000073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_074
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ea4e8321cb4474184ab6ebe920d6c67
+      internalID: 5000000000000000074
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_075
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 985bab06fb364e2fbce9a6c193dfded8
+      internalID: 5000000000000000075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_076
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ef7b7f978ed4359adb00fb94dd738f2
+      internalID: 5000000000000000076
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_077
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81df4954a94d418885fa850eff219b57
+      internalID: 5000000000000000077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_078
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b78b67f1982c4d1992479caba1e3b912
+      internalID: 5000000000000000078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_079
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a473af60bae7435f8b23a1c32b895b2d
+      internalID: 5000000000000000079
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_080
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6ee12421ea246a8a954c507eebfb758
+      internalID: 5000000000000000080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_081
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca745fcc8bdd454795ec81e0c86d06c0
+      internalID: 5000000000000000081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_082
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09176632c0e54a8d93ec8e924da6ecbd
+      internalID: 5000000000000000082
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_083
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 1128
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67112133f5894ae79586a6c81c9f497c
+      internalID: 5000000000000000083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_084
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e988930257eb4638902320e3c9903eb3
+      internalID: 5000000000000000084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_085
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 106fcd2f88724ec9839d9b091f4fe73f
+      internalID: 5000000000000000085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_086
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44b4a63980314bc2a604f24ec851810d
+      internalID: 5000000000000000086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_087
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: be1c2d6e0492450ead74515f0bf89bbf
+      internalID: 5000000000000000087
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_088
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dace0859766a43b6a07074a73ceb4150
+      internalID: 5000000000000000088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_089
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06bd56e77425424c81a841cfd39e2122
+      internalID: 5000000000000000089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_090
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 931b4f4b78464dad8a6d036492493447
+      internalID: 5000000000000000090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_091
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03ce273b78ed4e71a780be8fb51f4340
+      internalID: 5000000000000000091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_092
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b69a4337a4f4517a1c51045579d2cfb
+      internalID: 5000000000000000092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_093
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdb98f54600c4aa3b218e5a2976a7fdc
+      internalID: 5000000000000000093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_094
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8551014a9cf649c0b8fb5fee463e4872
+      internalID: 5000000000000000094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_095
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e4474d9a05b4e67b8db377c5c90fb52
+      internalID: 5000000000000000095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_096
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3009de843044622afdeb6a363a55e51
+      internalID: 5000000000000000096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_097
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 987
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14a9f3b6c8804924adf913cf87d1e5e4
+      internalID: 5000000000000000097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_098
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd5a7dfb24154571b2f57f3fafc35226
+      internalID: 5000000000000000098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_099
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7bec28c0d904d1c9995f40975df14ea
+      internalID: 5000000000000000099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_100
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1105b039f8da4818b304c8b62fab4803
+      internalID: 5000000000000000100
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_101
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f57d4f97151b4c639b813751843fd43c
+      internalID: 5000000000000000101
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_102
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b1f69cdf5eba4db7bf288e79ce5e594c
+      internalID: 5000000000000000102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_103
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd62416fbd534ee6a3f168dd0a41e5b2
+      internalID: 5000000000000000103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_104
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6723c235ff4742aa87720edb9d87b2ea
+      internalID: 5000000000000000104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_105
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d9ccfbae02b448a9cf7734adc822b9f
+      internalID: 5000000000000000105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_106
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f951d0297894c52a9a9d2e88c1d4525
+      internalID: 5000000000000000106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_107
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32808fee4a194e5eacd5fab3c2ec39bb
+      internalID: 5000000000000000107
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_108
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84a74bf10029497b8a4bfdb124e9279f
+      internalID: 5000000000000000108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_109
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52a44fd94a7c4071b95cdc8a345dfd2c
+      internalID: 5000000000000000109
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_110
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3067013a36134da39a9d30265ffed5a8
+      internalID: 5000000000000000110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_111
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 846
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4ea9eed512945d49b253afe2f3378b4
+      internalID: 5000000000000000111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_112
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 790d69a658bb4f72807859fe2e0a8948
+      internalID: 5000000000000000112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_113
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 169adda2c0ad424d8ea7bdf0bd0f434a
+      internalID: 5000000000000000113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_114
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85534d9f418e49e5b89129a011e428fc
+      internalID: 5000000000000000114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_115
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8964c62ad594619b362af17ccfae8e8
+      internalID: 5000000000000000115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_116
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 519c2ee0e8134d178bdc5967756507d2
+      internalID: 5000000000000000116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_117
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b483750f9ff467b9a9ef3b43c9d06fa
+      internalID: 5000000000000000117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_118
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 652bc87ad5fc46c6a9ac2f697b9f866b
+      internalID: 5000000000000000118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_119
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d8c1f1e7568438fba68987d29b368ec
+      internalID: 5000000000000000119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_120
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8cd116abede54569bb048e22cc59ccaa
+      internalID: 5000000000000000120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_121
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee0b794e13224f07a3c34a69f261852f
+      internalID: 5000000000000000121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_122
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba2556bd9b7e433a8a7495eed14a2863
+      internalID: 5000000000000000122
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_123
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 096390bc88c74c6c936a61a685879ad4
+      internalID: 5000000000000000123
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_124
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 813ffa17789f4d89a1e11d6b990fb6bc
+      internalID: 5000000000000000124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_125
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 705
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 602cc90d897d4760be1114d033893839
+      internalID: 5000000000000000125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_126
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 099d91a606144e9ca706a8a9d9107f51
+      internalID: 5000000000000000126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_127
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d498a80442a24d1ea6a449cf75cc3edc
+      internalID: 5000000000000000127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_128
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbd892d313c3406287ba126119ad5817
+      internalID: 5000000000000000128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_129
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fb4b8704c2f43d6ba40cba660b540f1
+      internalID: 5000000000000000129
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_130
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34994965c4aa4eb0ae19c068e006b029
+      internalID: 5000000000000000130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_131
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ec432eb2ab743b9a0a68b66a80deb65
+      internalID: 5000000000000000131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_132
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ec3cf11722b442496c20fc259acfc50
+      internalID: 5000000000000000132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_133
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85c5398e8ad5491286e19c92a6014964
+      internalID: 5000000000000000133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_134
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 577a162d351d4710a0ed906da28bd1a0
+      internalID: 5000000000000000134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_135
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96bdad0971814212a7760d25c18a9123
+      internalID: 5000000000000000135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_136
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b812c0fde1c9485e89932bcd34e2e959
+      internalID: 5000000000000000136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_137
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd60bace0f454fa2b8f9d6cfa09e94e0
+      internalID: 5000000000000000137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_138
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f25b6b4ffff46c79d018c4d30368573
+      internalID: 5000000000000000138
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_139
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 564
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5b5c43e95bc44a9a54a247d30b01f09
+      internalID: 5000000000000000139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_140
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef137839a37440da98630e00b95b06b0
+      internalID: 5000000000000000140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_141
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54a2100139914cf1aa65775eb7665b1b
+      internalID: 5000000000000000141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_142
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a63aba6b8ff40b0bbd88012346502fd
+      internalID: 5000000000000000142
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_143
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf9bda9ed77044bb93055dddbff892de
+      internalID: 5000000000000000143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_144
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b68d7acb53ad4105b70df57fbaab08ef
+      internalID: 5000000000000000144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_145
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70c9c309e6684be2b095eeca32706062
+      internalID: 5000000000000000145
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_146
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad252985e8af4169bb525cdb934dbd95
+      internalID: 5000000000000000146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_147
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 68840eaa81014cdda4aa9d37001d0f7c
+      internalID: 5000000000000000147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_148
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6307ea1912e4d6b91cf87a62ec5dc22
+      internalID: 5000000000000000148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_149
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dd188b8cf394fa1a60c3d27ea909dee
+      internalID: 5000000000000000149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_150
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95f23ce3378e4cccbf5b84ae640d7ce6
+      internalID: 5000000000000000150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_151
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d3eefad2a1341cbb0f95ae3914bf477
+      internalID: 5000000000000000151
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_152
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c3658c2ef054aee9864dbe426550991
+      internalID: 5000000000000000152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_153
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 423
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba3fcedd3a7242b381c4ec3df38d0963
+      internalID: 5000000000000000153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_154
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c266adda126340989690084ecea0dc84
+      internalID: 5000000000000000154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_155
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bcbddaaafa4d4bb4aeaca9d72d562584
+      internalID: 5000000000000000155
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_156
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 673706307131471c9b8909a8d55dc1ec
+      internalID: 5000000000000000156
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_157
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a970883c61a745ba9f0e35e90b0103ce
+      internalID: 5000000000000000157
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_158
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9a65324a4cc04bd5ab84f252b5f66e60
+      internalID: 5000000000000000158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_159
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 441046b3122c4bbc92e4f9eb72fd0df1
+      internalID: 5000000000000000159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_160
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30f0f92d147844739f694f4452661983
+      internalID: 5000000000000000160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_161
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a69c084cf6c04bacb66e5c540a6fff67
+      internalID: 5000000000000000161
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_162
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32d41482410f41d78130ecffc69e87a7
+      internalID: 5000000000000000162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_163
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95a236f7e59545f78593e1369de5e516
+      internalID: 5000000000000000163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_164
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f171a25263c04eaebe9feab603b44e64
+      internalID: 5000000000000000164
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_165
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28f33a43db32473196af1748178d9840
+      internalID: 5000000000000000165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_166
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 645f4128c69446bba479e6940461d177
+      internalID: 5000000000000000166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_167
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 282
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b708b351c8f849709c91c7c48f270d13
+      internalID: 5000000000000000167
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_168
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd8e46849bba46a0bcd249359e068c09
+      internalID: 5000000000000000168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_169
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 944caada8b714f198978988c0f2c7eef
+      internalID: 5000000000000000169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_170
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb090870b72f4eb6885768fbe3e3818b
+      internalID: 5000000000000000170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_171
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f91430a983643cfa62a5971bc58c918
+      internalID: 5000000000000000171
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_172
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6836cf65d35843c3b100d33df5ca4bf4
+      internalID: 5000000000000000172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_173
+      rect:
+        serializedVersion: 2
+        x: 1050
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: efcc0dd978cc40ed9e08e0452a3d4cb5
+      internalID: 5000000000000000173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_174
+      rect:
+        serializedVersion: 2
+        x: 1260
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fab33c99633349c7807d34ff1b3a8e8a
+      internalID: 5000000000000000174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_175
+      rect:
+        serializedVersion: 2
+        x: 1470
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f58af35dd99f4fb098d721a2ca862543
+      internalID: 5000000000000000175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_176
+      rect:
+        serializedVersion: 2
+        x: 1680
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c79767028281483999813e1efcd69ea7
+      internalID: 5000000000000000176
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_177
+      rect:
+        serializedVersion: 2
+        x: 1890
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5157f5897c94e20853ef05b929cf726
+      internalID: 5000000000000000177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_178
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28fbdf57f00342a494ec6b7c93a46040
+      internalID: 5000000000000000178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_179
+      rect:
+        serializedVersion: 2
+        x: 2310
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98bd68086aae44deab1610817f4c2a81
+      internalID: 5000000000000000179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_180
+      rect:
+        serializedVersion: 2
+        x: 2520
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 699b8ae327a54b6eae01146d63ef8b0b
+      internalID: 5000000000000000180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_181
+      rect:
+        serializedVersion: 2
+        x: 2730
+        y: 141
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc73335429e347aeadc608f16726955a
+      internalID: 5000000000000000181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_182
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40cbbe2b643a42498abc3e460165da9b
+      internalID: 5000000000000000182
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_183
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 0
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 036e50943d0b46aa9fb6bdd7ad5ba281
+      internalID: 5000000000000000183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_184
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 0
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80d3c7c8aa6b47c18b3346d20a864322
+      internalID: 5000000000000000184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_185
+      rect:
+        serializedVersion: 2
+        x: 630
+        y: 0
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa4ee3778f964cdeab0abd598d6a8aaa
+      internalID: 5000000000000000185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Maxwell_186
+      rect:
+        serializedVersion: 2
+        x: 840
+        y: 0
+        width: 210
+        height: 141
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d763ed671595451389f489676e3a6802
+      internalID: 5000000000000000186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Maxwell_000: 5000000000000000000
+      Maxwell_001: 5000000000000000001
+      Maxwell_002: 5000000000000000002
+      Maxwell_003: 5000000000000000003
+      Maxwell_004: 5000000000000000004
+      Maxwell_005: 5000000000000000005
+      Maxwell_006: 5000000000000000006
+      Maxwell_007: 5000000000000000007
+      Maxwell_008: 5000000000000000008
+      Maxwell_009: 5000000000000000009
+      Maxwell_010: 5000000000000000010
+      Maxwell_011: 5000000000000000011
+      Maxwell_012: 5000000000000000012
+      Maxwell_013: 5000000000000000013
+      Maxwell_014: 5000000000000000014
+      Maxwell_015: 5000000000000000015
+      Maxwell_016: 5000000000000000016
+      Maxwell_017: 5000000000000000017
+      Maxwell_018: 5000000000000000018
+      Maxwell_019: 5000000000000000019
+      Maxwell_020: 5000000000000000020
+      Maxwell_021: 5000000000000000021
+      Maxwell_022: 5000000000000000022
+      Maxwell_023: 5000000000000000023
+      Maxwell_024: 5000000000000000024
+      Maxwell_025: 5000000000000000025
+      Maxwell_026: 5000000000000000026
+      Maxwell_027: 5000000000000000027
+      Maxwell_028: 5000000000000000028
+      Maxwell_029: 5000000000000000029
+      Maxwell_030: 5000000000000000030
+      Maxwell_031: 5000000000000000031
+      Maxwell_032: 5000000000000000032
+      Maxwell_033: 5000000000000000033
+      Maxwell_034: 5000000000000000034
+      Maxwell_035: 5000000000000000035
+      Maxwell_036: 5000000000000000036
+      Maxwell_037: 5000000000000000037
+      Maxwell_038: 5000000000000000038
+      Maxwell_039: 5000000000000000039
+      Maxwell_040: 5000000000000000040
+      Maxwell_041: 5000000000000000041
+      Maxwell_042: 5000000000000000042
+      Maxwell_043: 5000000000000000043
+      Maxwell_044: 5000000000000000044
+      Maxwell_045: 5000000000000000045
+      Maxwell_046: 5000000000000000046
+      Maxwell_047: 5000000000000000047
+      Maxwell_048: 5000000000000000048
+      Maxwell_049: 5000000000000000049
+      Maxwell_050: 5000000000000000050
+      Maxwell_051: 5000000000000000051
+      Maxwell_052: 5000000000000000052
+      Maxwell_053: 5000000000000000053
+      Maxwell_054: 5000000000000000054
+      Maxwell_055: 5000000000000000055
+      Maxwell_056: 5000000000000000056
+      Maxwell_057: 5000000000000000057
+      Maxwell_058: 5000000000000000058
+      Maxwell_059: 5000000000000000059
+      Maxwell_060: 5000000000000000060
+      Maxwell_061: 5000000000000000061
+      Maxwell_062: 5000000000000000062
+      Maxwell_063: 5000000000000000063
+      Maxwell_064: 5000000000000000064
+      Maxwell_065: 5000000000000000065
+      Maxwell_066: 5000000000000000066
+      Maxwell_067: 5000000000000000067
+      Maxwell_068: 5000000000000000068
+      Maxwell_069: 5000000000000000069
+      Maxwell_070: 5000000000000000070
+      Maxwell_071: 5000000000000000071
+      Maxwell_072: 5000000000000000072
+      Maxwell_073: 5000000000000000073
+      Maxwell_074: 5000000000000000074
+      Maxwell_075: 5000000000000000075
+      Maxwell_076: 5000000000000000076
+      Maxwell_077: 5000000000000000077
+      Maxwell_078: 5000000000000000078
+      Maxwell_079: 5000000000000000079
+      Maxwell_080: 5000000000000000080
+      Maxwell_081: 5000000000000000081
+      Maxwell_082: 5000000000000000082
+      Maxwell_083: 5000000000000000083
+      Maxwell_084: 5000000000000000084
+      Maxwell_085: 5000000000000000085
+      Maxwell_086: 5000000000000000086
+      Maxwell_087: 5000000000000000087
+      Maxwell_088: 5000000000000000088
+      Maxwell_089: 5000000000000000089
+      Maxwell_090: 5000000000000000090
+      Maxwell_091: 5000000000000000091
+      Maxwell_092: 5000000000000000092
+      Maxwell_093: 5000000000000000093
+      Maxwell_094: 5000000000000000094
+      Maxwell_095: 5000000000000000095
+      Maxwell_096: 5000000000000000096
+      Maxwell_097: 5000000000000000097
+      Maxwell_098: 5000000000000000098
+      Maxwell_099: 5000000000000000099
+      Maxwell_100: 5000000000000000100
+      Maxwell_101: 5000000000000000101
+      Maxwell_102: 5000000000000000102
+      Maxwell_103: 5000000000000000103
+      Maxwell_104: 5000000000000000104
+      Maxwell_105: 5000000000000000105
+      Maxwell_106: 5000000000000000106
+      Maxwell_107: 5000000000000000107
+      Maxwell_108: 5000000000000000108
+      Maxwell_109: 5000000000000000109
+      Maxwell_110: 5000000000000000110
+      Maxwell_111: 5000000000000000111
+      Maxwell_112: 5000000000000000112
+      Maxwell_113: 5000000000000000113
+      Maxwell_114: 5000000000000000114
+      Maxwell_115: 5000000000000000115
+      Maxwell_116: 5000000000000000116
+      Maxwell_117: 5000000000000000117
+      Maxwell_118: 5000000000000000118
+      Maxwell_119: 5000000000000000119
+      Maxwell_120: 5000000000000000120
+      Maxwell_121: 5000000000000000121
+      Maxwell_122: 5000000000000000122
+      Maxwell_123: 5000000000000000123
+      Maxwell_124: 5000000000000000124
+      Maxwell_125: 5000000000000000125
+      Maxwell_126: 5000000000000000126
+      Maxwell_127: 5000000000000000127
+      Maxwell_128: 5000000000000000128
+      Maxwell_129: 5000000000000000129
+      Maxwell_130: 5000000000000000130
+      Maxwell_131: 5000000000000000131
+      Maxwell_132: 5000000000000000132
+      Maxwell_133: 5000000000000000133
+      Maxwell_134: 5000000000000000134
+      Maxwell_135: 5000000000000000135
+      Maxwell_136: 5000000000000000136
+      Maxwell_137: 5000000000000000137
+      Maxwell_138: 5000000000000000138
+      Maxwell_139: 5000000000000000139
+      Maxwell_140: 5000000000000000140
+      Maxwell_141: 5000000000000000141
+      Maxwell_142: 5000000000000000142
+      Maxwell_143: 5000000000000000143
+      Maxwell_144: 5000000000000000144
+      Maxwell_145: 5000000000000000145
+      Maxwell_146: 5000000000000000146
+      Maxwell_147: 5000000000000000147
+      Maxwell_148: 5000000000000000148
+      Maxwell_149: 5000000000000000149
+      Maxwell_150: 5000000000000000150
+      Maxwell_151: 5000000000000000151
+      Maxwell_152: 5000000000000000152
+      Maxwell_153: 5000000000000000153
+      Maxwell_154: 5000000000000000154
+      Maxwell_155: 5000000000000000155
+      Maxwell_156: 5000000000000000156
+      Maxwell_157: 5000000000000000157
+      Maxwell_158: 5000000000000000158
+      Maxwell_159: 5000000000000000159
+      Maxwell_160: 5000000000000000160
+      Maxwell_161: 5000000000000000161
+      Maxwell_162: 5000000000000000162
+      Maxwell_163: 5000000000000000163
+      Maxwell_164: 5000000000000000164
+      Maxwell_165: 5000000000000000165
+      Maxwell_166: 5000000000000000166
+      Maxwell_167: 5000000000000000167
+      Maxwell_168: 5000000000000000168
+      Maxwell_169: 5000000000000000169
+      Maxwell_170: 5000000000000000170
+      Maxwell_171: 5000000000000000171
+      Maxwell_172: 5000000000000000172
+      Maxwell_173: 5000000000000000173
+      Maxwell_174: 5000000000000000174
+      Maxwell_175: 5000000000000000175
+      Maxwell_176: 5000000000000000176
+      Maxwell_177: 5000000000000000177
+      Maxwell_178: 5000000000000000178
+      Maxwell_179: 5000000000000000179
+      Maxwell_180: 5000000000000000180
+      Maxwell_181: 5000000000000000181
+      Maxwell_182: 5000000000000000182
+      Maxwell_183: 5000000000000000183
+      Maxwell_184: 5000000000000000184
+      Maxwell_185: 5000000000000000185
+      Maxwell_186: 5000000000000000186
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

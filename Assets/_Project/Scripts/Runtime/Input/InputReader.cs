@@ -46,6 +46,7 @@ namespace Tetris {
             _rotateAction.performed += HandleRotate;
             _pauseAction.performed += HandlePause;
             _miscAction.performed += HandleMisc;
+            _miscAction.canceled += HandleMisc;
         }
 
         void OnDisable() {
@@ -56,6 +57,7 @@ namespace Tetris {
             _rotateAction.performed -= HandleRotate;
             _pauseAction.performed -= HandlePause;
             _miscAction.performed -= HandleMisc;
+            _miscAction.canceled -= HandleMisc;
 
             // Évite qu'un abonné reste bloqué sur un input "maintenu" quand le reader est désactivé.
             SetMoveDirection(0);
@@ -81,7 +83,7 @@ namespace Tetris {
         }
 
         void HandleMisc(InputAction.CallbackContext context) {
-            EventBus<MiscInputEvent>.Publish(new MiscInputEvent());
+            EventBus<MiscInputEvent>.Publish(new MiscInputEvent(context.performed));
         }
 
         void SetMoveDirection(int direction) {

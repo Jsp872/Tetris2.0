@@ -36,7 +36,7 @@ Dans la scène `Game`, l'objet `PlayerInputsHandler` porte le `PlayerInput` et l
 | `DownInputEvent` | Espace, Bas | `IsPressed` : `true` / `false` | Appui puis relâchement |
 | `RotateInputEvent` | R, Haut | aucun | Appui |
 | `PauseInputEvent` | Échap | aucun | Appui |
-| `MiscInputEvent` | J | aucun | Appui (réservé pour plus tard) |
+| `MiscInputEvent` | J | `IsPressed` : `true` / `false` | Appui puis relâchement (easter egg Maxwell) |
 
 Les touches lettres sont liées par position physique, sur la base d'un clavier QWERTY. Sur un clavier AZERTY :
 A devient Q. D, R et J ne changent pas.

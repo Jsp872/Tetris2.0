@@ -436,3 +436,71 @@ Button.deplorable__choice {
 Button.deplorable__choice:hover {
     background-color: rgba(255, 255, 255, 0.22);
 }
+
+.deplorable__hand {
+    position: absolute;
+    width: 100px;
+    height: 110px;
+}
+
+.deplorable__qte {
+    position: absolute;
+    top: 120px;
+    left: 50%;
+    width: 640px;
+    margin-left: -320px;
+    padding: 22px 26px;
+    border-radius: 24px;
+    align-items: center;
+    background-color: rgba(120, 20, 40, 0.85);
+    border-color: rgb(255, 120, 140);
+    rotate: -1.5deg;
+}
+
+.deplorable__qte-title {
+    font-size: 34px;
+    letter-spacing: 3px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 0;
+    padding: 0;
+}
+
+.deplorable__qte-text {
+    font-size: 16px;
+    color: rgba(255, 235, 240, 0.85);
+    margin: 4px 0 14px 0;
+    padding: 0;
+}
+
+.deplorable__qte-keys {
+    flex-direction: row;
+}
+
+.deplorable__qte-key {
+    width: 70px;
+    height: 70px;
+    margin: 0 8px;
+    border-width: 4px;
+    border-radius: 14px;
+    border-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
+    font-size: 36px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+    padding: 0;
+}
+
+.deplorable__qte-key--next {
+    border-color: rgb(255, 222, 89);
+    scale: 1.15 1.15;
+}
+
+.deplorable__qte-key--done {
+    background-color: rgb(80, 220, 120);
+    border-color: rgb(200, 255, 215);
+    color: rgb(20, 60, 30);
+}

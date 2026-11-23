@@ -88,6 +88,8 @@ namespace Tetris {
             root.RegisterCallback<NavigationCancelEvent>(_ => OnCancel());
 
             BuildModeCards(_modeList);
+            DeplorableUi.Restored -= OnDeplorableRestored;
+            DeplorableUi.Restored += OnDeplorableRestored;
             _modesPanel.style.display = DisplayStyle.None;
             _optionsPanel.style.display = DisplayStyle.None;
             _currentPanel = _mainPanel;
@@ -134,6 +136,17 @@ namespace Tetris {
 
             Shake(card);
             ShowToast($"Le mode {mode.title} arrive bientôt");
+        }
+
+        void OnDisable() {
+            DeplorableUi.Restored -= OnDeplorableRestored;
+        }
+
+        /// <summary>Fin de l'interface déplorable : on reconstruit tout ce qui est affiché, pour repartir de zéro.</summary>
+        void OnDeplorableRestored() {
+            BuildModeCards(_modeList);
+            if (_currentPanel == _optionsPanel) _options.Refresh(revealGoof: true);
+            _openScreen?.Open();
         }
 
         void OnCancel() {

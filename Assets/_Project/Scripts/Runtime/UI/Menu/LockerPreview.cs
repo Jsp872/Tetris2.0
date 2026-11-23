@@ -7,7 +7,8 @@ namespace Tetris {
     /// Aperçu en direct du Casier : un mini-plateau aux couleurs du plateau, des blocs et du fond équipés,
     /// sur lequel un petit bot joue tout seul. En simulation (<see cref="SetSimulating"/>), la partie devient sonore :
     /// sons équipés à chaque moment (apparition, déplacement, rotation, pose, ligne, Tetris, game over),
-    /// boucle de descente pendant les chutes, et musique de la playlist.
+    /// boucle de descente pendant les descentes rapides, et musique de la playlist.
+    /// Le bot laisse tomber la plupart des pièces à vitesse normale et n'accélère que de temps en temps.
     /// Après une vingtaine de pièces, le bot panique et pose n'importe comment, pour entendre aussi le game over.
     /// </summary>
     public class LockerPreview {
@@ -63,6 +64,7 @@ namespace Tetris {
         int _score;
         int _lines;
         bool _isPanicking;
+        bool _isFastDrop;
         bool _isSimulating;
 
         public bool IsSimulating => _isSimulating;
@@ -254,7 +256,8 @@ namespace Tetris {
             int direction = System.Math.Sign(_targetX - _x);
             if (direction == 0 || !Fits(_piece, _rotation, _x + direction, _y, _grid)) {
                 _phase = Phase.Drop;
-                SetLoop(true);
+                _isFastDrop = Random.value < 0.35f;
+                if (_isFastDrop) SetLoop(true);
                 _nextStep = now + 0.08f;
                 return;
             }
@@ -266,7 +269,7 @@ namespace Tetris {
         void StepDrop(float now) {
             if (Fits(_piece, _rotation, _x, _y - 1, _grid)) {
                 _y--;
-                _nextStep = now + 0.045f;
+                _nextStep = now + (_isFastDrop ? 0.045f : 0.16f);
                 return;
             }
 

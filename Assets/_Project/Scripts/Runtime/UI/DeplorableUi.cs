@@ -20,6 +20,8 @@ namespace Tetris {
     /// une seule qui accepte, jamais la même.</item>
     /// <item>Les volumes changent tout seuls (remis comme avant quand l'option est désactivée).</item>
     /// <item>Un clic sur trois environ change la musique au hasard.</item>
+    /// <item>Une main suit lentement le curseur ; quand elle l'attrape, elle le traîne au milieu de l'écran
+    /// jusqu'à ce que le joueur réussisse un QTE (taper une suite de lettres).</item>
     /// </list>
     /// Tout reste utilisable, juste... pénible. Les ajouts ne prennent pas le focus.
     /// Styles "deplorable-*" dans Common.uss.
@@ -69,7 +71,19 @@ namespace Tetris {
         [Flags]
         enum Changes { None = 0, Rotate = 1, Translate = 2, Font = 4, Opacity = 8, Spacing = 16, Align = 32 }
 
+        const float HandSpeed = 75f;
+        const float HandDragSpeed = 320f;
+        const float HandGrabDistance = 24f;
+        const float HandRespawnDelay = 6f;
+        const int QteLength = 5;
+        /// <summary>Lettres du QTE : aucune touche utilisée par le jeu (Q, D, R, J, N, B, C, S, Z...).</summary>
+        const string QteLetters = "AEFGHIKLMOPTUVXY";
+        static readonly Vector2 HandGrabPoint = new(50f, 52f);
+
         static DeplorableUi _instance;
+
+        /// <summary>L'interface vient d'être remise en état : les menus doivent reconstruire leurs panneaux.</summary>
+        public static event Action Restored;
 
         readonly Dictionary<VisualElement, Changes> _processed = new();
         readonly List<VisualElement> _cursors = new();
@@ -81,6 +95,17 @@ namespace Tetris {
         VisualElement _confirm;
         Label _confirmTitle;
         VisualElement _confirmGrid;
+        VisualElement _topLayer;
+        VisualElement _hand;
+        VisualElement _qte;
+        VisualElement _qteKeys;
+        Vector2 _handPosition;
+        Vector2 _handVelocity;
+        bool _isGrabbing;
+        bool _isHandClosed;
+        float _handBackAt;
+        string _qteSequence;
+        int _qteProgress;
         Font[] _fonts;
         VisualElement _root;
         VisualElement _layer;
@@ -134,6 +159,7 @@ namespace Tetris {
             UpdateFakeUpdate(now);
             UpdateEvasion(now, Time.unscaledDeltaTime);
             UpdateAudioChaos(now);
+            UpdateHand(now, Time.unscaledDeltaTime);
         }
 
         void OnApplicationQuit() {
@@ -164,6 +190,7 @@ namespace Tetris {
             _root.RegisterCallback<PointerDownEvent>(OnPointerDown, TrickleDown.TrickleDown);
             _root.RegisterCallback<PointerUpEvent>(OnPointerUp, TrickleDown.TrickleDown);
             _root.RegisterCallback<ClickEvent>(OnClick, TrickleDown.TrickleDown);
+            if (Keyboard.current != null) Keyboard.current.onTextInput += OnTextInput;
         }
 
         /// <summary>Retire tout et remet les éléments comme avant.</summary>
@@ -173,7 +200,9 @@ namespace Tetris {
                 _root.UnregisterCallback<PointerUpEvent>(OnPointerUp, TrickleDown.TrickleDown);
                 _root.UnregisterCallback<ClickEvent>(OnClick, TrickleDown.TrickleDown);
             }
+            if (Keyboard.current != null) Keyboard.current.onTextInput -= OnTextInput;
             if (!SpoofGoofSettings.IsDeplorable) RestoreVolumes();
+            _isGrabbing = false;
             _evasions.Clear();
             _pressed = null;
             foreach (KeyValuePair<VisualElement, Changes> pair in _processed) Restore(pair.Key, pair.Value);
@@ -181,9 +210,16 @@ namespace Tetris {
             _cursors.Clear();
             _layer?.RemoveFromHierarchy();
             _layer = null;
+            _topLayer?.RemoveFromHierarchy();
+            _topLayer = null;
+
+            // Les vues défilantes ont pu se décaler : on les remet en haut, puis les menus se reconstruisent.
+            bool wasActive = _isActive;
+            _root?.Query<ScrollView>().ForEach(scrollView => scrollView.scrollOffset = Vector2.zero);
             _root = null;
             _isActive = false;
             _updateStart = -1f;
+            if (wasActive) Restored?.Invoke();
         }
 
         static Font[] LoadFonts() {
@@ -319,8 +355,183 @@ namespace Tetris {
             _confirmGrid.pickingMode = PickingMode.Position;
             _confirm.style.display = DisplayStyle.None;
 
-            // Le curseur osu! du menu reste au-dessus de tout.
+            // Le curseur osu! du menu reste au-dessus de tout... sauf de la main, qui l'attrape.
             _root.Q("cursor-trail")?.BringToFront();
+            BuildHand();
+        }
+
+        // ---------- La main ----------
+
+        void BuildHand() {
+            _topLayer = new VisualElement { name = LayerName, pickingMode = PickingMode.Ignore };
+            _topLayer.AddToClassList("deplorable");
+            _root.Add(_topLayer);
+
+            _hand = Element(_topLayer, "deplorable__hand");
+            _hand.generateVisualContent += context => DrawHand(context.painter2D, _isHandClosed);
+            _handPosition = new Vector2(-120f, -120f);
+            _handBackAt = Time.unscaledTime + 4f;
+
+            _qte = Element(_topLayer, "deplorable__qte");
+            _qte.AddToClassList("glass");
+            Label(_qte, "LA MAIN T'A ATTRAPÉ !", "deplorable__qte-title");
+            Label(_qte, "Tape la séquence pour t'en sortir. Une erreur et on recommence.", "deplorable__qte-text");
+            _qteKeys = Element(_qte, "deplorable__qte-keys");
+            _qte.style.display = DisplayStyle.None;
+        }
+
+        /// <summary>
+        /// La main suit lentement le curseur. Quand elle l'attrape, elle le traîne vers le milieu de l'écran
+        /// (le curseur système est déplacé avec elle) jusqu'à la réussite du QTE. Ensuite elle est jetée hors de l'écran
+        /// et revient quelques secondes plus tard.
+        /// </summary>
+        void UpdateHand(float now, float deltaTime) {
+            if (_hand == null || !TryGetMouse(out Vector2 mouse)) return;
+
+            Vector2 grab = _handPosition + HandGrabPoint;
+            if (_isGrabbing) {
+                Vector2 center = _root.worldBound.center;
+                _handPosition = Vector2.MoveTowards(grab, center, HandDragSpeed * deltaTime) - HandGrabPoint;
+                WarpCursor(_handPosition + HandGrabPoint);
+            }
+            else if (now < _handBackAt) {
+                // Jetée après un QTE réussi : elle s'envole, puis revient depuis un bord.
+                _handPosition += _handVelocity * deltaTime;
+                if (now + deltaTime >= _handBackAt) _handPosition = RandomEdge();
+            }
+            else {
+                _handPosition = Vector2.MoveTowards(grab, mouse, HandSpeed * deltaTime) - HandGrabPoint;
+                if (Vector2.Distance(_handPosition + HandGrabPoint, mouse) < HandGrabDistance) StartQte();
+            }
+
+            SetHandClosed(_isGrabbing);
+            _hand.style.left = _handPosition.x;
+            _hand.style.top = _handPosition.y;
+            _hand.style.rotate = new Rotate(_isGrabbing ? Mathf.Sin(now * 20f) * 6f : Mathf.Sin(now * 2f) * 8f);
+        }
+
+        Vector2 RandomEdge() {
+            Rect area = _root.worldBound;
+            return Random.Range(0, 4) switch {
+                0 => new Vector2(Random.Range(0f, area.width), -140f),
+                1 => new Vector2(Random.Range(0f, area.width), area.height + 40f),
+                2 => new Vector2(-140f, Random.Range(0f, area.height)),
+                _ => new Vector2(area.width + 40f, Random.Range(0f, area.height)),
+            };
+        }
+
+        void SetHandClosed(bool isClosed) {
+            if (_isHandClosed == isClosed) return;
+            _isHandClosed = isClosed;
+            _hand.MarkDirtyRepaint();
+        }
+
+        /// <summary>Déplace le vrai curseur (coordonnées de l'interface vers pixels de l'écran).</summary>
+        void WarpCursor(Vector2 panelPosition) {
+            Mouse mouse = Mouse.current;
+            float panelWidth = _root.worldBound.width;
+            if (mouse == null || panelWidth <= 0f) return;
+
+            float scale = Screen.width / panelWidth;
+            mouse.WarpCursorPosition(new Vector2(panelPosition.x * scale, Screen.height - panelPosition.y * scale));
+        }
+
+        void StartQte() {
+            _isGrabbing = true;
+            _qteProgress = 0;
+            char[] letters = new char[QteLength];
+            for (int i = 0; i < QteLength; i++) letters[i] = QteLetters[Random.Range(0, QteLetters.Length)];
+            _qteSequence = new string(letters);
+            RefreshQte();
+            _qte.style.display = DisplayStyle.Flex;
+            UiSounds.Play(UiSound.Wrong, 0.6f);
+        }
+
+        void OnTextInput(char character) {
+            if (!_isGrabbing || char.IsControl(character)) return;
+
+            if (char.ToUpperInvariant(character) == _qteSequence[_qteProgress]) {
+                _qteProgress++;
+                UiSounds.Play(UiSound.Accept, 0.6f);
+                if (_qteProgress >= _qteSequence.Length) {
+                    ReleaseHand();
+                    return;
+                }
+            }
+            else {
+                _qteProgress = 0;
+                UiSounds.Play(UiSound.Wrong, 0.5f);
+            }
+            RefreshQte();
+        }
+
+        void RefreshQte() {
+            _qteKeys.Clear();
+            for (int i = 0; i < _qteSequence.Length; i++) {
+                Label key = Label(_qteKeys, _qteSequence[i].ToString(), "deplorable__qte-key");
+                key.EnableInClassList("deplorable__qte-key--done", i < _qteProgress);
+                key.EnableInClassList("deplorable__qte-key--next", i == _qteProgress);
+            }
+        }
+
+        void ReleaseHand() {
+            _isGrabbing = false;
+            _qte.style.display = DisplayStyle.None;
+            _handVelocity = Random.insideUnitCircle.normalized * 2200f;
+            _handBackAt = Time.unscaledTime + HandRespawnDelay;
+            ShowSaving("Libéré ! Elle reviendra.");
+        }
+
+        /// <summary>Gant de dessin animé : contour noir, puis le blanc par-dessus. Fermé : doigts repliés.</summary>
+        static void DrawHand(Painter2D painter, bool isClosed) {
+            float fingerTop = isClosed ? 40f : 12f;
+            float[] fingers = { 30f, 44f, 58f, 72f };
+
+            for (int pass = 0; pass < 2; pass++) {
+                bool isOutline = pass == 0;
+                Color color = isOutline ? Color.black : Color.white;
+                float grow = isOutline ? 3f : 0f;
+                painter.strokeColor = color;
+                painter.fillColor = color;
+                painter.lineCap = LineCap.Round;
+
+                // Manchette
+                painter.lineWidth = 22f + grow * 2f;
+                painter.BeginPath();
+                painter.MoveTo(new Vector2(38f, 96f));
+                painter.LineTo(new Vector2(62f, 96f));
+                painter.Stroke();
+
+                // Doigts
+                painter.lineWidth = 13f + grow * 2f;
+                foreach (float x in fingers) {
+                    painter.BeginPath();
+                    painter.MoveTo(new Vector2(x, fingerTop + (x is 30f or 72f ? 6f : 0f)));
+                    painter.LineTo(new Vector2(x, 58f));
+                    painter.Stroke();
+                }
+
+                // Pouce
+                painter.BeginPath();
+                painter.MoveTo(new Vector2(isClosed ? 30f : 12f, isClosed ? 58f : 50f));
+                painter.LineTo(new Vector2(30f, 70f));
+                painter.Stroke();
+
+                // Paume
+                painter.BeginPath();
+                painter.Arc(new Vector2(52f, 66f), 25f + grow, 0f, 360f);
+                painter.Fill();
+            }
+
+            // Traits du gant
+            painter.strokeColor = new Color(0f, 0f, 0f, 0.6f);
+            painter.lineWidth = 2f;
+            for (int i = 0; i < 3; i++) {
+                painter.BeginPath();
+                painter.MoveTo(new Vector2(42f + i * 8f, 76f));
+                painter.LineTo(new Vector2(42f + i * 8f, 86f));
+                painter.Stroke();
+            }
         }
 
         void CreateFakeCursor(string cursorName) {

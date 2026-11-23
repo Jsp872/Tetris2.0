@@ -146,7 +146,7 @@ namespace Tetris {
                 }
             }
 
-            Music("ouioui", "OUI-OUI ET LA POUDRE MAGIQUE", "Paulok", Rarity.Mythic, "Le chef-d'œuvre. Oui-Oui n'a jamais été aussi en forme.");
+            Music("ouioui", "OUI-OUI", "Paulok", Rarity.Mythic, "Le générique de Oui-Oui par Paulok. 16 secondes de chef-d'œuvre, en boucle pour toujours.");
             Music("hitete", "LE HIT DE L'ÉTÉ", "Paulok", Rarity.Legendary, "45 secondes de pur génie, en boucle.");
             Music("megalovania", "MEGALOVANIA", "Toby Fox", Rarity.Legendary, "Tu vas passer un sale quart d'heure.");
             Music("trololo", "TROLOLO", "Eduard Khil", Rarity.Epic, "Ohohoho. Ahahaha. Ohohoho.");

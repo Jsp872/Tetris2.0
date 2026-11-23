@@ -3,13 +3,13 @@ using UnityEngine;
 
 namespace Tetris.Placeholder {
     /// <summary>
-    /// PLACEHOLDER : spawn, gravité et inputs pour tester Board et Bloc. À remplacer par le Spawner et le GameManager.
+    /// PLACEHOLDER : gravité et inputs pour tester Board, Bloc et Spawner. À remplacer par le GameManager.
     /// Move : déplacer, Down : descente rapide, Rotate : tourner, Pause : pause / reprise, Misc : log de debug.
+    /// Les prochaines pièces sont affichées dans la console.
     /// </summary>
     public class PlaceholderGameManager : MonoBehaviour {
         [SerializeField] Board _board;
-        [SerializeField] Bloc _blocPrefab;
-        [SerializeField] BlocSO[] _blocs;
+        [SerializeField] Spawner _spawner;
         [SerializeField] Sprite _backgroundSprite;
         [SerializeField] float _fallInterval = 0.8f;
         [SerializeField] float _softDropInterval = 0.05f;
@@ -26,6 +26,7 @@ namespace Tetris.Placeholder {
             EventBus<RotateInputEvent>.Subscribe(OnRotate);
             EventBus<PauseInputEvent>.Subscribe(OnPause);
             EventBus<MiscInputEvent>.Subscribe(OnMisc);
+            EventBus<NextBlocsChangedEvent>.Subscribe(OnNextBlocsChanged);
         }
 
         void OnDisable() {
@@ -34,6 +35,7 @@ namespace Tetris.Placeholder {
             EventBus<RotateInputEvent>.Unsubscribe(OnRotate);
             EventBus<PauseInputEvent>.Unsubscribe(OnPause);
             EventBus<MiscInputEvent>.Unsubscribe(OnMisc);
+            EventBus<NextBlocsChangedEvent>.Unsubscribe(OnNextBlocsChanged);
             Time.timeScale = 1f;
         }
 
@@ -50,6 +52,14 @@ namespace Tetris.Placeholder {
 
         void OnMisc(MiscInputEvent e) {
             Debug.Log("Misc");
+        }
+
+        void OnNextBlocsChanged(NextBlocsChangedEvent e) {
+            var names = new string[e.NextBlocs.Count];
+            for (int i = 0; i < names.Length; i++) {
+                names[i] = e.NextBlocs[i].name;
+            }
+            Debug.Log($"Prochains : {string.Join(", ", names)}");
         }
 
         void OnMove(MoveInputEvent e) {
@@ -100,8 +110,7 @@ namespace Tetris.Placeholder {
         }
 
         void SpawnNext() {
-            _current = Instantiate(_blocPrefab);
-            _current.Init(_blocs[Random.Range(0, _blocs.Length)], _board);
+            _current = _spawner.SpawnNext();
             _fallTimer = 0f;
 
             if (!_current.CanMove(Vector2Int.zero)) {

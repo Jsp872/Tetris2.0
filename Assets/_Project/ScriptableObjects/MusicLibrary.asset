@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fce5317a36a24325804521dc253fc0c9, type: 3}
+  m_Name: MusicLibrary
+  m_EditorClassIdentifier: Tetris.Runtime::Tetris.MusicLibrarySO
+  tracks:
+  - title: 'Didou'
+    artist: 'Générique'
+    clip: {fileID: 8300000, guid: 51ca473d8f84d1408b2ff36f562f1115, type: 3}
+    cover: {fileID: 21300000, guid: aee01837bb3441cda975e8b3d3e56351, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'TOP 1'
+    artist: 'Squeezie'
+    clip: {fileID: 8300000, guid: 0bc8c916957c42a99a68d05d4e9749d0, type: 3}
+    cover: {fileID: 21300000, guid: aff27b4a38ca4894b9989cbe9ad1fb76, type: 3}
+    useMenuVideoAsCover: 1
+  - title: 'Libérée, délivrée'
+    artist: 'Anaïs Delva - La Reine des Neiges'
+    clip: {fileID: 8300000, guid: c0c04fe9d285454e9d3d62fc19929f71, type: 3}
+    cover: {fileID: 21300000, guid: 33f72820ef8c4a2db11694c91b894d44, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'En été'
+    artist: 'Emmanuel Curtil - La Reine des Neiges'
+    clip: {fileID: 8300000, guid: 244b1aa52a1843b49d2676c0df2ebc03, type: 3}
+    cover: {fileID: 21300000, guid: e816212b4d90483aa7da79951a1a2553, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'La Maison de Mickey'
+    artist: 'Générique'
+    clip: {fileID: 8300000, guid: 7f76421f85564cec8dc64db6fb551570, type: 3}
+    cover: {fileID: 21300000, guid: f5c2ebceb12f4d779eaa04c370dbdb1d, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'Dora l''exploratrice'
+    artist: 'Générique'
+    clip: {fileID: 8300000, guid: 8088ecb39b094155b29e7956615ecb66, type: 3}
+    cover: {fileID: 21300000, guid: 4be568465c1e4c1c8d64a9e095481722, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'Yakari'
+    artist: 'Générique'
+    clip: {fileID: 8300000, guid: f4402570b0d746a8b3109fe94f853f5c, type: 3}
+    cover: {fileID: 21300000, guid: 5cc7695c8e25470f95487ec7c1ec79ac, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'Tom Sawyer'
+    artist: 'Générique'
+    clip: {fileID: 8300000, guid: f9809dcf01cc48fe988db69d4ca9679e, type: 3}
+    cover: {fileID: 21300000, guid: b8b5c64d26454705a928a554b780d33b, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'Axel F'
+    artist: 'Crazy Frog'
+    clip: {fileID: 8300000, guid: 5fd5ae04631043f8b00b53c29d802fe3, type: 3}
+    cover: {fileID: 21300000, guid: 348141dc999f44ab8e2c63c7adff41c1, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'Never Gonna Give You Up'
+    artist: 'Rick Astley'
+    clip: {fileID: 8300000, guid: cdbe9edea0f048ccb14c533839b773bc, type: 3}
+    cover: {fileID: 21300000, guid: b0ebe91e31214d89a8353f42d8055321, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'HEYYEYAAEYAAAEYAEYAA'
+    artist: 'He-Man'
+    clip: {fileID: 8300000, guid: 44617c0d776148adadf76c83d9dd0acd, type: 3}
+    cover: {fileID: 21300000, guid: 5945f9a83ba4486aa762a902ea1384bc, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'GTA San Andreas'
+    artist: 'Theme Song'
+    clip: {fileID: 8300000, guid: 9bbfac5bb880491d95a7812ec4e5bf22, type: 3}
+    cover: {fileID: 21300000, guid: ac476ed47abe4ac897bbfc43fa94a3e0, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'Coral Chorus'
+    artist: 'Fortnite'
+    clip: {fileID: 8300000, guid: eef94aef824d44e2834345e9f2e5cd78, type: 3}
+    cover: {fileID: 21300000, guid: 2fa6ea6e85804b8e83bd39f4bcb3e5d5, type: 3}
+    useMenuVideoAsCover: 0
+  - title: 'Toothless Dancing'
+    artist: 'Meme'
+    clip: {fileID: 8300000, guid: e57f070b8dbd410da168d490c077ed08, type: 3}
+    cover: {fileID: 21300000, guid: a6a94ae4926d42069317db06ea609f7a, type: 3}
+    useMenuVideoAsCover: 0

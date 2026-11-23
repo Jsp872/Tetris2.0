@@ -1,4 +1,5 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="Common.uss" />
     <Style src="HUD.uss" />
     <ui:VisualElement name="root" class="root" picking-mode="Ignore">
 

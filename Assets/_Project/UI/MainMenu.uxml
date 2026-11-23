@@ -1,0 +1,72 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements">
+    <Style src="Common.uss" />
+    <Style src="MainMenu.uss" />
+    <ui:VisualElement name="root" class="menu-root">
+
+        <!-- Fond qui suit la musique : deux calques en fondu enchaîné (MusicCarousel) -->
+        <ui:VisualElement class="menu-background" picking-mode="Ignore">
+            <ui:VisualElement name="background-a" class="menu-background__layer menu-background__layer--hidden" picking-mode="Ignore">
+                <ui:VisualElement class="menu-background__image" picking-mode="Ignore" />
+            </ui:VisualElement>
+            <ui:VisualElement name="background-b" class="menu-background__layer menu-background__layer--hidden" picking-mode="Ignore">
+                <ui:VisualElement class="menu-background__image" picking-mode="Ignore" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Colonne de gauche : titre au-dessus des boutons -->
+        <ui:VisualElement class="menu-column">
+            <ui:VisualElement class="menu-title">
+                <ui:Label text="TETRIS" class="menu-title__main" />
+                <ui:Label text="2.0" class="menu-title__accent" />
+            </ui:VisualElement>
+
+            <ui:VisualElement class="menu-panels">
+                <!-- Menu principal -->
+                <ui:VisualElement name="main-panel" class="menu-panel">
+                    <ui:Button name="play-button" text="JOUER" class="glass menu-button menu-button--primary" />
+                    <ui:Button name="options-button" text="OPTIONS" class="glass menu-button" />
+                    <ui:Button name="quit-button" text="QUITTER" class="glass menu-button" />
+                </ui:VisualElement>
+
+                <!-- Choix du mode de jeu (cartes générées par MainMenu.cs) -->
+                <ui:VisualElement name="modes-panel" class="menu-panel menu-panel--hidden">
+                    <ui:Label text="CHOISIS TON MODE" class="label-caption menu-panel__caption" />
+                    <ui:VisualElement name="mode-list" />
+                    <ui:Button name="back-button" text="RETOUR" class="glass menu-button menu-button--small" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:Label name="toast" text="Bientôt disponible" class="menu-toast menu-toast--hidden" />
+        </ui:VisualElement>
+
+        <!-- Colonne de droite : carrousel de musiques (MusicCarousel) -->
+        <ui:VisualElement name="music-carousel" class="carousel">
+            <ui:Button name="music-previous-button" class="glass carousel__arrow">
+                <ui:VisualElement class="carousel__chevron carousel__chevron--up" picking-mode="Ignore" />
+            </ui:Button>
+            <ui:VisualElement name="music-previous" class="carousel__cover carousel__cover--side" />
+
+            <ui:VisualElement class="glass carousel__current">
+                <ui:VisualElement name="music-current" class="carousel__cover carousel__cover--current" />
+                <ui:VisualElement class="carousel__info">
+                    <ui:VisualElement class="equalizer" picking-mode="Ignore">
+                        <ui:VisualElement class="equalizer__bar" />
+                        <ui:VisualElement class="equalizer__bar" />
+                        <ui:VisualElement class="equalizer__bar" />
+                        <ui:VisualElement class="equalizer__bar" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="carousel__texts">
+                        <ui:Label name="music-title" text="Titre" class="carousel__title" />
+                        <ui:Label name="music-artist" text="Artiste" class="carousel__artist" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement name="music-next" class="carousel__cover carousel__cover--side" />
+            <ui:Button name="music-next-button" class="glass carousel__arrow">
+                <ui:VisualElement class="carousel__chevron carousel__chevron--down" picking-mode="Ignore" />
+            </ui:Button>
+        </ui:VisualElement>
+
+    </ui:VisualElement>
+</ui:UXML>

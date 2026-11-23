@@ -3,6 +3,7 @@ using UnityEngine;
 namespace Tetris {
     /// <summary>
     /// Décor du menu : des pièces translucides qui tombent lentement en tournant, puis réapparaissent en haut.
+    /// Elles prennent le skin de blocs équipé dans le Casier (les nouvelles pièces suivent le changement).
     /// </summary>
     public class MenuFallingBlocks : MonoBehaviour {
         [SerializeField] BlocSO[] _blocs;
@@ -53,8 +54,10 @@ namespace Tetris {
             }
 
             BlocSO data = _blocs[Random.Range(0, _blocs.Length)];
-            Color color = data.color;
-            color.a = _opacity;
+            LockerItem skin = PlayerInventory.GetEquipped(LockerCategory.Blocks);
+            Color color = LockerContent.GetPieceColor(data, skin);
+            color.a *= _opacity;
+            Sprite sprite = LockerContent.GetCellSprite(skin, _cellSprite);
 
             foreach (Vector2Int cell in data.shape) {
                 var go = new GameObject("Cell");
@@ -62,7 +65,7 @@ namespace Tetris {
                 go.transform.localPosition = new Vector3(cell.x - 0.5f, cell.y - 0.5f);
 
                 var spriteRenderer = go.AddComponent<SpriteRenderer>();
-                spriteRenderer.sprite = _cellSprite;
+                spriteRenderer.sprite = sprite;
                 spriteRenderer.color = color;
                 spriteRenderer.sortingOrder = _sortingOrder;
             }

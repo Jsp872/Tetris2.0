@@ -37,4 +37,10 @@ namespace Tetris {
 
     /// <summary>Publié quand une pièce est posée dans le Board.</summary>
     public readonly struct BlocLockedEvent : IEvent { }
+
+    /// <summary>Publié par le GameManager quand la pièce se décale à gauche ou à droite.</summary>
+    public readonly struct BlocMovedEvent : IEvent { }
+
+    /// <summary>Publié par le GameManager quand la pièce tourne.</summary>
+    public readonly struct BlocRotatedEvent : IEvent { }
 }

@@ -207,6 +207,7 @@ namespace Tetris {
             var direction = new Vector2Int(SpoofGoofSettings.IsCompassBroken ? -e.Direction : e.Direction, 0);
             if (_current.CanMove(direction)) {
                 _current.Move(direction);
+                EventBus<BlocMovedEvent>.Publish(new BlocMovedEvent());
             }
         }
 
@@ -217,6 +218,7 @@ namespace Tetris {
         void OnRotate(RotateInputEvent e) {
             if (_state == State.Playing && _current != null && _current.CanRotate()) {
                 _current.Rotate();
+                EventBus<BlocRotatedEvent>.Publish(new BlocRotatedEvent());
             }
         }
 

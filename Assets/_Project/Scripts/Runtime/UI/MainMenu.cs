@@ -5,7 +5,8 @@ using UnityEngine.UIElements;
 
 namespace Tetris {
     /// <summary>
-    /// Menu principal (UI/MainMenu.uxml) : Jouer ouvre le choix du mode, Options ouvre les réglages (<see cref="OptionsMenu"/>),
+    /// Menu principal (UI/MainMenu.uxml) : Jouer ouvre le choix du mode, Casier et Boutique ouvrent leur écran
+    /// plein écran (<see cref="LockerScreen"/>, <see cref="ShopScreen"/>), Options ouvre les réglages (<see cref="OptionsMenu"/>),
     /// Quitter ferme le jeu.
     /// Chaque carte de mode affiche le record et lance la scène de jeu dans ce mode (<see cref="GameSession.Mode"/>).
     /// Un mode sans scène renseignée affiche "bientôt disponible" (la scène doit être dans les Build Profiles).
@@ -44,6 +45,12 @@ namespace Tetris {
         Button _optionsButton;
         Button _firstModeButton;
         OptionsMenu _options;
+        VisualElement _menuColumn;
+        VisualElement _carousel;
+        LockerScreen _locker;
+        ShopScreen _shop;
+        MenuScreen _openScreen;
+        Button _screenButton;
         Label _toast;
         IVisualElementScheduledItem _hideToast;
 
@@ -60,12 +67,25 @@ namespace Tetris {
             _options = new OptionsMenu(root.Q("options-list"));
             _options.RecordsReset += () => BuildModeCards(_modeList);
 
+            MenuAudio audio = GetComponent<MenuAudio>();
+            if (audio == null) audio = gameObject.AddComponent<MenuAudio>();
+            _menuColumn = root.Q(className: "menu-column");
+            _carousel = root.Q("music-carousel");
+            Button lockerButton = root.Q<Button>("locker-button");
+            Button shopButton = root.Q<Button>("shop-button");
+            _locker = new LockerScreen(root.Q("locker-screen"), audio, () => SwitchScreen(_shop, shopButton));
+            _shop = new ShopScreen(root.Q("shop-screen"), audio, () => SwitchScreen(_locker, lockerButton));
+            _locker.CloseRequested += CloseScreen;
+            _shop.CloseRequested += CloseScreen;
+            lockerButton.clicked += () => OpenScreen(_locker, lockerButton);
+            shopButton.clicked += () => OpenScreen(_shop, shopButton);
+
             _playButton.clicked += () => ShowPanel(_modesPanel, _firstModeButton);
             _optionsButton.clicked += ShowOptionsPanel;
             root.Q<Button>("quit-button").clicked += Quit;
             root.Q<Button>("back-button").clicked += ShowMainPanel;
             root.Q<Button>("options-back-button").clicked += ShowMainPanel;
-            root.RegisterCallback<NavigationCancelEvent>(_ => ShowMainPanel());
+            root.RegisterCallback<NavigationCancelEvent>(_ => OnCancel());
 
             BuildModeCards(_modeList);
             _modesPanel.style.display = DisplayStyle.None;
@@ -114,6 +134,59 @@ namespace Tetris {
 
             Shake(card);
             ShowToast($"Le mode {mode.title} arrive bientôt");
+        }
+
+        void OnCancel() {
+            if (_openScreen == null) {
+                ShowMainPanel();
+            }
+            else if (!_openScreen.HandleCancel()) {
+                CloseScreen();
+            }
+        }
+
+        /// <summary>Ouvre un écran plein écran (Casier, Boutique) par-dessus le menu. <paramref name="button"/> reprend le focus à la fermeture.</summary>
+        void OpenScreen(MenuScreen screen, Button button) {
+            _screenButton = button;
+            _menuColumn.style.display = DisplayStyle.None;
+            _carousel.style.display = DisplayStyle.None;
+            ShowScreen(screen);
+        }
+
+        void SwitchScreen(MenuScreen screen, Button button) {
+            HideScreen();
+            _screenButton = button;
+            ShowScreen(screen);
+        }
+
+        void ShowScreen(MenuScreen screen) {
+            _openScreen = screen;
+            VisualElement element = screen.Element;
+            element.style.display = DisplayStyle.Flex;
+            screen.Open();
+            element.schedule.Execute(() => {
+                element.RemoveFromClassList("screen--hidden");
+                screen.FirstFocus?.Focus();
+            }).StartingIn(16);
+        }
+
+        void HideScreen() {
+            if (_openScreen == null) return;
+
+            _openScreen.Close();
+            VisualElement element = _openScreen.Element;
+            element.AddToClassList("screen--hidden");
+            element.style.display = DisplayStyle.None;
+            _openScreen = null;
+        }
+
+        void CloseScreen() {
+            HideScreen();
+            _menuColumn.style.display = DisplayStyle.Flex;
+            _carousel.style.display = DisplayStyle.Flex;
+            BuildModeCards(_modeList);
+            Button focus = _screenButton;
+            focus?.schedule.Execute(() => focus.Focus()).StartingIn(16);
         }
 
         void ShowOptionsPanel() {

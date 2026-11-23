@@ -24,6 +24,10 @@
                 <!-- Menu principal -->
                 <ui:VisualElement name="main-panel" class="menu-panel">
                     <ui:Button name="play-button" text="JOUER" class="glass menu-button menu-button--primary" />
+                    <ui:VisualElement class="menu-button-row">
+                        <ui:Button name="locker-button" text="CASIER" class="glass menu-button menu-button--half menu-button--left" />
+                        <ui:Button name="shop-button" text="BOUTIQUE" class="glass menu-button menu-button--half menu-button--shop" />
+                    </ui:VisualElement>
                     <ui:Button name="options-button" text="OPTIONS" class="glass menu-button" />
                     <ui:Button name="quit-button" text="QUITTER" class="glass menu-button" />
                 </ui:VisualElement>
@@ -74,6 +78,10 @@
                 <ui:VisualElement class="carousel__chevron carousel__chevron--down" picking-mode="Ignore" />
             </ui:Button>
         </ui:VisualElement>
+
+        <!-- Écrans plein écran, construits par LockerScreen.cs et ShopScreen.cs -->
+        <ui:VisualElement name="locker-screen" class="screen screen--hidden" style="display: none;" />
+        <ui:VisualElement name="shop-screen" class="screen screen--hidden" style="display: none;" />
 
     </ui:VisualElement>
 </ui:UXML>

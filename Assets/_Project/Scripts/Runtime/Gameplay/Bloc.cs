@@ -7,6 +7,7 @@ namespace Tetris {
     /// Pièce en train de tomber. Sa position et ses cases sont en coordonnées de grille du Board.
     /// Utilisation : Init, puis CanMove / Move et CanRotate / Rotate, puis Lock quand elle ne peut plus descendre.
     /// Une copie transparente (le "fantôme") montre où la pièce va tomber.
+    /// Sprite et couleur viennent du skin de blocs équipé dans le Casier.
     /// </summary>
     public class Bloc : MonoBehaviour {
         /// <summary>Opacité des cases du fantôme.</summary>
@@ -21,11 +22,13 @@ namespace Tetris {
         Vector2Int[] _cells;
         Transform[] _visuals;
         Transform[] _ghosts;
+        Color _color;
+        Sprite _sprite;
 
         /// <summary>Pièce en train de tomber, ou null.</summary>
         public static Bloc Current { get; private set; }
 
-        public Color Color => _data.color;
+        public Color Color => _color;
 
         /// <summary>Visuels des cases de la pièce.</summary>
         public IReadOnlyList<Transform> Cells => _visuals;
@@ -109,11 +112,14 @@ namespace Tetris {
         void CreateVisuals() {
             _visuals = new Transform[_cells.Length];
             _ghosts = new Transform[_cells.Length];
-            Color ghostColor = _data.color;
-            ghostColor.a = GhostAlpha;
+            LockerItem skin = PlayerInventory.GetEquipped(LockerCategory.Blocks);
+            _color = LockerContent.GetPieceColor(_data, skin);
+            _sprite = LockerContent.GetCellSprite(skin, _cellSprite);
+            Color ghostColor = _color;
+            ghostColor.a = GhostAlpha * _color.a;
 
             for (int i = 0; i < _cells.Length; i++) {
-                _visuals[i] = CreateCell("Cell", _data.color, 0);
+                _visuals[i] = CreateCell("Cell", _color, 0);
                 _ghosts[i] = CreateCell("Ghost", ghostColor, GhostSortingOrder);
             }
         }
@@ -123,7 +129,7 @@ namespace Tetris {
             cell.transform.SetParent(transform, false);
 
             var spriteRenderer = cell.AddComponent<SpriteRenderer>();
-            spriteRenderer.sprite = _cellSprite;
+            spriteRenderer.sprite = _sprite;
             spriteRenderer.color = color;
             spriteRenderer.sortingOrder = sortingOrder;
             return cell.transform;

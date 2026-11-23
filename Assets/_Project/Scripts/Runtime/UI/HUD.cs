@@ -90,7 +90,7 @@ namespace Tetris {
         public void SetPaused(bool isPaused) {
             if (!EnsureInitialized()) return;
 
-            ShowOverlay(isPaused, "PAUSE", "Échap pour reprendre", "", "", false, "REPRENDRE");
+            ShowOverlay(isPaused, "PAUSE", "Échap pour reprendre  ·  N pour changer de musique", "", "", false, "REPRENDRE");
         }
 
         /// <summary>Écran de fin : titre, résultat, ligne de record, boutons Rejouer / Menu.</summary>
@@ -143,7 +143,8 @@ namespace Tetris {
             shape.style.width = (max.x - min.x + 1) * cellSize;
             shape.style.height = (max.y - min.y + 1) * cellSize;
 
-            Color top = Color.Lerp(data.color, Color.white, 0.55f);
+            Color color = LockerContent.GetPieceColor(data);
+            Color top = Color.Lerp(color, Color.white, 0.55f);
             foreach (Vector2Int cell in data.shape) {
                 var square = new VisualElement();
                 square.AddToClassList(PreviewCellClass);
@@ -151,7 +152,7 @@ namespace Tetris {
                 square.style.top = (max.y - cell.y) * cellSize; // L'UI a l'axe Y vers le bas.
                 square.style.width = cellSize - 3f;
                 square.style.height = cellSize - 3f;
-                square.style.backgroundColor = data.color;
+                square.style.backgroundColor = color;
                 square.style.borderTopColor = top;
                 square.style.borderLeftColor = top;
                 shape.Add(square);

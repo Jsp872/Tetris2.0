@@ -640,3 +640,716 @@ Button.carousel__arrow:active {
     background-color: rgba(125, 230, 255, 0.12);
     border-color: rgba(125, 230, 255, 0.35);
 }
+
+/* =====================================================================
+   Casier et Boutique : écrans plein écran (LockerScreen.cs, ShopScreen.cs)
+   ===================================================================== */
+
+.menu-button-row {
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+Button.menu-button--half {
+    flex-grow: 1;
+    flex-basis: 0;
+}
+
+Button.menu-button--left {
+    margin-right: 18px;
+}
+
+Button.menu-button--shop {
+    color: rgb(255, 225, 120);
+    border-color: rgba(255, 210, 90, 0.45);
+    border-top-color: rgba(255, 240, 180, 0.8);
+    background-color: rgba(255, 190, 60, 0.14);
+}
+
+.screen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 56px 110px 40px 110px;
+    background-color: rgba(8, 10, 30, 0.78);
+    opacity: 1;
+    scale: 1 1;
+    transition-property: opacity, scale;
+    transition-duration: 0.25s, 0.3s;
+    transition-timing-function: ease-out, ease-out-back;
+}
+
+.screen--hidden {
+    opacity: 0;
+    scale: 1.03 1.03;
+}
+
+.screen__header {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 22px;
+    flex-shrink: 0;
+}
+
+.screen__title {
+    font-size: 78px;
+    letter-spacing: 8px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    text-shadow: 0 6px 0 rgba(0, 0, 0, 0.45);
+    margin: 0;
+    padding: 0;
+}
+
+.shop .screen__title {
+    color: rgb(255, 222, 89);
+    rotate: -2deg;
+    text-shadow: 0 6px 0 rgb(120, 60, 0);
+}
+
+.screen__subtitle,
+.shop__wallet {
+    font-size: 17px;
+    letter-spacing: 2px;
+    color: rgba(225, 232, 255, 0.75);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    margin: 2px 0 0 4px;
+    padding: 0;
+}
+
+.shop__wallet {
+    color: rgb(125, 230, 255);
+}
+
+.screen__buttons {
+    flex-direction: row;
+    align-items: center;
+}
+
+Button.screen__button {
+    height: 62px;
+    margin: 0 0 0 16px;
+    padding: 0 30px;
+    border-radius: 31px;
+    font-size: 19px;
+    letter-spacing: 3px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    transition-property: scale, background-color;
+    transition-duration: 0.18s, 0.18s;
+    transition-timing-function: ease-out-back, ease-out;
+}
+
+Button.screen__button:hover,
+Button.screen__button:focus {
+    scale: 1.06 1.06;
+    background-color: rgba(255, 255, 255, 0.18);
+}
+
+Button.screen__button--shop,
+Button.screen__button--book {
+    color: rgb(255, 225, 120);
+    border-color: rgba(255, 210, 90, 0.5);
+}
+
+/* ---------- Casier ---------- */
+
+.locker__body {
+    flex-direction: row;
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 0;
+}
+
+.locker__tabs {
+    width: 300px;
+    flex-shrink: 0;
+    margin-right: 26px;
+}
+
+Button.locker__tab {
+    height: 70px;
+    margin: 0 0 14px 0;
+    padding: 0 26px;
+    border-radius: 24px;
+    font-size: 19px;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.8);
+    -unity-text-align: middle-left;
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    transition-property: scale, background-color, translate;
+    transition-duration: 0.18s, 0.18s, 0.18s;
+}
+
+Button.locker__tab:hover,
+Button.locker__tab:focus {
+    scale: 1.03 1.03;
+    background-color: rgba(255, 255, 255, 0.14);
+}
+
+Button.locker__tab--active {
+    color: rgb(255, 255, 255);
+    translate: 14px 0;
+    background-color: rgba(125, 200, 255, 0.24);
+    border-color: rgba(140, 225, 255, 0.7);
+}
+
+.locker__grid,
+.shop__content {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-height: 0;
+}
+
+/* ---------- Cartes ---------- */
+
+.item-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px 10px 30px 10px;
+}
+
+Button.item-card {
+    width: 250px;
+    height: 318px;
+    margin: 0 20px 20px 0;
+    padding: 0;
+    border-width: 3px;
+    border-radius: 18px;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    scale: 1 1;
+    rotate: 0deg;
+    transition-property: scale, rotate;
+    transition-duration: 0.18s, 0.18s;
+    transition-timing-function: ease-out-back, ease-out-back;
+}
+
+Button.item-card:hover,
+Button.item-card:focus {
+    scale: 1.06 1.06;
+    rotate: -1.5deg;
+}
+
+Button.item-card--big {
+    width: 400px;
+    height: 360px;
+}
+
+Button.item-card--equipped {
+    border-width: 5px;
+    border-color: rgb(125, 255, 160);
+}
+
+.item-card__thumb {
+    height: 160px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.item-card--big .item-card__thumb {
+    height: 200px;
+}
+
+.item-card__thumb--cover {
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.item-thumb__text {
+    font-size: 30px;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+    -unity-text-outline-width: 3px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    white-space: normal;
+    rotate: -4deg;
+    margin: 0 10px;
+    padding: 0;
+}
+
+.item-thumb__blob {
+    position: absolute;
+    border-radius: 999px;
+}
+
+.item-thumb__board {
+    width: 86px;
+    height: 112px;
+    border-width: 2px;
+    border-radius: 8px;
+}
+
+.item-card__info {
+    padding: 10px 14px 0 14px;
+    flex-grow: 1;
+}
+
+.item-card__name {
+    font-size: 19px;
+    letter-spacing: 1px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    white-space: normal;
+    margin: 0;
+    padding: 0;
+}
+
+.item-card--big .item-card__name {
+    font-size: 24px;
+}
+
+.item-card__category {
+    font-size: 12px;
+    letter-spacing: 2px;
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    margin: 4px 0 0 0;
+    padding: 0;
+}
+
+.item-card__footer {
+    height: 40px;
+    flex-shrink: 0;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 0.45);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+    margin: 0;
+    padding: 0;
+}
+
+.item-card__footer--price {
+    color: rgb(255, 225, 120);
+}
+
+.item-card__footer--owned {
+    color: rgba(225, 232, 255, 0.75);
+}
+
+.item-card__footer--equipped {
+    color: rgb(20, 40, 25);
+    background-color: rgb(125, 255, 160);
+}
+
+Button.item-card--shop {
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 190, 60, 0.12);
+    border-color: rgba(255, 210, 90, 0.5);
+}
+
+Button.item-card--shop .item-card__name {
+    -unity-text-align: middle-center;
+    color: rgb(255, 225, 120);
+    margin: 0 20px;
+}
+
+.item-card__plus {
+    font-size: 90px;
+    color: rgb(255, 225, 120);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- Boutique ---------- */
+
+.shop__section {
+    font-size: 26px;
+    letter-spacing: 5px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 12px 0 4px 10px;
+    padding: 0;
+}
+
+.shop__section--featured {
+    font-size: 34px;
+    color: rgb(255, 222, 89);
+    rotate: -1deg;
+}
+
+.modal {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.2s;
+}
+
+.modal--hidden {
+    opacity: 0;
+}
+
+.shop-dialog__panel {
+    flex-direction: row;
+    width: 1180px;
+    padding: 34px;
+    border-radius: 34px;
+    background-color: rgba(20, 22, 50, 0.96);
+}
+
+.shop-dialog__card {
+    margin-right: 34px;
+}
+
+.shop-dialog__details {
+    flex-grow: 1;
+    flex-shrink: 1;
+}
+
+.shop-dialog__rarity {
+    font-size: 16px;
+    letter-spacing: 4px;
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 0;
+    padding: 0;
+}
+
+.shop-dialog__name {
+    font-size: 44px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    white-space: normal;
+    margin: 4px 0 0 0;
+    padding: 0;
+}
+
+.shop-dialog__description {
+    font-size: 18px;
+    color: rgba(225, 232, 255, 0.8);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    white-space: normal;
+    margin: 8px 0 0 0;
+    padding: 0;
+}
+
+.shop-dialog__price {
+    font-size: 22px;
+    letter-spacing: 3px;
+    color: rgb(255, 225, 120);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 18px 0 8px 0;
+    padding: 0;
+}
+
+.shop-dialog__chips {
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.shop-dialog__chip {
+    min-width: 90px;
+    height: 44px;
+    margin: 0 10px 10px 0;
+    padding: 0 16px;
+    border-width: 2px;
+    border-radius: 22px;
+    border-color: rgba(255, 255, 255, 0.25);
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.4);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+}
+
+.shop-dialog__chip--filled {
+    color: rgb(20, 40, 25);
+    background-color: rgb(125, 255, 160);
+    border-color: rgb(200, 255, 215);
+}
+
+.shop-dialog__chip--filled:hover {
+    background-color: rgb(255, 140, 140);
+}
+
+.shop-dialog__input,
+.book__search {
+    margin: 6px 0 0 0;
+    font-size: 22px;
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+}
+
+.shop-dialog__input .unity-base-text-field__input,
+.book__search .unity-base-text-field__input {
+    height: 56px;
+    padding: 0 20px;
+    border-radius: 18px;
+    border-width: 2px;
+    border-color: rgba(140, 225, 255, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: rgb(255, 255, 255);
+}
+
+.shop-dialog__feedback {
+    min-height: 54px;
+    font-size: 18px;
+    color: rgba(225, 232, 255, 0.85);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    white-space: normal;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+
+.shop-dialog__feedback--good {
+    color: rgb(125, 255, 160);
+}
+
+.shop-dialog__feedback--bad {
+    color: rgb(255, 130, 130);
+}
+
+.shop-dialog__buttons {
+    flex-direction: row;
+    margin-top: 6px;
+}
+
+Button.shop-dialog__button {
+    height: 60px;
+    margin: 0 14px 0 0;
+    padding: 0 28px;
+    border-radius: 30px;
+    font-size: 18px;
+    letter-spacing: 3px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    transition-property: scale, background-color;
+    transition-duration: 0.15s, 0.15s;
+}
+
+Button.shop-dialog__button:hover,
+Button.shop-dialog__button:focus {
+    scale: 1.06 1.06;
+}
+
+Button.shop-dialog__button--buy {
+    color: rgb(60, 35, 0);
+    background-color: rgb(255, 210, 70);
+    border-color: rgb(255, 240, 170);
+}
+
+Button.shop-dialog__button--buy:disabled {
+    opacity: 0.45;
+}
+
+/* ---------- Livre des compliments ---------- */
+
+.book__page {
+    width: 900px;
+    height: 820px;
+    padding: 40px 54px;
+    border-radius: 12px;
+    border-width: 10px;
+    border-color: rgb(95, 55, 25);
+    border-left-width: 26px;
+    background-color: rgb(244, 232, 205);
+    rotate: -1deg;
+}
+
+.book__title {
+    font-size: 40px;
+    letter-spacing: 4px;
+    color: rgb(80, 45, 20);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+    margin: 0;
+    padding: 0;
+}
+
+.book__count {
+    font-size: 17px;
+    letter-spacing: 3px;
+    color: rgb(150, 95, 45);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+    margin: 4px 0 16px 0;
+    padding: 0;
+}
+
+.book__search .unity-base-text-field__input {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-color: rgb(150, 95, 45);
+    color: rgb(60, 35, 15);
+}
+
+.book__list {
+    flex-grow: 1;
+    margin-top: 16px;
+}
+
+.book__row {
+    flex-direction: row;
+    align-items: center;
+    padding: 8px 4px;
+    border-bottom-width: 1px;
+    border-bottom-color: rgba(120, 70, 30, 0.25);
+}
+
+.book__word {
+    width: 300px;
+    font-size: 21px;
+    letter-spacing: 2px;
+    color: rgb(60, 35, 15);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 0;
+    padding: 0;
+}
+
+.book__item {
+    flex-grow: 1;
+    font-size: 16px;
+    color: rgb(120, 75, 35);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    margin: 0;
+    padding: 0;
+}
+
+.book__date {
+    font-size: 14px;
+    color: rgb(150, 110, 70);
+    margin: 0;
+    padding: 0;
+}
+
+.book__empty {
+    font-size: 19px;
+    color: rgb(120, 75, 35);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+    white-space: normal;
+    margin: 40px 0 0 0;
+    padding: 0;
+}
+
+Button.book__close {
+    align-self: center;
+    height: 56px;
+    margin-top: 16px;
+    padding: 0 30px;
+    border-radius: 28px;
+    border-width: 2px;
+    border-color: rgb(95, 55, 25);
+    background-color: rgb(120, 70, 30);
+    font-size: 17px;
+    letter-spacing: 3px;
+    color: rgb(255, 240, 210);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+}
+
+Button.book__close:hover,
+Button.book__close:focus {
+    background-color: rgb(150, 90, 40);
+}
+
+/* ---------- Dessin façon osu! (CursorTrail.cs), même look que la barre de Maxwell ---------- */
+
+.osu-bar {
+    position: absolute;
+    bottom: 48px;
+    left: 0;
+    right: 0;
+    align-items: center;
+    opacity: 1;
+    translate: 0 0;
+    transition-property: opacity, translate;
+    transition-duration: 0.15s, 0.25s;
+    transition-timing-function: ease-out, ease-out-back;
+}
+
+.osu-bar--hidden {
+    opacity: 0;
+    translate: 0 40px;
+}
+
+.osu-bar__label {
+    font-size: 34px;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-outline-width: 4px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    text-shadow: 0 4px 0 rgb(0, 0, 0);
+    margin: 0 0 6px 0;
+    padding: 0;
+}
+
+.osu-bar__track {
+    width: 520px;
+    height: 34px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-width: 5px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 12px;
+    padding: 3px;
+    overflow: hidden;
+}
+
+.osu-bar__fill {
+    height: 100%;
+    width: 100%;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.osu-bar__shine {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 45%;
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.osu-hint {
+    position: absolute;
+    left: 24px;
+    bottom: 16px;
+    font-size: 13px;
+    letter-spacing: 3px;
+    color: rgba(225, 232, 255, 0.35);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    margin: 0;
+    padding: 0;
+}

@@ -7,6 +7,8 @@ namespace Tetris {
     /// Peut s'arrêter en fondu au game over (pour laisser la place à la musique du Scuba Cat).
     /// Le volume suit <see cref="GameSettings.MusicVolume"/> et la hauteur suit <see cref="SpoofGoofSettings.Pitch"/>,
     /// en direct (réglables pendant que la musique joue).
+    /// En jeu (scène avec un GameManager), la musique de départ est celle équipée dans le Casier.
+    /// <see cref="SetDucked"/> baisse la musique pendant un aperçu ou dans la boutique.
     /// </summary>
     public class MusicPlayer : MonoBehaviour {
         [Tooltip("Musique lancée au démarrage. Vide : rien tant que Play n'est pas appelé.")]
@@ -24,6 +26,14 @@ namespace Tetris {
         float _fade;
         float _targetFade;
         float _fadeSpeed;
+        float _duck = 1f;
+        float _duckTarget = 1f;
+
+        /// <summary>Musique de départ réglée dans l'inspecteur.</summary>
+        public AudioClip DefaultMusic => _music;
+
+        /// <summary>Clip en cours (ou celui qui va démarrer après le fondu).</summary>
+        public AudioClip CurrentClip => _pendingClip != null ? _pendingClip : _source.clip;
 
         void Awake() {
             _source = gameObject.AddComponent<AudioSource>();
@@ -41,7 +51,8 @@ namespace Tetris {
 
         void Start() {
             if (_music != null && _pendingClip == null && !_source.isPlaying) {
-                Play(_music);
+                bool isGameplay = FindAnyObjectByType<GameManager>() != null;
+                Play(isGameplay ? LockerContent.ResolveGameplayMusic(_music) : _music);
             }
         }
 
@@ -72,6 +83,11 @@ namespace Tetris {
             }
         }
 
+        /// <summary>Baisse la musique presque à zéro (aperçu, boutique), ou la remet.</summary>
+        public void SetDucked(bool isDucked) {
+            _duckTarget = isDucked ? 0f : 1f;
+        }
+
         /// <summary>Fondu vers <paramref name="fade"/> (0 : silence, 1 : volume normal).</summary>
         void FadeTo(float fade, float duration) {
             _targetFade = fade;
@@ -80,7 +96,8 @@ namespace Tetris {
 
         void Update() {
             _fade = Mathf.MoveTowards(_fade, _targetFade, _fadeSpeed * Time.unscaledDeltaTime);
-            _source.volume = _fade * _volume * GameSettings.MusicVolume;
+            _duck = Mathf.MoveTowards(_duck, _duckTarget, Time.unscaledDeltaTime * 2.5f);
+            _source.volume = _fade * _duck * _volume * GameSettings.MusicVolume;
             _source.pitch = SpoofGoofSettings.Pitch;
 
             if (_targetFade > 0f || _fade > 0f) return;

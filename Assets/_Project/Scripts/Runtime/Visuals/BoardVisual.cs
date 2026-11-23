@@ -5,6 +5,7 @@ namespace Tetris {
     /// Habillage du Board : un panneau en verre aux coins arrondis, une case fantôme par emplacement de la grille
     /// et la ligne de limite en pointillés sous la zone d'apparition (<see cref="Board.LimitY"/>).
     /// La ligne pulse, et rougit quand la pile s'en approche. Avec l'inversion Spoof Goof, elle est dessinée en bas.
+    /// Les couleurs viennent du skin de plateau équipé dans le Casier (celles de l'inspecteur pour le plateau d'origine).
     /// Purement visuel, ne touche pas à la logique du Board.
     /// </summary>
     [RequireComponent(typeof(Board))]
@@ -33,6 +34,14 @@ namespace Tetris {
         void Start() {
             Board board = GetComponent<Board>();
             _board = board;
+
+            LockerItem skin = PlayerInventory.GetEquipped(LockerCategory.Board);
+            if (skin.HasBoardColors) {
+                _fillColor = skin.BoardFill;
+                _outlineColor = skin.BoardOutline;
+                _slotColor = skin.BoardSlot;
+                _limitColor = skin.BoardLimit;
+            }
             var center = new Vector3((board.Width - 1) / 2f, (board.Height - 1) / 2f);
             var size = new Vector2(board.Width + _padding * 2f, board.Height + _padding * 2f);
 

@@ -31,6 +31,12 @@ namespace Tetris {
     /// <summary>Publié à l'appui de l'action "Pause".</summary>
     public readonly struct PauseInputEvent : IEvent { }
 
-    /// <summary>Publié à l'appui de l'action "Misc". Réservé pour un usage futur.</summary>
-    public readonly struct MiscInputEvent : IEvent { }
+    /// <summary>Publié à l'appui (<see cref="IsPressed"/> = true) et au relâchement (false) de l'action "Misc".</summary>
+    public readonly struct MiscInputEvent : IEvent {
+        public readonly bool IsPressed;
+
+        public MiscInputEvent(bool isPressed) {
+            IsPressed = isPressed;
+        }
+    }
 }

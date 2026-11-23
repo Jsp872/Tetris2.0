@@ -3,14 +3,15 @@ using UnityEngine;
 
 namespace Tetris.Placeholder {
     /// <summary>
-    /// PLACEHOLDER : gravité et inputs pour tester Board, Bloc et Spawner. À remplacer par le GameManager.
-    /// Move : déplacer, Down : descente rapide, Rotate : tourner, Pause : pause / reprise, Misc : log de debug.
-    /// Les prochaines pièces sont affichées dans la console.
+    /// PLACEHOLDER : gravité, score et inputs pour tester Board, Bloc, Spawner et HUD. À remplacer par le GameManager.
+    /// Move : déplacer, Down : descente rapide, Rotate : tourner, Pause : pause / reprise.
     /// </summary>
     public class PlaceholderGameManager : MonoBehaviour {
+        static readonly int[] LineScores = { 0, 100, 300, 500, 800 };
+
         [SerializeField] Board _board;
         [SerializeField] Spawner _spawner;
-        [SerializeField] Sprite _backgroundSprite;
+        [SerializeField] HUD _hud;
         [SerializeField] float _fallInterval = 0.8f;
         [SerializeField] float _softDropInterval = 0.05f;
 
@@ -18,15 +19,15 @@ namespace Tetris.Placeholder {
         float _fallTimer;
         bool _isSoftDropping;
         bool _isPaused;
-        int _totalLines;
+        bool _isGameOver;
+        int _score;
+        int _lines;
 
         void OnEnable() {
             EventBus<MoveInputEvent>.Subscribe(OnMove);
             EventBus<DownInputEvent>.Subscribe(OnDown);
             EventBus<RotateInputEvent>.Subscribe(OnRotate);
             EventBus<PauseInputEvent>.Subscribe(OnPause);
-            EventBus<MiscInputEvent>.Subscribe(OnMisc);
-            EventBus<NextBlocsChangedEvent>.Subscribe(OnNextBlocsChanged);
         }
 
         void OnDisable() {
@@ -34,32 +35,20 @@ namespace Tetris.Placeholder {
             EventBus<DownInputEvent>.Unsubscribe(OnDown);
             EventBus<RotateInputEvent>.Unsubscribe(OnRotate);
             EventBus<PauseInputEvent>.Unsubscribe(OnPause);
-            EventBus<MiscInputEvent>.Unsubscribe(OnMisc);
-            EventBus<NextBlocsChangedEvent>.Unsubscribe(OnNextBlocsChanged);
             Time.timeScale = 1f;
         }
 
         void Start() {
-            CreateBackground();
+            _hud.Show(_score, _lines);
             SpawnNext();
         }
 
         void OnPause(PauseInputEvent e) {
+            if (_isGameOver) return;
+
             _isPaused = !_isPaused;
             Time.timeScale = _isPaused ? 0f : 1f;
-            Debug.Log(_isPaused ? "Pause" : "Reprise");
-        }
-
-        void OnMisc(MiscInputEvent e) {
-            Debug.Log("Misc");
-        }
-
-        void OnNextBlocsChanged(NextBlocsChangedEvent e) {
-            var names = new string[e.NextBlocs.Count];
-            for (int i = 0; i < names.Length; i++) {
-                names[i] = e.NextBlocs[i].name;
-            }
-            Debug.Log($"Prochains : {string.Join(", ", names)}");
+            _hud.SetPaused(_isPaused);
         }
 
         void OnMove(MoveInputEvent e) {
@@ -102,8 +91,10 @@ namespace Tetris.Placeholder {
 
             int cleared = _board.ClearFullRows();
             if (cleared > 0) {
-                _totalLines += cleared;
-                Debug.Log($"{cleared} ligne(s) supprimée(s), total : {_totalLines}");
+                _lines += cleared;
+                _score += LineScores[Mathf.Min(cleared, LineScores.Length - 1)];
+                _hud.Show(_score, _lines);
+                EventBus<ScoreChangedEvent>.Publish(new ScoreChangedEvent(_score, _lines, cleared));
             }
 
             SpawnNext();
@@ -114,22 +105,12 @@ namespace Tetris.Placeholder {
             _fallTimer = 0f;
 
             if (!_current.CanMove(Vector2Int.zero)) {
-                Debug.Log("Game Over");
                 Destroy(_current.gameObject);
                 _current = null;
+                _isGameOver = true;
+                _hud.ShowGameOver();
+                EventBus<GameOverEvent>.Publish(new GameOverEvent());
             }
-        }
-
-        void CreateBackground() {
-            var background = new GameObject("Background");
-            background.transform.SetParent(_board.transform, false);
-            background.transform.localPosition = new Vector3((_board.Width - 1) / 2f, (_board.Height - 1) / 2f);
-            background.transform.localScale = new Vector3(_board.Width, _board.Height, 1f);
-
-            var spriteRenderer = background.AddComponent<SpriteRenderer>();
-            spriteRenderer.sprite = _backgroundSprite;
-            spriteRenderer.color = new Color(0.12f, 0.12f, 0.15f);
-            spriteRenderer.sortingOrder = -1;
         }
     }
 }

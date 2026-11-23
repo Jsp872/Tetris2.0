@@ -1,0 +1,408 @@
+/* =====================================================================
+   HUD - style "liquid glass"
+   Panneaux translucides, coins très arrondis, liseré clair en haut à
+   gauche (reflet) et reflet doux dans la moitié haute (glass__sheen).
+   Le fond animé (LiquidBackground) donne la couleur à travers le verre.
+   ===================================================================== */
+
+/* ---------- Typographie ---------- */
+
+.root {
+    flex-grow: 1;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    color: rgb(240, 244, 255);
+    -unity-font: url("../Art/Fonts/Poppins-SemiBold.ttf");
+    -unity-font-definition: initial;
+}
+
+.label-caption {
+    font-size: 17px;
+    letter-spacing: 5px;
+    color: rgba(225, 232, 255, 0.6);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    margin: 0 0 6px 2px;
+    padding: 0;
+}
+
+/* ---------- Layout ---------- */
+
+.side {
+    width: 330px;
+    height: 980px;
+}
+
+.side--left {
+    align-items: stretch;
+}
+
+.board-space {
+    width: 570px;
+    height: 980px;
+}
+
+/* ---------- Verre ---------- */
+
+.glass {
+    background-color: rgba(255, 255, 255, 0.07);
+    border-width: 1.5px;
+    border-color: rgba(255, 255, 255, 0.14);
+    border-top-color: rgba(255, 255, 255, 0.45);
+    border-left-color: rgba(255, 255, 255, 0.28);
+    border-radius: 34px;
+    padding: 26px 30px 28px 30px;
+    margin-bottom: 24px;
+    overflow: hidden;
+}
+
+.glass__sheen {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 46%;
+    background-color: rgba(255, 255, 255, 0.055);
+    border-bottom-left-radius: 120px;
+    border-bottom-right-radius: 120px;
+}
+
+/* ---------- Score / lignes ---------- */
+
+.stat__value {
+    font-size: 64px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: -6px 0 -10px 0;
+    padding: 0;
+    transform-origin: left center;
+    transition-property: scale, color;
+    transition-duration: 0.14s, 0.14s;
+    transition-timing-function: ease-out-back, ease-out;
+}
+
+.stat__value--bump {
+    scale: 1.14 1.14;
+    color: rgb(190, 225, 255);
+}
+
+/* ---------- Prochaines pièces ---------- */
+
+.next__list {
+    margin-top: 8px;
+}
+
+.preview {
+    justify-content: center;
+    align-items: center;
+    border-radius: 22px;
+    margin-top: 10px;
+}
+
+.preview--first {
+    height: 120px;
+    background-color: rgba(255, 255, 255, 0.06);
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.12);
+    border-top-color: rgba(255, 255, 255, 0.3);
+}
+
+.preview--other {
+    height: 80px;
+    opacity: 0.7;
+}
+
+.preview__cell {
+    position: absolute;
+    border-radius: 7px;
+    border-width: 1.5px;
+    border-color: rgba(0, 0, 0, 0.18);
+}
+
+/* ---------- Contrôles ---------- */
+
+.controls__row {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.key {
+    font-size: 15px;
+    color: rgb(255, 255, 255);
+    background-color: rgba(255, 255, 255, 0.1);
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.18);
+    border-top-color: rgba(255, 255, 255, 0.4);
+    border-radius: 12px;
+    padding: 4px 12px;
+    margin: 0;
+}
+
+.controls__action {
+    font-size: 16px;
+    color: rgba(225, 232, 255, 0.75);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    margin: 0;
+    padding: 0;
+}
+
+/* ---------- Pause / Game Over ---------- */
+
+.overlay {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(6, 8, 22, 0.6);
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.25s;
+}
+
+.overlay__card {
+    align-items: center;
+    padding: 46px 90px 50px 90px;
+    border-radius: 44px;
+    background-color: rgba(255, 255, 255, 0.1);
+    scale: 1 1;
+    transition-property: scale;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-out-back;
+}
+
+.overlay__title {
+    font-size: 84px;
+    letter-spacing: 8px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 0;
+    padding: 0;
+}
+
+.overlay__subtitle {
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: rgba(225, 232, 255, 0.7);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    margin: 4px 0 0 0;
+    padding: 0;
+}
+
+.overlay--hidden {
+    opacity: 0;
+}
+
+.overlay--hidden > .overlay__card {
+    scale: 0.85 0.85;
+}
+
+/* ---------- Easter egg Maxwell ---------- */
+
+.maxwell {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    opacity: 1;
+    scale: 1 1;
+    transition-property: opacity, scale;
+    transition-duration: 0.2s, 0.35s;
+    transition-timing-function: ease-out, ease-out-back;
+}
+
+.maxwell--hidden {
+    opacity: 0;
+    scale: 0.4 0.4;
+}
+
+.maxwell__halo {
+    position: absolute;
+    width: 900px;
+    height: 900px;
+    background-image: url("../Art/Sprites/Blob.png");
+    -unity-background-image-tint-color: rgb(180, 140, 255);
+}
+
+.maxwell__cat {
+    width: 630px;
+    height: 423px;
+    -unity-background-scale-mode: scale-to-fit;
+}
+
+/* ---------- Mèmes ---------- */
+
+.meme-chips {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40px;
+    bottom: 40px;
+    -unity-background-scale-mode: scale-to-fit;
+    opacity: 0.16;
+    scale: 1.08 1.08;
+    transition-property: opacity, scale;
+    transition-duration: 0.8s, 4s;
+    transition-timing-function: ease-in-out, linear;
+}
+
+.meme-chips--hidden {
+    opacity: 0;
+    scale: 1 1;
+}
+
+.meme-plankton {
+    position: absolute;
+    left: 90px;
+    bottom: 60px;
+    width: 300px;
+    height: 318px;
+    padding: 10px;
+    margin: 0;
+    rotate: 0deg;
+    scale: 1 1;
+    opacity: 1;
+    transition-property: scale, rotate, opacity;
+    transition-duration: 0.35s, 0.35s, 0.2s;
+    transition-timing-function: ease-out-back, ease-out-back, ease-out;
+}
+
+.meme-plankton--hidden {
+    scale: 0.3 0.3;
+    rotate: -20deg;
+    opacity: 0;
+}
+
+.meme-plankton__image {
+    flex-grow: 1;
+    border-radius: 26px;
+    background-image: url("../Art/Sprites/Memes/Plankton.png");
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.meme-scuba {
+    position: absolute;
+    left: 100px;
+    top: 100px;
+    width: 465px;
+    height: 500px;
+    -unity-background-scale-mode: scale-to-fit;
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+}
+
+.meme-scuba--hidden {
+    opacity: 0;
+}
+
+/* ---------- Combo de vitesse (style Roblox) ---------- */
+
+.combo {
+    position: absolute;
+    bottom: 70px;
+    left: 0;
+    right: 0;
+    align-items: center;
+    opacity: 1;
+    translate: 0 0;
+    transition-property: opacity, translate;
+    transition-duration: 0.15s, 0.25s;
+    transition-timing-function: ease-out, ease-out-back;
+}
+
+.combo--hidden {
+    opacity: 0;
+    translate: 0 40px;
+}
+
+.combo__label {
+    font-size: 46px;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-outline-width: 4px;
+    -unity-text-outline-color: rgb(0, 0, 0);
+    text-shadow: 0 4px 0 rgb(0, 0, 0);
+    margin: 0 0 6px 0;
+    padding: 0;
+    scale: 1 1;
+    transition-property: scale;
+    transition-duration: 0.08s;
+    transition-timing-function: ease-out;
+}
+
+.combo__label--pop {
+    scale: 1.25 1.25;
+}
+
+.combo__bar {
+    width: 520px;
+    height: 38px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-width: 5px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 12px;
+    padding: 3px;
+    overflow: hidden;
+}
+
+.combo__fill {
+    height: 100%;
+    width: 0%;
+    border-radius: 6px;
+    background-color: rgb(80, 220, 90);
+    overflow: hidden;
+    transition-property: width;
+    transition-duration: 0.12s;
+    transition-timing-function: ease-out;
+}
+
+.combo__shine {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    height: 45%;
+    background-color: rgba(255, 255, 255, 0.35);
+}
+
+.combo__timer {
+    width: 420px;
+    height: 12px;
+    margin-top: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border-width: 3px;
+    border-color: rgb(0, 0, 0);
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+.combo__timer-fill {
+    height: 100%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+}
+
+.maxwell__text {
+    font-size: 72px;
+    letter-spacing: 14px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 10px 0 0 0;
+    padding: 0;
+}

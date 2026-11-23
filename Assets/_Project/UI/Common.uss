@@ -190,3 +190,196 @@ Button.carousel__arrow:active {
     border-radius: 2px;
     background-color: rgb(125, 230, 255);
 }
+
+/* ---------- Interface déplorable (Spoof Goof, DeplorableUi.cs) ---------- */
+/* Même verre, mêmes couleurs, juste... déplorable. */
+
+.deplorable {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    overflow: hidden;
+}
+
+.deplorable__warning {
+    position: absolute;
+    top: 6px;
+    left: 0;
+    height: 30px;
+    padding: 0 0 0 20px;
+    margin: 0;
+    font-size: 15px;
+    letter-spacing: 3px;
+    white-space: nowrap;
+    color: rgb(40, 20, 0);
+    background-color: rgba(255, 214, 90, 0.85);
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-color: rgb(255, 120, 200);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-left;
+    rotate: -0.6deg;
+}
+
+.deplorable__saving {
+    position: absolute;
+    top: 50px;
+    left: 44%;
+    padding: 8px 22px;
+    margin: 0;
+    border-radius: 20px;
+    font-size: 14px;
+    color: rgba(240, 244, 255, 0.7);
+    rotate: 1.5deg;
+}
+
+.deplorable__cookie {
+    position: absolute;
+    right: 34px;
+    bottom: 28px;
+    width: 360px;
+    padding: 16px 18px;
+    border-radius: 14px;
+    background-color: rgba(255, 170, 200, 0.22);
+    border-color: rgba(255, 120, 180, 0.8);
+    rotate: -5deg;
+}
+
+.deplorable__cookie-text {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    white-space: normal;
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+.deplorable__cookie-buttons {
+    flex-direction: row;
+    align-items: center;
+}
+
+Button.deplorable__cookie-button {
+    flex-grow: 1;
+    height: 40px;
+    margin: 0;
+    border-width: 0;
+    border-radius: 6px;
+    background-color: rgb(10, 10, 20);
+    color: rgb(255, 255, 255);
+    font-size: 17px;
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+}
+
+Button.deplorable__cookie-link {
+    margin: 0 0 0 10px;
+    padding: 0;
+    border-width: 0;
+    background-color: rgba(0, 0, 0, 0);
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 11px;
+}
+
+Button.deplorable__chat {
+    position: absolute;
+    left: 34px;
+    bottom: 64px;
+    width: 64px;
+    height: 64px;
+    margin: 0;
+    padding: 0;
+    border-radius: 32px;
+    border-width: 3px;
+    border-color: rgba(255, 255, 255, 0.6);
+    background-color: rgb(46, 204, 90);
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+}
+
+.deplorable__badge {
+    position: absolute;
+    right: -8px;
+    top: -8px;
+    min-width: 26px;
+    height: 26px;
+    padding: 0 6px;
+    margin: 0;
+    border-radius: 13px;
+    background-color: rgb(255, 50, 60);
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+}
+
+.deplorable__cursor {
+    position: absolute;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+.deplorable__cursor-arrow {
+    width: 16px;
+    height: 24px;
+}
+
+.deplorable__cursor-name {
+    margin: 16px 0 0 2px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    color: rgb(10, 10, 20);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+}
+
+.deplorable__update {
+    position: absolute;
+    left: 50%;
+    top: 40%;
+    width: 520px;
+    margin-left: -260px;
+    padding: 24px 30px;
+    border-radius: 10px;
+    background-color: rgba(250, 250, 255, 0.92);
+    border-color: rgba(255, 255, 255, 1);
+    rotate: 0.8deg;
+}
+
+.deplorable__update-title {
+    font-size: 22px;
+    color: rgb(20, 20, 30);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+    margin: 0;
+    padding: 0;
+}
+
+.deplorable__update-text {
+    font-size: 14px;
+    color: rgba(20, 20, 30, 0.6);
+    -unity-text-align: middle-center;
+    margin: 6px 0 14px 0;
+    padding: 0;
+}
+
+.deplorable__update-bar {
+    height: 14px;
+    border-radius: 7px;
+    background-color: rgba(0, 0, 0, 0.12);
+    overflow: hidden;
+}
+
+.deplorable__update-fill {
+    height: 100%;
+    width: 0%;
+    background-color: rgb(80, 140, 255);
+}

@@ -19,6 +19,8 @@ namespace Tetris {
         Drunk,
         /// <summary>0 : éléphant, 1 : poisson rouge (les blocs posés s'effacent peu à peu).</summary>
         Goldfish,
+        /// <summary>0 : correcte, 1 : déplorable (<see cref="DeplorableUi"/>).</summary>
+        Interface,
     }
 
     /// <summary>
@@ -27,7 +29,7 @@ namespace Tetris {
     /// Les effets visuels sont appliqués en partie par <see cref="SpoofGoofEffects"/>.
     /// </summary>
     public static class SpoofGoofSettings {
-        static readonly int[] Defaults = { 0, 0, 1, 1, 0, 0, 0, 0 };
+        static readonly int[] Defaults = { 0, 0, 1, 1, 0, 0, 0, 0, 0 };
         static readonly int[] Values = (int[])Defaults.Clone();
 
         public static int Get(SpoofGoof option) => Values[(int)option];
@@ -95,6 +97,8 @@ namespace Tetris {
         };
 
         public static bool IsGoldfish => IsActive(SpoofGoof.Goldfish);
+
+        public static bool IsDeplorable => IsActive(SpoofGoof.Interface);
 
         static string Key(SpoofGoof option) => $"SpoofGoof_{option}";
 

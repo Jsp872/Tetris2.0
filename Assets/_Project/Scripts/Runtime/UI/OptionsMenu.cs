@@ -184,6 +184,7 @@ namespace Tetris {
             AddGoof("DISCO", SpoofGoof.Disco, "NON", "OUI");
             AddGoof("PIÈCES", SpoofGoof.Drunk, "SOBRES", "POMPETTES", "BOURRÉES");
             AddGoof("MÉMOIRE", SpoofGoof.Goldfish, "ÉLÉPHANT", "POISSON ROUGE");
+            AddGoof("INTERFACE", SpoofGoof.Interface, "CORRECTE", "DÉPLORABLE");
 
             VisualElement row = CreateRow("TOUT ÇA", null);
             row.Q(className: "options-row__control").Add(CreateLabel("REDEVENIR SÉRIEUX", "options-pill"));

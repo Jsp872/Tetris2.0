@@ -39,6 +39,7 @@ namespace Tetris {
         Label _dialogName;
         Label _dialogDescription;
         Label _dialogPrice;
+        ScrollView _soundList;
         VisualElement _chips;
         TextField _input;
         Label _feedback;
@@ -115,7 +116,7 @@ namespace Tetris {
 
             var featured = new List<LockerItem>();
             foreach (LockerItem item in LockerCatalog.Items) {
-                if (!item.IsFree && item.Rarity >= Rarity.Legendary) featured.Add(item);
+                if (item.IsSellable && item.Rarity >= Rarity.Legendary) featured.Add(item);
             }
             featured.Sort((a, b) => b.Rarity.CompareTo(a.Rarity));
             AddSection("EN VEDETTE", featured, true);
@@ -127,7 +128,7 @@ namespace Tetris {
             foreach ((LockerCategory category, string title) in sections) {
                 var items = new List<LockerItem>();
                 foreach (LockerItem item in LockerCatalog.InCategory(category)) {
-                    if (!item.IsFree && item.Rarity < Rarity.Legendary) items.Add(item);
+                    if (item.IsSellable && item.Rarity < Rarity.Legendary) items.Add(item);
                 }
                 items.Sort((a, b) => b.Rarity.CompareTo(a.Rarity));
                 AddSection(title, items, false);
@@ -189,6 +190,8 @@ namespace Tetris {
             _dialogName = ItemCards.CreateLabel("", "shop-dialog__name");
             _dialogDescription = ItemCards.CreateLabel("", "shop-dialog__description");
             _dialogPrice = ItemCards.CreateLabel("", "shop-dialog__price");
+            _soundList = new ScrollView(ScrollViewMode.Vertical) { verticalScrollerVisibility = ScrollerVisibility.Auto };
+            _soundList.AddToClassList("shop-dialog__sounds");
             _chips = new VisualElement();
             _chips.AddToClassList("shop-dialog__chips");
 
@@ -210,6 +213,7 @@ namespace Tetris {
             details.Add(_dialogRarity);
             details.Add(_dialogName);
             details.Add(_dialogDescription);
+            details.Add(_soundList);
             details.Add(_dialogPrice);
             details.Add(_chips);
             details.Add(_input);
@@ -232,7 +236,8 @@ namespace Tetris {
             _dialogRarity.style.color = rarity;
             _dialogName.text = item.Name;
             _dialogDescription.text = string.IsNullOrEmpty(item.Artist) ? item.Description : $"{item.Artist}. {item.Description}";
-            _listenButton.style.display = item.Category is LockerCategory.Music or LockerCategory.Sounds ? DisplayStyle.Flex : DisplayStyle.None;
+            _listenButton.style.display = item.Category is LockerCategory.Music ? DisplayStyle.Flex : DisplayStyle.None;
+            FillSoundList(item);
 
             bool isOwned = PlayerInventory.Owns(item);
             ShowOwnedState(isOwned, isOwned ? "Déjà dans ton Casier." : "");
@@ -242,12 +247,32 @@ namespace Tetris {
             _dialog.schedule.Execute(() => (isOwned ? (Focusable)_equipButton : _input).Focus()).StartingIn(30);
         }
 
+        /// <summary>Pack : la liste de ses sons, chacun avec son bouton d'écoute.</summary>
+        void FillSoundList(LockerItem item) {
+            _soundList.Clear();
+            _soundList.style.display = item.IsPack ? DisplayStyle.Flex : DisplayStyle.None;
+            if (!item.IsPack) return;
+
+            foreach (LockerItem sound in item.Contents) {
+                var row = new VisualElement();
+                row.AddToClassList("shop-dialog__sound");
+                var play = new Button(() => Audio.PreviewSound(LockerContent.GetSoundClip(sound)));
+                play.AddToClassList("shop-dialog__play");
+                play.Add(CreatePlayIcon());
+                row.Add(play);
+                row.Add(ItemCards.CreateLabel(sound.Name, "shop-dialog__sound-name"));
+                row.Add(ItemCards.CreateLabel(LockerContent.SlotName(sound.Slot), "shop-dialog__sound-slot"));
+                _soundList.Add(row);
+            }
+        }
+
         void ShowOwnedState(bool isOwned, string message) {
             _dialogPrice.text = isOwned ? "DÉJÀ À TOI" : $"PRIX : {ItemCards.PriceText(_selected.Price)}";
             _chips.style.display = isOwned ? DisplayStyle.None : DisplayStyle.Flex;
             _input.style.display = isOwned ? DisplayStyle.None : DisplayStyle.Flex;
             _buyButton.style.display = isOwned ? DisplayStyle.None : DisplayStyle.Flex;
             _equipButton.style.display = isOwned ? DisplayStyle.Flex : DisplayStyle.None;
+            _equipButton.text = _selected.IsPack ? "TOUT ÉQUIPER" : "ÉQUIPER";
             _closeDialogButton.text = isOwned ? "FERMER" : "ANNULER";
             SetFeedback(message, isOwned ? "shop-dialog__feedback--good" : null);
         }
@@ -257,7 +282,8 @@ namespace Tetris {
 
             Audio.StopPreview();
             Show(_dialog, false);
-            if (_selected != null && _cards.TryGetValue(_selected, out Button card)) card.Focus();
+            // Pas de focus rendu à la carte : elle resterait figée dans son état survolé.
+            Root.focusController?.focusedElement?.Blur();
         }
 
         void OnInputKey(KeyDownEvent e) {
@@ -348,7 +374,9 @@ namespace Tetris {
         void EquipSelected() {
             PlayerInventory.Equip(_selected);
             UiSounds.Play(UiSound.Equip);
-            SetFeedback("Équipé ! Lance une partie pour en profiter.", "shop-dialog__feedback--good");
+            SetFeedback(_selected.IsPack
+                ? "Un son de chaque moment est équipé. Change-les un par un dans le Casier."
+                : "Équipé ! Lance une partie pour en profiter.", "shop-dialog__feedback--good");
         }
 
         void SetFeedback(string message, string modifier) {
@@ -450,6 +478,24 @@ namespace Tetris {
                 modal.AddToClassList(HiddenClass);
                 modal.style.display = DisplayStyle.None;
             }
+        }
+
+        /// <summary>Triangle "lecture" dessiné en code (la police n'a pas le caractère ▶).</summary>
+        static VisualElement CreatePlayIcon() {
+            var icon = new VisualElement { pickingMode = PickingMode.Ignore };
+            icon.AddToClassList("shop-dialog__play-icon");
+            icon.generateVisualContent += context => {
+                Rect rect = icon.contentRect;
+                Painter2D painter = context.painter2D;
+                painter.fillColor = Color.white;
+                painter.BeginPath();
+                painter.MoveTo(new Vector2(rect.xMin, rect.yMin));
+                painter.LineTo(new Vector2(rect.xMax, rect.center.y));
+                painter.LineTo(new Vector2(rect.xMin, rect.yMax));
+                painter.ClosePath();
+                painter.Fill();
+            };
+            return icon;
         }
 
         static Button DialogButton(VisualElement parent, string text, Action onClick, string modifier = null) {

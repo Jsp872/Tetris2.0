@@ -834,10 +834,15 @@ Button.item-card {
     transition-timing-function: ease-out-back, ease-out-back;
 }
 
-Button.item-card:hover,
-Button.item-card:focus {
+/* Survol : la carte se soulève. Sélection au clavier : seulement un contour blanc, pour qu'une carte
+   gardant le focus (après une fenêtre) ne reste pas figée en "survolée". */
+Button.item-card:hover {
     scale: 1.06 1.06;
     rotate: -1.5deg;
+}
+
+Button.item-card:focus {
+    border-color: rgb(255, 255, 255);
 }
 
 Button.item-card--big {
@@ -1351,5 +1356,63 @@ Button.book__close:focus {
     -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
     -unity-font-definition: initial;
     margin: 0;
+    padding: 0;
+}
+
+/* Sons d'un pack dans la fenêtre d'achat */
+
+.shop-dialog__sounds {
+    max-height: 210px;
+    margin-top: 12px;
+    border-radius: 16px;
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 6px 10px;
+}
+
+.shop-dialog__sound {
+    flex-direction: row;
+    align-items: center;
+    height: 42px;
+}
+
+Button.shop-dialog__play {
+    width: 34px;
+    height: 34px;
+    margin: 0 12px 0 0;
+    padding: 0;
+    border-width: 0;
+    border-radius: 17px;
+    background-color: rgb(255, 210, 70);
+    justify-content: center;
+    align-items: center;
+    transition-property: scale;
+    transition-duration: 0.12s;
+}
+
+Button.shop-dialog__play:hover {
+    scale: 1.15 1.15;
+}
+
+.shop-dialog__play-icon {
+    width: 11px;
+    height: 13px;
+    margin-left: 3px;
+}
+
+.shop-dialog__sound-name {
+    flex-grow: 1;
+    font-size: 17px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 0;
+    padding: 0;
+}
+
+.shop-dialog__sound-slot {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: rgba(225, 232, 255, 0.6);
+    margin: 0 6px 0 0;
     padding: 0;
 }

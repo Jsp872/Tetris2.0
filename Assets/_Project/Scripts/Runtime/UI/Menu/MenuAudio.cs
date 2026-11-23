@@ -9,6 +9,8 @@ namespace Tetris {
         const string ShopMusic = "Locker/Music/wiishop";
         const float MusicPreviewDuration = 9f;
         const float ShopMusicVolume = 0.5f;
+        /// <summary>Part du volume de la musique de la boutique gardée pendant l'écoute d'un son.</summary>
+        const float SoundPreviewShopVolume = 0.08f;
 
         AudioSource _preview;
         AudioSource _shopMusic;
@@ -75,9 +77,11 @@ namespace Tetris {
             bool isPreviewing = _preview.isPlaying;
             if (_menuMusic != null) _menuMusic.SetDucked(_isShopOpen || isPreviewing);
 
-            // La musique de la boutique s'efface pendant un aperçu de musique.
-            float target = _isShopOpen ? ShopMusicVolume * GameSettings.MusicVolume * (isPreviewing && _isMusicPreview ? 0f : 1f) : 0f;
-            _shopMusic.volume = Mathf.MoveTowards(_shopMusic.volume, target, Time.unscaledDeltaTime * 1.5f);
+            // Pendant un aperçu, la musique de la boutique se coupe (musique) ou passe très bas (son).
+            float previewFactor = !isPreviewing ? 1f : _isMusicPreview ? 0f : SoundPreviewShopVolume;
+            float target = _isShopOpen ? ShopMusicVolume * GameSettings.MusicVolume * previewFactor : 0f;
+            float speed = isPreviewing ? 6f : 1.5f;
+            _shopMusic.volume = Mathf.MoveTowards(_shopMusic.volume, target, Time.unscaledDeltaTime * speed);
             _shopMusic.pitch = SpoofGoofSettings.Pitch;
             if (!_isShopOpen && _shopMusic.isPlaying && _shopMusic.volume <= 0f) _shopMusic.Stop();
         }

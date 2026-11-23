@@ -2,36 +2,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 namespace Tetris {
-    /// <summary>Sons d'un pack, rangés par événement ("lock", "line", "tetris"...). Un événement peut avoir plusieurs variantes.</summary>
-    public class SoundPack {
-        readonly Dictionary<string, List<AudioClip>> _clips = new();
-
-        public SoundPack(AudioClip[] clips) {
-            foreach (AudioClip clip in clips) {
-                string key = clip.name.TrimEnd('0', '1', '2', '3', '4', '5', '6', '7', '8', '9');
-                if (!_clips.TryGetValue(key, out List<AudioClip> list)) _clips[key] = list = new List<AudioClip>();
-                list.Add(clip);
-            }
-        }
-
-        /// <summary>Une variante au hasard du son de l'événement, ou null si le pack n'en a pas.</summary>
-        public AudioClip Get(string soundEvent) {
-            return _clips.TryGetValue(soundEvent, out List<AudioClip> list) && list.Count > 0 ? list[Random.Range(0, list.Count)] : null;
-        }
-
-        /// <summary>Un son du pack pour l'aperçu, en préférant les plus marquants.</summary>
-        public AudioClip GetPreview() {
-            string[] order = { "tetris", "line", "gameover", "lock", "rotate", "spawn" };
-            var candidates = new List<AudioClip>();
-            foreach (string key in order) {
-                if (_clips.TryGetValue(key, out List<AudioClip> list)) candidates.AddRange(list);
-            }
-            return candidates.Count > 0 ? candidates[Random.Range(0, candidates.Count)] : null;
-        }
-    }
-
     /// <summary>
-    /// Charge le contenu des objets du Casier depuis Resources : musiques et covers, packs de sons,
+    /// Charge le contenu des objets du Casier depuis Resources : musiques et covers, sons,
     /// sprites des cases (générés en code), couleurs des pièces. Tout est mis en cache.
     /// </summary>
     public static class LockerContent {
@@ -40,7 +12,6 @@ namespace Tetris {
         const float CellWorldSize = 0.95f;
 
         static MusicLibrarySO _library;
-        static readonly Dictionary<string, SoundPack> _packs = new();
         static readonly Dictionary<CellStyle, Texture2D> _cellTextures = new();
         static readonly Dictionary<CellStyle, Sprite> _cellSprites = new();
         static readonly Dictionary<string, Sprite> _coverSprites = new();
@@ -53,7 +24,6 @@ namespace Tetris {
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void ResetCache() {
-            _packs.Clear();
             _coverSprites.Clear();
             CurrentGameplayMusic = null;
         }
@@ -117,16 +87,27 @@ namespace Tetris {
 
         // ---------- Sons ----------
 
-        /// <summary>Pack de sons de l'objet, ou null pour les sons d'origine.</summary>
-        public static SoundPack GetSoundPack(LockerItem item) {
-            if (item == null || item.Resource == null) return null;
-
-            if (!_packs.TryGetValue(item.Id, out SoundPack pack)) {
-                pack = new SoundPack(Resources.LoadAll<AudioClip>(item.Resource));
-                _packs[item.Id] = pack;
+        /// <summary>
+        /// Clip d'un son. Null pour le silence et pour le son d'origine (que GameplaySfx prend dans la scène).
+        /// Pour un pack : un de ses sons au hasard (aperçu).
+        /// </summary>
+        public static AudioClip GetSoundClip(LockerItem item) {
+            if (item == null) return null;
+            if (item.IsPack) {
+                return item.Contents.Count > 0 ? GetSoundClip(item.Contents[Random.Range(0, item.Contents.Count)]) : null;
             }
-            return pack;
+            return item.Resource != null ? Resources.Load<AudioClip>(item.Resource) : null;
         }
+
+        public static string SlotName(SoundSlot slot) => slot switch {
+            SoundSlot.Spawn => "APPARITION",
+            SoundSlot.Move => "DÉPLACEMENT",
+            SoundSlot.Rotate => "ROTATION",
+            SoundSlot.Lock => "POSE",
+            SoundSlot.Line => "LIGNE",
+            SoundSlot.Tetris => "TETRIS",
+            _ => "GAME OVER",
+        };
 
         public static AudioClip GetUiClip(string name) {
             return Resources.Load<AudioClip>($"Locker/Ui/{name}");

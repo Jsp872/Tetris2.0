@@ -51,7 +51,7 @@ namespace Tetris {
             var info = new VisualElement { pickingMode = PickingMode.Ignore };
             info.AddToClassList("item-card__info");
             info.Add(CreateLabel(item.Name, "item-card__name"));
-            string subtitle = item.IsFree ? $"{CategoryName(item.Category)}  ·  DE BASE" : $"{CategoryName(item.Category)}  ·  {RarityName(item.Rarity)}";
+            string subtitle = Subtitle(item);
             Label category = CreateLabel(subtitle, "item-card__category");
             category.style.color = Color.Lerp(rarity, Color.white, 0.35f);
             info.Add(category);
@@ -61,6 +61,15 @@ namespace Tetris {
             footer.name = "footer";
             card.Add(footer);
             return card;
+        }
+
+        /// <summary>"POSE · POKÉMON" pour un son, "PACK · 9 SONS · ÉPIQUE" pour un pack, "BLOCS · RARE" sinon.</summary>
+        public static string Subtitle(LockerItem item) {
+            if (item.IsPack) return $"PACK  ·  {item.Contents.Count} SONS  ·  {RarityName(item.Rarity)}";
+            string kind = item.Category == LockerCategory.Sounds ? LockerContent.SlotName(item.Slot) : CategoryName(item.Category);
+            if (item.IsFree) return $"{kind}  ·  DE BASE";
+            LockerItem pack = item.PackId != null ? LockerCatalog.Get(item.PackId) : null;
+            return $"{kind}  ·  {(pack != null ? pack.Name : RarityName(item.Rarity))}";
         }
 
         /// <summary>Texte du pied de carte, avec une classe de style optionnelle (item-card__footer--owned, --equipped...).</summary>

@@ -3,10 +3,10 @@ using UnityEngine;
 
 namespace Tetris {
     /// <summary>
-    /// Bruitages de la partie. Sons d'origine : un son à l'apparition d'une pièce (<see cref="BlocSpawnedEvent"/>)
-    /// et un "pop" quand elle se pose (<see cref="BlocLockedEvent"/>).
-    /// Avec un pack de sons équipé dans le Casier, chaque événement prend le son du pack s'il en a un :
-    /// spawn, move, rotate, lock, line (1 à 3 lignes), tetris (4 lignes), gameover.
+    /// Bruitages de la partie : un son par moment (<see cref="SoundSlot"/>), celui équipé dans le Casier.
+    /// Apparition (<see cref="BlocSpawnedEvent"/>), déplacement, rotation, pose (<see cref="BlocLockedEvent"/>),
+    /// ligne (1 à 3 lignes), Tetris (4 lignes) et game over.
+    /// Les sons "ORIGINAL" de l'apparition et de la pose sont ceux réglés ici dans l'inspecteur.
     /// Volume réglé par <see cref="GameSettings.SfxVolume"/>.
     /// </summary>
     public class GameplaySfx : MonoBehaviour {
@@ -14,21 +14,30 @@ namespace Tetris {
         [SerializeField, Range(0f, 1f)] float _spawnVolume = 0.8f;
         [SerializeField] AudioClip _lockSound;
         [SerializeField, Range(0f, 1f)] float _lockVolume = 0.9f;
-        [Tooltip("Variation aléatoire de la hauteur du pop, pour éviter un son trop répétitif (0.08 = +/- 8 %).")]
+        [Tooltip("Variation aléatoire de la hauteur du son de pose, pour éviter un son trop répétitif (0.08 = +/- 8 %).")]
         [SerializeField, Range(0f, 0.3f)] float _lockPitchVariation = 0.08f;
-        [Tooltip("Volume des sons des packs du Casier.")]
-        [SerializeField, Range(0f, 1f)] float _packVolume = 0.9f;
+        [Tooltip("Volume des sons du Casier (hors sons d'origine).")]
+        [SerializeField, Range(0f, 1f)] float _lockerVolume = 0.9f;
 
+        readonly AudioClip[] _clips = new AudioClip[System.Enum.GetValues(typeof(SoundSlot)).Length];
+        readonly float[] _volumes = new float[System.Enum.GetValues(typeof(SoundSlot)).Length];
         AudioSource _spawnSource;
         AudioSource _lockSource;
         AudioSource _eventSource;
-        SoundPack _pack;
 
         void Awake() {
             _spawnSource = CreateSource();
             _lockSource = CreateSource();
             _eventSource = CreateSource();
-            _pack = LockerContent.GetSoundPack(PlayerInventory.GetEquipped(LockerCategory.Sounds));
+
+            foreach (SoundSlot slot in System.Enum.GetValues(typeof(SoundSlot))) {
+                LockerItem item = PlayerInventory.GetEquippedSound(slot);
+                bool isOriginal = item != null && item.IsSceneDefault;
+                _clips[(int)slot] = isOriginal
+                    ? slot == SoundSlot.Spawn ? _spawnSound : _lockSound
+                    : LockerContent.GetSoundClip(item);
+                _volumes[(int)slot] = !isOriginal ? _lockerVolume : slot == SoundSlot.Spawn ? _spawnVolume : _lockVolume;
+            }
         }
 
         void OnEnable() {
@@ -49,44 +58,29 @@ namespace Tetris {
             EventBus<GameOverEvent>.Unsubscribe(OnGameOver);
         }
 
-        void OnBlocSpawned(BlocSpawnedEvent e) {
-            Play(_spawnSource, PackOr("spawn", _spawnSound), _spawnVolume, 0f);
-        }
+        void OnBlocSpawned(BlocSpawnedEvent e) => Play(_spawnSource, SoundSlot.Spawn, 0f);
 
-        void OnBlocLocked(BlocLockedEvent e) {
-            Play(_lockSource, PackOr("lock", _lockSound), _lockVolume, _lockPitchVariation);
-        }
+        void OnBlocLocked(BlocLockedEvent e) => Play(_lockSource, SoundSlot.Lock, _lockPitchVariation);
 
-        void OnBlocMoved(BlocMovedEvent e) {
-            Play(_eventSource, _pack?.Get("move"), _packVolume, 0f);
-        }
+        void OnBlocMoved(BlocMovedEvent e) => Play(_eventSource, SoundSlot.Move, 0f);
 
-        void OnBlocRotated(BlocRotatedEvent e) {
-            Play(_eventSource, _pack?.Get("rotate"), _packVolume, 0f);
-        }
+        void OnBlocRotated(BlocRotatedEvent e) => Play(_eventSource, SoundSlot.Rotate, 0f);
 
         void OnScoreChanged(ScoreChangedEvent e) {
             if (e.LinesCleared <= 0) return;
 
-            AudioClip clip = e.LinesCleared >= 4 ? _pack?.Get("tetris") ?? _pack?.Get("line") : _pack?.Get("line");
-            Play(_eventSource, clip, _packVolume, 0f);
+            bool isTetris = e.LinesCleared >= 4 && _clips[(int)SoundSlot.Tetris] != null;
+            Play(_eventSource, isTetris ? SoundSlot.Tetris : SoundSlot.Line, 0f);
         }
 
-        void OnGameOver(GameOverEvent e) {
-            Play(_eventSource, _pack?.Get("gameover"), _packVolume, 0f);
-        }
+        void OnGameOver(GameOverEvent e) => Play(_eventSource, SoundSlot.GameOver, 0f);
 
-        /// <summary>Son du pack pour l'événement, sinon le son d'origine (un pack sans ce son garde l'original).</summary>
-        AudioClip PackOr(string soundEvent, AudioClip original) {
-            AudioClip clip = _pack?.Get(soundEvent);
-            return clip != null ? clip : original;
-        }
-
-        static void Play(AudioSource source, AudioClip clip, float volume, float pitchVariation) {
+        void Play(AudioSource source, SoundSlot slot, float pitchVariation) {
+            AudioClip clip = _clips[(int)slot];
             if (clip == null) return;
 
             source.pitch = (1f + Random.Range(-pitchVariation, pitchVariation)) * SpoofGoofSettings.Pitch;
-            source.PlayOneShot(clip, volume * GameSettings.SfxVolume);
+            source.PlayOneShot(clip, _volumes[(int)slot] * GameSettings.SfxVolume);
         }
 
         AudioSource CreateSource() {

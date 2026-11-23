@@ -7,7 +7,8 @@ using UnityEngine.UIElements;
 
 namespace Tetris {
     /// <summary>
-    /// Traînée qui suit la souris dans le menu, aux couleurs du curseur équipé dans le Casier.
+    /// Curseur rond façon skin osu! (le curseur système est caché) et traînée qui le suit dans le menu,
+    /// aux couleurs du curseur équipé dans le Casier. Le cercle grossit pendant un clic.
     /// Façon osu! : tant que C est maintenue, le curseur laisse des traces qui restent à l'écran.
     /// Une barre façon combo de Maxwell montre le temps qui reste avant qu'elles s'effacent :
     /// pleine tant que C est maintenue, elle se vide après le relâchement, et tout s'efface quand elle est vide.
@@ -23,6 +24,7 @@ namespace Tetris {
         const float EraseDuration = 0.5f;
         const int MaxDrawPoints = 8000;
         const string BarHiddenClass = "osu-bar--hidden";
+        const float CursorRadius = 15f;
 
         struct Point {
             public Vector2 Position;
@@ -42,6 +44,9 @@ namespace Tetris {
         float _eraseStart = -1f;
         int _stroke;
         LockerItem _style;
+        Vector2 _cursor;
+        bool _hasCursor;
+        float _press;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void Register() {
@@ -95,8 +100,17 @@ namespace Tetris {
             root.Add(hint);
         }
 
+        void OnDisable() {
+            UnityEngine.Cursor.visible = true;
+        }
+
         void Update() {
             if (_layer?.panel == null) return;
+
+            UnityEngine.Cursor.visible = false;
+            Mouse pointer = Mouse.current;
+            bool isPressed = pointer != null && pointer.leftButton.isPressed;
+            _press = Mathf.MoveTowards(_press, isPressed ? 1f : 0f, Time.unscaledDeltaTime * 10f);
 
             _style = PlayerInventory.GetEquipped(LockerCategory.Cursor);
             float now = Time.unscaledTime;
@@ -141,6 +155,8 @@ namespace Tetris {
             Vector2 screen = mouse.position.ReadValue();
             Vector2 position = RuntimePanelUtils.ScreenToPanel(_layer.panel, new Vector2(screen.x, Screen.height - screen.y));
             var point = new Point { Position = position, Time = now, Stroke = _stroke };
+            _cursor = position;
+            _hasCursor = true;
 
             if (_trail.Count == 0 || Vector2.Distance(_trail[_trail.Count - 1].Position, position) >= MinDistance) {
                 _trail.Add(point);
@@ -200,14 +216,44 @@ namespace Tetris {
             }
 
             bool hasTrail = _style.IsRainbow || (_style.Colors != null && _style.Colors.Length > 0);
-            if (!hasTrail) return;
-
-            for (int i = 1; i < _trail.Count; i++) {
-                float age = (now - _trail[i].Time) / TrailLifetime;
-                Color color = TrailColor(age, now);
-                color.a *= 1f - age;
-                Segment(painter, _trail[i - 1].Position, _trail[i].Position, Mathf.Lerp(TrailWidth, 1f, age), color);
+            if (hasTrail) {
+                for (int i = 1; i < _trail.Count; i++) {
+                    float age = (now - _trail[i].Time) / TrailLifetime;
+                    Color color = TrailColor(age, now);
+                    color.a *= 1f - age;
+                    Segment(painter, _trail[i - 1].Position, _trail[i].Position, Mathf.Lerp(TrailWidth, 1f, age), color);
+                }
             }
+
+            DrawCursor(painter, now, hasTrail);
+        }
+
+        /// <summary>Cercle façon osu! : anneau coloré, halo et point central. Il grossit pendant un clic.</summary>
+        void DrawCursor(Painter2D painter, float now, bool hasTrail) {
+            if (!_hasCursor) return;
+
+            Color color = hasTrail ? TrailColor(0f, now) : Color.white;
+            float radius = CursorRadius * (1f + 0.3f * _press) * (_isDrawing ? 0.8f : 1f);
+
+            Color glow = color;
+            glow.a = 0.22f;
+            Circle(painter, _cursor, radius + 7f, glow);
+            Circle(painter, _cursor, radius, new Color(0f, 0f, 0f, 0.35f));
+
+            painter.strokeColor = color;
+            painter.lineWidth = 4f;
+            painter.BeginPath();
+            painter.Arc(_cursor, radius, 0f, 360f);
+            painter.Stroke();
+
+            Circle(painter, _cursor, 3.5f, Color.white);
+        }
+
+        static void Circle(Painter2D painter, Vector2 center, float radius, Color color) {
+            painter.fillColor = color;
+            painter.BeginPath();
+            painter.Arc(center, radius, 0f, 360f);
+            painter.Fill();
         }
 
         static void Segment(Painter2D painter, Vector2 from, Vector2 to, float width, Color color) {

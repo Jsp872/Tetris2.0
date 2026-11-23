@@ -26,6 +26,7 @@ namespace Tetris {
         class SaveData {
             public List<string> owned = new();
             public string[] equipped;
+            public string[] sounds;
             public List<SpentCompliment> spent = new();
         }
 
@@ -46,8 +47,9 @@ namespace Tetris {
 
         public static IReadOnlyList<SpentCompliment> Spent => Data.spent;
 
+        /// <summary>Vrai pour les objets de base, les objets achetés et les sons des packs achetés.</summary>
         public static bool Owns(LockerItem item) {
-            return item != null && (item.IsFree || Data.owned.Contains(item.Id));
+            return item != null && (item.IsFree || Data.owned.Contains(item.Id) || (item.PackId != null && Data.owned.Contains(item.PackId)));
         }
 
         /// <summary>Objet équipé dans la catégorie (l'objet de base si rien n'est équipé).</summary>
@@ -56,14 +58,35 @@ namespace Tetris {
             return item != null && item.Category == category && Owns(item) ? item : LockerCatalog.Default(category);
         }
 
+        /// <summary>Son équipé pour ce moment de la partie (le son de base si rien n'est équipé).</summary>
+        public static LockerItem GetEquippedSound(SoundSlot slot) {
+            LockerItem item = LockerCatalog.Get(Data.sounds[(int)slot]);
+            return item != null && item.Category == LockerCategory.Sounds && item.Slot == slot && !item.IsPack && Owns(item)
+                ? item
+                : LockerCatalog.DefaultSound(slot);
+        }
+
         public static bool IsEquipped(LockerItem item) {
+            if (item.Category == LockerCategory.Sounds) return !item.IsPack && GetEquippedSound(item.Slot) == item;
             return GetEquipped(item.Category) == item;
         }
 
+        /// <summary>Équipe l'objet. Un son s'équipe sur son moment ; un pack équipe son premier son de chaque moment.</summary>
         public static void Equip(LockerItem item) {
             if (!Owns(item)) return;
 
-            Data.equipped[(int)item.Category] = item.Id;
+            if (item.IsPack) {
+                var done = new HashSet<SoundSlot>();
+                foreach (LockerItem sound in item.Contents) {
+                    if (done.Add(sound.Slot)) Data.sounds[(int)sound.Slot] = sound.Id;
+                }
+            }
+            else if (item.Category == LockerCategory.Sounds) {
+                Data.sounds[(int)item.Slot] = item.Id;
+            }
+            else {
+                Data.equipped[(int)item.Category] = item.Id;
+            }
             Save();
             Changed?.Invoke();
         }
@@ -112,12 +135,16 @@ namespace Tetris {
             _data.owned ??= new List<string>();
             _data.spent ??= new List<SpentCompliment>();
 
-            int categories = Enum.GetValues(typeof(LockerCategory)).Length;
-            if (_data.equipped == null || _data.equipped.Length != categories) {
-                var equipped = new string[categories];
-                if (_data.equipped != null) Array.Copy(_data.equipped, equipped, Mathf.Min(_data.equipped.Length, categories));
-                _data.equipped = equipped;
-            }
+            _data.equipped = Resize(_data.equipped, Enum.GetValues(typeof(LockerCategory)).Length);
+            _data.sounds = Resize(_data.sounds, Enum.GetValues(typeof(SoundSlot)).Length);
+        }
+
+        static string[] Resize(string[] values, int length) {
+            if (values != null && values.Length == length) return values;
+
+            var result = new string[length];
+            if (values != null) Array.Copy(values, result, Mathf.Min(values.Length, length));
+            return result;
         }
 
         static void Save() {

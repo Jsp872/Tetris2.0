@@ -13,9 +13,12 @@ namespace Tetris {
 
     public enum BackgroundStyle { Liquid, Cover, Void, Disco }
 
+    /// <summary>Moment de la partie où un son se joue. Le Casier équipe un son par moment.</summary>
+    public enum SoundSlot { Spawn, Move, Rotate, Lock, Line, Tetris, GameOver }
+
     /// <summary>
     /// Un objet du Casier. Les champs utilisés dépendent de la catégorie :
-    /// musique (<see cref="Resource"/> ou <see cref="LibraryIndex"/>), sons (<see cref="Resource"/> : dossier du pack),
+    /// musique (<see cref="Resource"/> ou <see cref="LibraryIndex"/>), sons (<see cref="Resource"/> et <see cref="Slot"/>),
     /// fond, blocs et curseur (<see cref="Colors"/>), plateau (couleurs Board*).
     /// </summary>
     public class LockerItem {
@@ -29,10 +32,18 @@ namespace Tetris {
         /// <summary>Objet de base : disponible dans le Casier sans passer par la boutique.</summary>
         public bool IsFree;
 
+        /// <summary>Pack de la boutique : ne s'équipe pas, il donne les sons de <see cref="Contents"/>.</summary>
+        public bool IsPack;
+        public List<LockerItem> Contents = new();
+        /// <summary>Son : pack qui le donne.</summary>
+        public string PackId;
+        /// <summary>Son : moment de la partie où il se joue.</summary>
+        public SoundSlot Slot;
+
         public string Resource;
         public int LibraryIndex = -1;
         public string Artist;
-        /// <summary>Musique : garde la musique de la scène de jeu (Subway Surfers).</summary>
+        /// <summary>Musique ou son : garde le clip réglé dans la scène de jeu (Subway Surfers, pop d'origine...).</summary>
         public bool IsSceneDefault;
         /// <summary>Musique : une musique possédée au hasard à chaque partie.</summary>
         public bool IsRandom;
@@ -50,6 +61,9 @@ namespace Tetris {
         public Color BoardLimit;
 
         public int Price => IsFree ? 0 : (int)Rarity;
+
+        /// <summary>Vendu tel quel dans la boutique (les sons s'obtiennent avec leur pack).</summary>
+        public bool IsSellable => !IsFree && PackId == null;
     }
 
     /// <summary>
@@ -80,6 +94,14 @@ namespace Tetris {
         public static LockerItem Default(LockerCategory category) {
             foreach (LockerItem item in Items) {
                 if (item.Category == category && item.IsFree) return item;
+            }
+            return null;
+        }
+
+        /// <summary>Son équipé par défaut pour un moment : l'original s'il existe, sinon le silence.</summary>
+        public static LockerItem DefaultSound(SoundSlot slot) {
+            foreach (LockerItem item in Items) {
+                if (item.Category == LockerCategory.Sounds && item.IsFree && item.Slot == slot) return item;
             }
             return null;
         }
@@ -227,28 +249,128 @@ namespace Tetris {
         // ---------- Sons ----------
 
         static void AddSounds() {
-            Free(LockerCategory.Sounds, "sfx.classic", "CLASSIQUE", "Le pop et le poisson-globe d'origine.").Tagline = "POP";
+            // Sons de base : les sons d'origine pour l'apparition et la pose, et un silence pour chaque moment.
+            foreach (SoundSlot slot in System.Enum.GetValues(typeof(SoundSlot))) {
+                if (slot is SoundSlot.Spawn or SoundSlot.Lock) {
+                    LockerItem original = Free(LockerCategory.Sounds, $"sfx.original.{slot}", "ORIGINAL", "Le son d'origine du jeu.");
+                    original.Slot = slot;
+                    original.IsSceneDefault = true;
+                    original.Tagline = slot == SoundSlot.Lock ? "POP" : "BLOUP";
+                }
+                LockerItem silence = Free(LockerCategory.Sounds, $"sfx.none.{slot}", "SILENCE", "Rien. Le calme absolu.");
+                silence.Slot = slot;
+                silence.Tagline = "...";
+            }
 
-            Sounds("politique", "POLITIQUE FRANÇAISE", Rarity.Mythic, "FOR SURE",
-                "Zemmour tousse à chaque pièce, Macron valide tes lignes. Qui aurait pu prédire ?");
-            Sounds("fnaf", "FIVE NIGHTS AT FREDDY'S", Rarity.Legendary, "HONK",
-                "Le nez de Freddy à chaque pièce, le carillon de 6 h pour les Tetris. Et le game over... surprise.");
-            Sounds("pokemon", "POKÉMON", Rarity.Epic, "PIKA PIKA",
-                "Pikachu pose tes pièces, la Team Rocket s'envole au game over.");
-            Sounds("memes", "MÈMES", Rarity.Epic, "VINE BOOM",
-                "Vine boom, anime wow, tuyau en métal. Le pack du connaisseur.");
-            Sounds("minecraft", "MINECRAFT", Rarity.Rare, "OOF",
-                "Steve a mal à chaque pièce. Le villageois n'est pas convaincu.");
-            Sounds("windows", "WINDOWS XP", Rarity.Rare, "ERREUR",
+            Pack("politique", "POLITIQUE FRANÇAISE", Rarity.Mythic, "FOR SURE",
+                "Zemmour tousse, Macron valide, Lassalle s'emballe et Sarkozy s'indigne. Qui aurait pu prédire ?");
+            Pack("fnaf", "FIVE NIGHTS AT FREDDY'S", Rarity.Legendary, "HONK",
+                "Le nez de Freddy, la porte blindée, le carillon de 6 h. Et le game over... surprise.");
+            Pack("memes", "MÈMES", Rarity.Legendary, "VINE BOOM",
+                "Vine boom, tuyau en métal, FBI open up, emotional damage. Le pack du connaisseur.");
+            Pack("amongus", "AMONG US", Rarity.Epic, "AMOGUS",
+                "AMOGUS saturé à fond, réunion d'urgence et kill. Quelqu'un est très sus.");
+            Pack("pokemon", "POKÉMON", Rarity.Epic, "PIKA PIKA",
+                "Pikachu, Rondoudou, Psykokwak, et la Team Rocket qui s'envole au game over.");
+            Pack("minecraft", "MINECRAFT", Rarity.Rare, "OOF",
+                "Steve a mal, le villageois n'est pas convaincu et le creeper fait son travail.");
+            Pack("windows", "WINDOWS XP", Rarity.Rare, "ERREUR",
                 "Chaque pièce est une erreur critique. Le Tetris démarre Windows.");
-            Sounds("amongus", "AMONG US", Rarity.Rare, "SUS",
-                "Réunion d'urgence à chaque Tetris. Quelqu'un est l'imposteur.");
+
+            Sound("amongus", SoundSlot.Spawn, "spawn_reveal", "RÉVÉLATION DU RÔLE");
+            Sound("amongus", SoundSlot.Rotate, "rotate_sus", "SUS");
+            Sound("amongus", SoundSlot.Lock, "lock_kill", "KILL");
+            Sound("amongus", SoundSlot.Line, "line_button", "BOUTON D'URGENCE");
+            Sound("amongus", SoundSlot.Line, "line_drip", "DRIP");
+            Sound("amongus", SoundSlot.Tetris, "tetris_amogus", "AMOGUS (SATURÉ)");
+            Sound("amongus", SoundSlot.Tetris, "tetris_meeting", "RÉUNION D'URGENCE");
+            Sound("amongus", SoundSlot.GameOver, "gameover_impostor", "L'IMPOSTEUR");
+            Sound("amongus", SoundSlot.GameOver, "gameover_impostorwin", "VICTOIRE DE L'IMPOSTEUR");
+            Sound("pokemon", SoundSlot.Spawn, "spawn_whosthat", "QUEL EST CE POKÉMON ?");
+            Sound("pokemon", SoundSlot.Spawn, "spawn_ichooseyou", "JE TE CHOISIS");
+            Sound("pokemon", SoundSlot.Rotate, "rotate_pikapika", "PIKA PIKA");
+            Sound("pokemon", SoundSlot.Rotate, "rotate_psyduck", "PSYKOKWAK");
+            Sound("pokemon", SoundSlot.Lock, "lock_pikachu", "C'EST PIKACHU");
+            Sound("pokemon", SoundSlot.Lock, "lock_pokeball", "POKÉBALL");
+            Sound("pokemon", SoundSlot.Line, "line_levelup", "NIVEAU SUPÉRIEUR");
+            Sound("pokemon", SoundSlot.Line, "line_jigglypuff", "RONDOUDOU");
+            Sound("pokemon", SoundSlot.Tetris, "tetris_center", "CENTRE POKÉMON");
+            Sound("pokemon", SoundSlot.GameOver, "gameover_teamrocket", "LA TEAM ROCKET S'ENVOLE");
+            Sound("pokemon", SoundSlot.GameOver, "gameover_lowhp", "PV BAS");
+            Sound("fnaf", SoundSlot.Spawn, "spawn_hello", "HELLO HELLO");
+            Sound("fnaf", SoundSlot.Move, "move_foxyrun", "FOXY COURT");
+            Sound("fnaf", SoundSlot.Rotate, "rotate_honk", "HONK");
+            Sound("fnaf", SoundSlot.Lock, "lock_nose", "NEZ DE FREDDY");
+            Sound("fnaf", SoundSlot.Lock, "lock_door", "PORTE BLINDÉE");
+            Sound("fnaf", SoundSlot.Line, "line_laugh", "RIRE DE FREDDY");
+            Sound("fnaf", SoundSlot.Line, "line_goldenlaugh", "RIRE DE GOLDEN FREDDY");
+            Sound("fnaf", SoundSlot.Tetris, "tetris_sixam", "6 HEURES DU MATIN");
+            Sound("fnaf", SoundSlot.Tetris, "tetris_yay", "YAAAY");
+            Sound("fnaf", SoundSlot.GameOver, "gameover_scream", "JUMPSCARE");
+            Sound("fnaf", SoundSlot.GameOver, "gameover_foxy", "JUMPSCARE DE FOXY");
+            Sound("politique", SoundSlot.Spawn, "spawn_rue", "JE TRAVERSE LA RUE");
+            Sound("politique", SoundSlot.Rotate, "rotate_hein", "HEIN ?");
+            Sound("politique", SoundSlot.Rotate, "rotate_benvoyons", "BEN VOYONS");
+            Sound("politique", SoundSlot.Lock, "lock_tousse", "ZEMMOUR TOUSSE");
+            Sound("politique", SoundSlot.Lock, "lock_pommes", "J'AIME LES POMMES");
+            Sound("politique", SoundSlot.Line, "line_forsure", "FOR SURE");
+            Sound("politique", SoundSlot.Line, "line_perlimpinpin", "POUDRE DE PERLIMPINPIN");
+            Sound("politique", SoundSlot.Line, "line_lassalle", "SALUT C'EST LASSALLE");
+            Sound("politique", SoundSlot.Tetris, "tetris_projet", "C'EST NOTRE PROJET");
+            Sound("politique", SoundSlot.Tetris, "tetris_republique", "LA RÉPUBLIQUE C'EST MOI");
+            Sound("politique", SoundSlot.Tetris, "tetris_ohmygod", "OH MY GOD");
+            Sound("politique", SoundSlot.GameOver, "gameover_predire", "QUI AURAIT PU PRÉDIRE");
+            Sound("politique", SoundSlot.GameOver, "gameover_indignite", "QUELLE INDIGNITÉ");
+            Sound("politique", SoundSlot.GameOver, "gameover_cassetoi", "CASSE-TOI");
+            Sound("minecraft", SoundSlot.Spawn, "spawn_teleport", "TÉLÉPORTATION");
+            Sound("minecraft", SoundSlot.Rotate, "rotate_villager", "HMM");
+            Sound("minecraft", SoundSlot.Lock, "lock_oof", "OOF");
+            Sound("minecraft", SoundSlot.Lock, "lock_eat", "MIAM");
+            Sound("minecraft", SoundSlot.Line, "line_orb", "ORBE D'XP");
+            Sound("minecraft", SoundSlot.Tetris, "tetris_levelup", "NIVEAU SUPÉRIEUR");
+            Sound("minecraft", SoundSlot.GameOver, "gameover_creeper", "CREEPER");
+            Sound("minecraft", SoundSlot.GameOver, "gameover_ghast", "GHAST");
+            Sound("windows", SoundSlot.Spawn, "spawn_ding", "DING");
+            Sound("windows", SoundSlot.Rotate, "rotate_usb", "USB BRANCHÉ");
+            Sound("windows", SoundSlot.Lock, "lock_error", "ERREUR");
+            Sound("windows", SoundSlot.Lock, "lock_unplug", "USB DÉBRANCHÉ");
+            Sound("windows", SoundSlot.Line, "line_tada", "TADAAA");
+            Sound("windows", SoundSlot.Tetris, "tetris_startup", "DÉMARRAGE");
+            Sound("windows", SoundSlot.GameOver, "gameover_critical", "ERREUR CRITIQUE");
+            Sound("windows", SoundSlot.GameOver, "gameover_shutdown", "ARRÊT");
+            Sound("memes", SoundSlot.Spawn, "spawn_tacobell", "TACO BELL");
+            Sound("memes", SoundSlot.Move, "move_dryfart", "PROUT SEC");
+            Sound("memes", SoundSlot.Rotate, "rotate_fart", "PROUT PARFAIT");
+            Sound("memes", SoundSlot.Lock, "lock_vineboom", "VINE BOOM");
+            Sound("memes", SoundSlot.Lock, "lock_pipe", "TUYAU EN MÉTAL");
+            Sound("memes", SoundSlot.Line, "line_wow", "ANIME WOW");
+            Sound("memes", SoundSlot.Line, "line_rizz", "RIZZ");
+            Sound("memes", SoundSlot.Line, "line_airhorn", "AIRHORN");
+            Sound("memes", SoundSlot.Tetris, "tetris_yeahboi", "YEAH BOIII");
+            Sound("memes", SoundSlot.Tetris, "tetris_fbi", "FBI OPEN UP");
+            Sound("memes", SoundSlot.GameOver, "gameover_bruh", "BRUH");
+            Sound("memes", SoundSlot.GameOver, "gameover_damage", "EMOTIONAL DAMAGE");
+            Sound("memes", SoundSlot.GameOver, "gameover_continued", "TO BE CONTINUED");
+            Sound("memes", SoundSlot.GameOver, "gameover_violin", "VIOLON TRISTE");
+            Sound("memes", SoundSlot.GameOver, "gameover_ouinan", "OUI NAN NAAAAN");
         }
 
-        static void Sounds(string folder, string name, Rarity rarity, string tagline, string description) {
-            LockerItem item = Shop(LockerCategory.Sounds, $"sfx.{folder}", name, rarity, description);
-            item.Resource = $"Locker/Sfx/{folder}";
+        /// <summary>Un pack de la boutique : il donne tous les sons dont <see cref="LockerItem.PackId"/> est son identifiant.</summary>
+        static void Pack(string folder, string name, Rarity rarity, string tagline, string description) {
+            LockerItem item = Shop(LockerCategory.Sounds, $"pack.{folder}", name, rarity, description);
+            item.IsPack = true;
             item.Tagline = tagline;
+        }
+
+        /// <summary>Un son d'un pack, pour un moment de la partie. Fichier : Resources/Locker/Sfx/pack/fichier.ogg.</summary>
+        static void Sound(string pack, SoundSlot slot, string file, string name) {
+            LockerItem packItem = _items.Find(item => item.Id == $"pack.{pack}");
+            LockerItem item = Shop(LockerCategory.Sounds, $"sfx.{pack}.{file}", name, packItem.Rarity, $"Du pack {packItem.Name}.");
+            item.Slot = slot;
+            item.PackId = packItem.Id;
+            item.Resource = $"Locker/Sfx/{pack}/{file}";
+            item.Tagline = name;
+            packItem.Contents.Add(item);
         }
 
         // ---------- Curseur ----------

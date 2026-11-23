@@ -33,6 +33,7 @@ namespace Tetris {
             bloc.Init(data, _board);
 
             EventBus<NextBlocsChangedEvent>.Publish(new NextBlocsChangedEvent(_nextBlocs));
+            EventBus<BlocSpawnedEvent>.Publish(new BlocSpawnedEvent());
             return bloc;
         }
 

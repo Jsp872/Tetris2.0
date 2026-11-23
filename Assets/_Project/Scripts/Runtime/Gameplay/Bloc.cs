@@ -1,3 +1,4 @@
+using Tetris.Events;
 using UnityEngine;
 
 namespace Tetris {
@@ -53,6 +54,7 @@ namespace Tetris {
                 _board.Fill(cell.x, cell.y, _visuals[i]);
             }
 
+            EventBus<BlocLockedEvent>.Publish(new BlocLockedEvent());
             Destroy(gameObject);
         }
 

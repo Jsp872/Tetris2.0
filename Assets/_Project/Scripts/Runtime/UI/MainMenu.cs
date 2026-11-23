@@ -6,8 +6,9 @@ using UnityEngine.UIElements;
 namespace Tetris {
     /// <summary>
     /// Menu principal (UI/MainMenu.uxml) : Jouer ouvre le choix du mode, Options n'est pas encore disponible, Quitter ferme le jeu.
-    /// Un mode sans scène renseignée affiche "bientôt disponible". Pour brancher un mode, remplir son Scene Name
-    /// (la scène doit être dans les Build Profiles). Échap revient au menu principal.
+    /// Chaque carte de mode affiche le record et lance la scène de jeu dans ce mode (<see cref="GameSession.Mode"/>).
+    /// Un mode sans scène renseignée affiche "bientôt disponible" (la scène doit être dans les Build Profiles).
+    /// Échap revient au menu principal.
     /// </summary>
     [RequireComponent(typeof(UIDocument))]
     public class MainMenu : MonoBehaviour {
@@ -16,6 +17,7 @@ namespace Tetris {
 
         [Serializable]
         public class GameModeEntry {
+            public GameMode mode;
             public string title;
             [TextArea] public string description;
             [Tooltip("Scène à charger. Vide : le mode n'existe pas encore.")]
@@ -23,9 +25,12 @@ namespace Tetris {
         }
 
         [SerializeField] GameModeEntry[] _modes = {
-            new GameModeEntry { title = "MARATHON", description = "Survis le plus longtemps possible. Fin au niveau 15 (150 lignes)." },
-            new GameModeEntry { title = "SPRINT", description = "Efface 40 lignes le plus vite possible." },
-            new GameModeEntry { title = "ULTRA", description = "Marque un maximum de points en 2 minutes." },
+            new GameModeEntry { mode = GameMode.Marathon, title = "MARATHON", sceneName = "Gameplay",
+                description = "Survis le plus longtemps possible. Fin au niveau 15 (150 lignes)." },
+            new GameModeEntry { mode = GameMode.Sprint, title = "SPRINT", sceneName = "Gameplay",
+                description = "Efface 40 lignes le plus vite possible." },
+            new GameModeEntry { mode = GameMode.Ultra, title = "ULTRA", sceneName = "Gameplay",
+                description = "Marque un maximum de points en 2 minutes." },
         };
         [SerializeField] float _toastDuration = 1.6f;
 
@@ -71,6 +76,12 @@ namespace Tetris {
                 if (string.IsNullOrEmpty(mode.sceneName)) {
                     header.Add(CreateLabel("BIENTÔT", "mode-card__badge"));
                 }
+                else {
+                    string record = ModeRecords.TryGet(mode.mode, out float best)
+                        ? $"RECORD  {ModeRecords.Format(mode.mode, best)}"
+                        : "AUCUN RECORD";
+                    header.Add(CreateLabel(record, "mode-card__record"));
+                }
 
                 card.Add(header);
                 card.Add(CreateLabel(mode.description, "mode-card__description"));
@@ -82,6 +93,7 @@ namespace Tetris {
 
         void OnModeClicked(GameModeEntry mode, VisualElement card) {
             if (!string.IsNullOrEmpty(mode.sceneName)) {
+                GameSession.Mode = mode.mode;
                 SceneManager.LoadScene(mode.sceneName);
                 return;
             }

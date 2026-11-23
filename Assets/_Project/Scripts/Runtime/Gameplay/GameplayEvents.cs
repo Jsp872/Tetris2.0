@@ -31,4 +31,10 @@ namespace Tetris {
 
     /// <summary>Publié quand la partie est perdue.</summary>
     public readonly struct GameOverEvent : IEvent { }
+
+    /// <summary>Publié par le Spawner quand une nouvelle pièce apparaît.</summary>
+    public readonly struct BlocSpawnedEvent : IEvent { }
+
+    /// <summary>Publié quand une pièce est posée dans le Board.</summary>
+    public readonly struct BlocLockedEvent : IEvent { }
 }

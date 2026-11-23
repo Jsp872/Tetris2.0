@@ -225,6 +225,18 @@ Button.mode-card:active {
     margin: 0;
 }
 
+.mode-card__record {
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: rgb(125, 230, 255);
+    background-color: rgba(125, 230, 255, 0.12);
+    border-width: 1px;
+    border-color: rgba(125, 230, 255, 0.35);
+    border-radius: 12px;
+    padding: 3px 12px;
+    margin: 0;
+}
+
 .mode-card__description {
     font-size: 17px;
     color: rgba(225, 232, 255, 0.75);

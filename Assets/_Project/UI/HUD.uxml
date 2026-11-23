@@ -44,7 +44,39 @@
                 <ui:VisualElement class="controls__row"><ui:Label text="R" class="key" /><ui:Label text="Tourner" class="controls__action" /></ui:VisualElement>
                 <ui:VisualElement class="controls__row"><ui:Label text="Espace" class="key" /><ui:Label text="Descendre" class="controls__action" /></ui:VisualElement>
                 <ui:VisualElement class="controls__row"><ui:Label text="Échap" class="key" /><ui:Label text="Pause" class="controls__action" /></ui:VisualElement>
+                <ui:VisualElement class="controls__row"><ui:Label text="N / B" class="key" /><ui:Label text="Musique" class="controls__action" /></ui:VisualElement>
             </ui:VisualElement>
+        </ui:VisualElement>
+
+        <!-- Playlist en jeu : même carrousel que le menu principal (GameplayPlaylist). Cachée tant qu'elle n'est pas active. -->
+        <ui:VisualElement name="music-carousel" class="carousel carousel--game carousel--inactive">
+            <ui:Button name="music-previous-button" class="glass carousel__arrow">
+                <ui:VisualElement class="carousel__chevron carousel__chevron--up" picking-mode="Ignore" />
+            </ui:Button>
+            <ui:VisualElement name="music-previous" class="carousel__cover carousel__cover--side" />
+
+            <ui:VisualElement class="glass carousel__current">
+                <ui:VisualElement name="music-current" class="carousel__cover carousel__cover--current">
+                    <ui:Label name="music-placeholder" text="" class="carousel__placeholder" picking-mode="Ignore" />
+                </ui:VisualElement>
+                <ui:VisualElement class="carousel__info">
+                    <ui:VisualElement class="equalizer" picking-mode="Ignore">
+                        <ui:VisualElement class="equalizer__bar" />
+                        <ui:VisualElement class="equalizer__bar" />
+                        <ui:VisualElement class="equalizer__bar" />
+                        <ui:VisualElement class="equalizer__bar" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="carousel__texts">
+                        <ui:Label name="music-title" text="Titre" class="carousel__title" />
+                        <ui:Label name="music-artist" text="Artiste" class="carousel__artist" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+
+            <ui:VisualElement name="music-next" class="carousel__cover carousel__cover--side" />
+            <ui:Button name="music-next-button" class="glass carousel__arrow">
+                <ui:VisualElement class="carousel__chevron carousel__chevron--down" picking-mode="Ignore" />
+            </ui:Button>
         </ui:VisualElement>
 
         <!-- Mèmes : chat aux Ruffles (image rémanente, derrière tout le reste du HUD) -->

@@ -487,3 +487,41 @@ Button.overlay-button--primary {
     margin: 10px 0 0 0;
     padding: 0;
 }
+
+/* ---------- Playlist en jeu (GameplayPlaylist.cs) ---------- */
+/* Même carrousel et même emplacement que dans le menu principal : le bloc de jeu se décale à gauche
+   (root--playlist) pour lui laisser la place, et la caméra suit pour garder le plateau aligné. */
+
+.root--playlist {
+    justify-content: flex-start;
+    padding-left: 130px;
+}
+
+.carousel--game {
+    position: absolute;
+    right: 140px;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+}
+
+.carousel--inactive {
+    display: none;
+}
+
+.carousel__placeholder {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: rgba(255, 255, 255, 0.85);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+    white-space: normal;
+    margin: 0;
+    padding: 0 20px;
+}

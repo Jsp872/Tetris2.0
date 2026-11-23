@@ -9,21 +9,21 @@ namespace Tetris {
     /// Applique le Casier pendant une partie. Ajouté tout seul aux scènes qui ont un <see cref="GameManager"/> :
     /// <list type="bullet">
     /// <item>Fond : couleurs du fond liquide, néant, boule à facettes, ou cover de la musique en cours derrière le plateau.</item>
-    /// <item>Musique : N passe à la musique suivante parmi celles possédées (et l'équipe), avec un bandeau "en cours".</item>
+    /// <item>Musique : playlist façon carrousel du menu, à droite (<see cref="GameplayPlaylist"/>), N et B au clavier.</item>
     /// </list>
     /// Les blocs, le plateau, les sons et la musique de départ sont appliqués par Bloc, BoardVisual, GameplaySfx et MusicPlayer.
     /// </summary>
     public class LockerGameplay : MonoBehaviour {
-        const float ToastDuration = 2.6f;
         const float CoverBrightness = 0.42f;
 
         MusicPlayer _player;
         LiquidBackground _liquid;
         SpriteRenderer _cover;
-        Label _toast;
-        IVisualElementScheduledItem _hideToast;
+        GameplayPlaylist _playlist;
+        LockerItem _syncedMusic;
+        bool _hasSelected;
         bool _usesCover;
-        LockerItem _coverMusic;
+        Vector3 _cameraOrigin;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void Register() {
@@ -40,8 +40,9 @@ namespace Tetris {
         void Start() {
             _player = FindAnyObjectByType<MusicPlayer>();
             _liquid = FindAnyObjectByType<LiquidBackground>();
+            if (Camera.main != null) _cameraOrigin = Camera.main.transform.position;
             ApplyBackground(PlayerInventory.GetEquipped(LockerCategory.Background));
-            CreateToast();
+            CreatePlaylist();
         }
 
         void ApplyBackground(LockerItem background) {
@@ -79,7 +80,6 @@ namespace Tetris {
         void RefreshCover() {
             if (_cover == null) return;
 
-            _coverMusic = LockerContent.CurrentGameplayMusic;
             Sprite sprite = LockerContent.GetCoverSprite(LockerContent.CurrentGameplayMusic);
             _cover.sprite = sprite;
             if (sprite == null) return;
@@ -95,70 +95,57 @@ namespace Tetris {
 
         void Update() {
             // La musique est choisie dans MusicPlayer.Start, qui peut passer après ce composant.
-            if (_usesCover && _coverMusic != LockerContent.CurrentGameplayMusic) {
-                RefreshCover();
+            if (_syncedMusic != LockerContent.CurrentGameplayMusic) {
+                _syncedMusic = LockerContent.CurrentGameplayMusic;
+                if (_usesCover) RefreshCover();
+                if (_playlist != null && !_hasSelected) _playlist.SyncWithCurrentMusic();
             }
 
             Keyboard keyboard = Keyboard.current;
-            if (keyboard != null && keyboard.nKey.wasPressedThisFrame) {
-                NextMusic();
+            if (_playlist != null && keyboard != null) {
+                if (keyboard.nKey.wasPressedThisFrame) Select(true);
+                else if (keyboard.bKey.wasPressedThisFrame) Select(false);
             }
+            _playlist?.Update();
         }
 
-        /// <summary>Passe à la musique possédée suivante, l'équipe et l'annonce.</summary>
-        void NextMusic() {
-            if (_player == null) return;
-
-            List<LockerItem> owned = LockerContent.GetOwnedMusic();
-            if (owned.Count == 0) return;
-
-            int index = owned.IndexOf(LockerContent.CurrentGameplayMusic);
-            LockerItem next = owned[(index + 1) % owned.Count];
-            LockerContent.CurrentGameplayMusic = next;
-            PlayerInventory.Equip(next);
-
-            AudioClip clip = next.IsSceneDefault ? _player.DefaultMusic : LockerContent.GetMusicClip(next);
-            if (clip != null) _player.Play(clip);
-
-            ShowToast(next);
+        void Select(bool next) {
+            _hasSelected = true;
+            if (next) _playlist.Next();
+            else _playlist.Previous();
         }
 
-        void CreateToast() {
-            var document = FindAnyObjectByType<HUD>()?.GetComponent<UIDocument>();
-            if (document == null || document.rootVisualElement == null) return;
+        /// <summary>
+        /// Active la playlist du HUD : le bloc de jeu se décale à gauche pour laisser la place au carrousel,
+        /// et la caméra se décale d'autant pour que le plateau reste dans son cadre.
+        /// </summary>
+        void CreatePlaylist() {
+            HUD hud = FindAnyObjectByType<HUD>();
+            VisualElement root = hud != null ? hud.GetComponent<UIDocument>().rootVisualElement : null;
+            if (root == null || _player == null) return;
 
-            _toast = new Label { pickingMode = PickingMode.Ignore };
-            _toast.AddToClassList("glass");
-            _toast.style.position = Position.Absolute;
-            _toast.style.top = 34;
-            _toast.style.alignSelf = Align.Center;
-            _toast.style.paddingTop = 12;
-            _toast.style.paddingBottom = 12;
-            _toast.style.paddingLeft = 30;
-            _toast.style.paddingRight = 30;
-            _toast.style.fontSize = 22;
-            _toast.style.color = Color.white;
-            _toast.style.unityTextAlign = TextAnchor.MiddleCenter;
-            _toast.style.opacity = 0f;
-            _toast.style.transitionProperty = new List<StylePropertyName> { "opacity", "translate" };
-            _toast.style.transitionDuration = new List<TimeValue> { new(0.25f), new(0.35f) };
-            _toast.style.translate = new Translate(0, -20);
-            document.rootVisualElement.Add(_toast);
+            var playlist = new GameplayPlaylist(root, _player);
+            if (!playlist.IsValid) return;
+            _playlist = playlist;
+
+            VisualElement layout = root.Q("root");
+            VisualElement boardSpace = root.Q(className: "board-space");
+            if (layout == null || boardSpace == null) return;
+
+            // Sans la playlist, le plateau est centré à l'écran : le décalage est l'écart au centre.
+            layout.AddToClassList("root--playlist");
+            boardSpace.RegisterCallback<GeometryChangedEvent>(_ => ShiftCamera(root, root.worldBound.center.x - boardSpace.worldBound.center.x));
         }
 
-        void ShowToast(LockerItem music) {
-            if (_toast == null) return;
+        /// <summary>Décale la caméra de <paramref name="panelOffset"/> pixels de l'interface vers la droite (le plateau part à gauche).</summary>
+        void ShiftCamera(VisualElement root, float panelOffset) {
+            Camera mainCamera = Camera.main;
+            float panelWidth = root.worldBound.width;
+            if (mainCamera == null || panelWidth <= 0f) return;
 
-            string artist = string.IsNullOrEmpty(music.Artist) ? "" : $"  ·  {music.Artist}";
-            _toast.text = $"EN COURS : {music.Name}{artist}";
-            _toast.style.opacity = 1f;
-            _toast.style.translate = new Translate(0, 0);
-
-            _hideToast?.Pause();
-            _hideToast = _toast.schedule.Execute(() => {
-                _toast.style.opacity = 0f;
-                _toast.style.translate = new Translate(0, -20);
-            }).StartingIn((long)(ToastDuration * 1000f));
+            float worldPerPanelPixel = mainCamera.orthographicSize * 2f * mainCamera.aspect / panelWidth;
+            Vector3 position = _cameraOrigin + mainCamera.transform.right * (panelOffset * worldPerPanelPixel);
+            mainCamera.transform.position = position;
         }
     }
 }

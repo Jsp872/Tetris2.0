@@ -90,7 +90,7 @@ namespace Tetris {
         public void SetPaused(bool isPaused) {
             if (!EnsureInitialized()) return;
 
-            ShowOverlay(isPaused, "PAUSE", "Échap pour reprendre  ·  N pour changer de musique", "", "", false, "REPRENDRE");
+            ShowOverlay(isPaused, "PAUSE", "Échap pour reprendre  ·  N / B pour changer de musique", "", "", false, "REPRENDRE");
         }
 
         /// <summary>Écran de fin : titre, résultat, ligne de record, boutons Rejouer / Menu.</summary>

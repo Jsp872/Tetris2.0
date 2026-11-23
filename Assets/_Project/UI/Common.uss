@@ -42,3 +42,151 @@
     border-bottom-left-radius: 120px;
     border-bottom-right-radius: 120px;
 }
+
+/* ---------- Carrousel de musiques (menu principal et playlist en jeu) ---------- */
+
+.carousel {
+    width: 400px;
+    align-items: center;
+    translate: 0 0;
+    transition-property: translate;
+    transition-duration: 0.11s;
+    transition-timing-function: ease-out;
+}
+
+.carousel--shift-up {
+    translate: 0 -16px;
+}
+
+.carousel--shift-down {
+    translate: 0 16px;
+}
+
+Button.carousel__arrow {
+    width: 44px;
+    height: 44px;
+    margin: 0;
+    padding: 0;
+    border-radius: 22px;
+    justify-content: center;
+    align-items: center;
+    scale: 1 1;
+    transition-property: scale, background-color, border-color;
+    transition-duration: 0.18s, 0.18s, 0.18s;
+    transition-timing-function: ease-out-back, ease-out, ease-out;
+}
+
+Button.carousel__arrow:hover,
+Button.carousel__arrow:focus {
+    scale: 1.12 1.12;
+    background-color: rgba(255, 255, 255, 0.18);
+    border-color: rgba(140, 225, 255, 0.55);
+}
+
+Button.carousel__arrow:active {
+    scale: 0.94 0.94;
+}
+
+.carousel__chevron {
+    width: 12px;
+    height: 12px;
+    border-left-width: 3px;
+    border-top-width: 3px;
+    border-color: rgb(255, 255, 255);
+    border-top-left-radius: 3px;
+}
+
+.carousel__chevron--up {
+    rotate: 45deg;
+    translate: 0 3px;
+}
+
+.carousel__chevron--down {
+    rotate: 225deg;
+    translate: 0 -3px;
+}
+
+.carousel__cover {
+    -unity-background-scale-mode: scale-and-crop;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+.carousel__cover--side {
+    width: 192px;
+    height: 108px;
+    margin: 10px 0;
+    border-radius: 14px;
+    border-width: 1px;
+    border-color: rgba(255, 255, 255, 0.18);
+    opacity: 0.5;
+    scale: 1 1;
+    transition-property: opacity, scale;
+    transition-duration: 0.18s, 0.18s;
+}
+
+.carousel__cover--side:hover {
+    opacity: 0.85;
+    scale: 1.04 1.04;
+}
+
+.carousel__current {
+    padding: 8px;
+    margin: 2px 0;
+    border-radius: 24px;
+}
+
+.carousel__cover--current {
+    width: 352px;
+    height: 198px;
+    border-radius: 17px;
+}
+
+.carousel__info {
+    flex-direction: row;
+    align-items: center;
+    width: 352px;
+    padding: 10px 6px 2px 6px;
+}
+
+.carousel__texts {
+    flex-grow: 1;
+    flex-shrink: 1;
+    margin-left: 12px;
+}
+
+.carousel__title {
+    font-size: 19px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-overflow-position: end;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    margin: 0;
+    padding: 0;
+}
+
+.carousel__artist {
+    font-size: 13px;
+    color: rgba(225, 232, 255, 0.65);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    margin: 0;
+    padding: 0;
+}
+
+.equalizer {
+    flex-direction: row;
+    align-items: flex-end;
+    width: 24px;
+    height: 22px;
+}
+
+.equalizer__bar {
+    width: 4px;
+    height: 50%;
+    margin-right: 2px;
+    border-radius: 2px;
+    background-color: rgb(125, 230, 255);
+}

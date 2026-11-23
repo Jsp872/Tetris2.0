@@ -40,6 +40,14 @@ namespace Tetris {
             return isRecord;
         }
 
+        /// <summary>Efface les records de tous les modes.</summary>
+        public static void ClearAll() {
+            foreach (GameMode mode in (GameMode[])System.Enum.GetValues(typeof(GameMode))) {
+                PlayerPrefs.DeleteKey(Key(mode));
+            }
+            PlayerPrefs.Save();
+        }
+
         /// <summary>Texte du résultat : temps "1:02.37" pour le Sprint, score "12 400" sinon.</summary>
         public static string Format(GameMode mode, float value) {
             return mode == GameMode.Sprint ? FormatTime(value) : FormatScore((int)value);

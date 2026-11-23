@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Tetris {
     /// <summary>
     /// Bruitages de la partie : un son à l'apparition d'une pièce (<see cref="BlocSpawnedEvent"/>)
-    /// et un "pop" quand elle se pose (<see cref="BlocLockedEvent"/>).
+    /// et un "pop" quand elle se pose (<see cref="BlocLockedEvent"/>). Volume réglé par <see cref="GameSettings.SfxVolume"/>.
     /// </summary>
     public class GameplaySfx : MonoBehaviour {
         [SerializeField] AudioClip _spawnSound;
@@ -34,15 +34,16 @@ namespace Tetris {
 
         void OnBlocSpawned(BlocSpawnedEvent e) {
             if (_spawnSound != null) {
-                _spawnSource.PlayOneShot(_spawnSound, _spawnVolume);
+                _spawnSource.pitch = SpoofGoofSettings.Pitch;
+                _spawnSource.PlayOneShot(_spawnSound, _spawnVolume * GameSettings.SfxVolume);
             }
         }
 
         void OnBlocLocked(BlocLockedEvent e) {
             if (_lockSound == null) return;
 
-            _lockSource.pitch = 1f + Random.Range(-_lockPitchVariation, _lockPitchVariation);
-            _lockSource.PlayOneShot(_lockSound, _lockVolume);
+            _lockSource.pitch = (1f + Random.Range(-_lockPitchVariation, _lockPitchVariation)) * SpoofGoofSettings.Pitch;
+            _lockSource.PlayOneShot(_lockSound, _lockVolume * GameSettings.SfxVolume);
         }
 
         AudioSource CreateSource() {

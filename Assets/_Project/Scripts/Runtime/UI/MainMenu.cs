@@ -5,10 +5,11 @@ using UnityEngine.UIElements;
 
 namespace Tetris {
     /// <summary>
-    /// Menu principal (UI/MainMenu.uxml) : Jouer ouvre le choix du mode, Options n'est pas encore disponible, Quitter ferme le jeu.
+    /// Menu principal (UI/MainMenu.uxml) : Jouer ouvre le choix du mode, Options ouvre les réglages (<see cref="OptionsMenu"/>),
+    /// Quitter ferme le jeu.
     /// Chaque carte de mode affiche le record et lance la scène de jeu dans ce mode (<see cref="GameSession.Mode"/>).
     /// Un mode sans scène renseignée affiche "bientôt disponible" (la scène doit être dans les Build Profiles).
-    /// Échap revient au menu principal.
+    /// Échap ou Retour revient au menu principal (et enregistre les options si on en sort).
     /// </summary>
     [RequireComponent(typeof(UIDocument))]
     public class MainMenu : MonoBehaviour {
@@ -36,8 +37,13 @@ namespace Tetris {
 
         VisualElement _mainPanel;
         VisualElement _modesPanel;
+        VisualElement _optionsPanel;
+        VisualElement _currentPanel;
+        VisualElement _modeList;
         Button _playButton;
+        Button _optionsButton;
         Button _firstModeButton;
+        OptionsMenu _options;
         Label _toast;
         IVisualElementScheduledItem _hideToast;
 
@@ -46,17 +52,25 @@ namespace Tetris {
 
             _mainPanel = root.Q("main-panel");
             _modesPanel = root.Q("modes-panel");
+            _optionsPanel = root.Q("options-panel");
+            _modeList = root.Q("mode-list");
             _toast = root.Q<Label>("toast");
             _playButton = root.Q<Button>("play-button");
+            _optionsButton = root.Q<Button>("options-button");
+            _options = new OptionsMenu(root.Q("options-list"));
+            _options.RecordsReset += () => BuildModeCards(_modeList);
 
-            _playButton.clicked += () => ShowPanel(_modesPanel, _mainPanel, _firstModeButton);
-            root.Q<Button>("options-button").clicked += () => ShowToast("Les options arrivent bientôt");
+            _playButton.clicked += () => ShowPanel(_modesPanel, _firstModeButton);
+            _optionsButton.clicked += ShowOptionsPanel;
             root.Q<Button>("quit-button").clicked += Quit;
             root.Q<Button>("back-button").clicked += ShowMainPanel;
+            root.Q<Button>("options-back-button").clicked += ShowMainPanel;
             root.RegisterCallback<NavigationCancelEvent>(_ => ShowMainPanel());
 
-            BuildModeCards(root.Q("mode-list"));
+            BuildModeCards(_modeList);
             _modesPanel.style.display = DisplayStyle.None;
+            _optionsPanel.style.display = DisplayStyle.None;
+            _currentPanel = _mainPanel;
             _playButton.schedule.Execute(() => _playButton.Focus());
         }
 
@@ -102,15 +116,27 @@ namespace Tetris {
             ShowToast($"Le mode {mode.title} arrive bientôt");
         }
 
-        void ShowMainPanel() {
-            if (_mainPanel.style.display == DisplayStyle.None) {
-                ShowPanel(_mainPanel, _modesPanel, _playButton);
-            }
+        void ShowOptionsPanel() {
+            _options.Refresh();
+            ShowPanel(_optionsPanel, _options.FirstRow);
         }
 
-        static void ShowPanel(VisualElement show, VisualElement hide, Focusable focus) {
-            hide.AddToClassList(PanelHiddenClass);
-            hide.style.display = DisplayStyle.None;
+        /// <summary>Retour au menu principal, sur le bouton qui avait ouvert le panneau.</summary>
+        void ShowMainPanel() {
+            if (_currentPanel == _mainPanel) return;
+
+            Focusable focus = _playButton;
+            if (_currentPanel == _optionsPanel) {
+                _options.Save();
+                focus = _optionsButton;
+            }
+            ShowPanel(_mainPanel, focus);
+        }
+
+        void ShowPanel(VisualElement show, Focusable focus) {
+            _currentPanel.AddToClassList(PanelHiddenClass);
+            _currentPanel.style.display = DisplayStyle.None;
+            _currentPanel = show;
 
             show.style.display = DisplayStyle.Flex;
             show.schedule.Execute(() => {

@@ -9,6 +9,7 @@ namespace Tetris {
     /// - le chat aux Ruffles en image rémanente toutes les <see cref="_chipsCatEveryLines"/> lignes ;
     /// - Scuba Cat qui danse et rebondit sur les bords de l'écran comme le logo DVD quand la partie est perdue,
     ///   sur le son "scubbaaa" suivi d'une musique de fond en boucle.
+    /// Volume des sons réglé par <see cref="GameSettings.MemeVolume"/>.
     /// </summary>
     public class MemeEasterEggs : MonoBehaviour {
         const string PlanktonHiddenClass = "meme-plankton--hidden";
@@ -91,12 +92,13 @@ namespace Tetris {
         }
 
         void ShowPlankton() {
-            float duration = _planktonSound != null ? _planktonSound.length : 3f;
+            float duration = _planktonSound != null ? _planktonSound.length / SpoofGoofSettings.Pitch : 3f;
             _planktonEndTime = Time.unscaledTime + duration;
             _plankton.RemoveFromClassList(PlanktonHiddenClass);
 
             if (_planktonSound != null) {
-                _audioSource.PlayOneShot(_planktonSound);
+                _audioSource.pitch = SpoofGoofSettings.Pitch;
+                _audioSource.PlayOneShot(_planktonSound, GameSettings.MemeVolume);
             }
         }
 
@@ -118,14 +120,17 @@ namespace Tetris {
         }
 
         void PlayScubaAudio() {
+            float pitch = SpoofGoofSettings.Pitch;
             double startTime = AudioSettings.dspTime;
             if (_scubaSound != null) {
-                _audioSource.PlayOneShot(_scubaSound);
-                startTime += _scubaSound.length;
+                _audioSource.pitch = pitch;
+                _audioSource.PlayOneShot(_scubaSound, GameSettings.MemeVolume);
+                startTime += _scubaSound.length / pitch;
             }
 
+            _musicSource.pitch = pitch;
             _musicSource.clip = _scubaMusic != null ? _scubaMusic : _scubaSound;
-            _musicSource.volume = _scubaMusic != null ? _scubaMusicVolume : 1f;
+            _musicSource.volume = (_scubaMusic != null ? _scubaMusicVolume : 1f) * GameSettings.MemeVolume;
             if (_musicSource.clip != null) {
                 _musicSource.PlayScheduled(startTime);
             }

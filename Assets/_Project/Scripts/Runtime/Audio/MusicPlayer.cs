@@ -5,6 +5,8 @@ namespace Tetris {
     /// <summary>
     /// Musique de fond en boucle avec fondus. <see cref="Play"/> change de musique (fondu sortant puis entrant).
     /// Peut s'arrêter en fondu au game over (pour laisser la place à la musique du Scuba Cat).
+    /// Le volume suit <see cref="GameSettings.MusicVolume"/> et la hauteur suit <see cref="SpoofGoofSettings.Pitch"/>,
+    /// en direct (réglables pendant que la musique joue).
     /// </summary>
     public class MusicPlayer : MonoBehaviour {
         [Tooltip("Musique lancée au démarrage. Vide : rien tant que Play n'est pas appelé.")]
@@ -19,7 +21,8 @@ namespace Tetris {
 
         AudioSource _source;
         AudioClip _pendingClip;
-        float _targetVolume;
+        float _fade;
+        float _targetFade;
         float _fadeSpeed;
 
         void Awake() {
@@ -47,7 +50,7 @@ namespace Tetris {
             if (clip == null) return;
 
             _pendingClip = clip;
-            if (_source.isPlaying && _source.volume > 0f) {
+            if (_source.isPlaying && _fade > 0f) {
                 FadeTo(0f, _switchFadeDuration);
             }
             else {
@@ -59,7 +62,7 @@ namespace Tetris {
             _source.clip = _pendingClip;
             _pendingClip = null;
             _source.Play();
-            FadeTo(_volume, _fadeInDuration);
+            FadeTo(1f, _fadeInDuration);
         }
 
         void OnGameOver(GameOverEvent e) {
@@ -69,15 +72,18 @@ namespace Tetris {
             }
         }
 
-        void FadeTo(float volume, float duration) {
-            _targetVolume = volume;
-            _fadeSpeed = Mathf.Abs(volume - _source.volume) / Mathf.Max(duration, 0.01f);
+        /// <summary>Fondu vers <paramref name="fade"/> (0 : silence, 1 : volume normal).</summary>
+        void FadeTo(float fade, float duration) {
+            _targetFade = fade;
+            _fadeSpeed = Mathf.Abs(fade - _fade) / Mathf.Max(duration, 0.01f);
         }
 
         void Update() {
-            _source.volume = Mathf.MoveTowards(_source.volume, _targetVolume, _fadeSpeed * Time.unscaledDeltaTime);
+            _fade = Mathf.MoveTowards(_fade, _targetFade, _fadeSpeed * Time.unscaledDeltaTime);
+            _source.volume = _fade * _volume * GameSettings.MusicVolume;
+            _source.pitch = SpoofGoofSettings.Pitch;
 
-            if (_targetVolume > 0f || _source.volume > 0f) return;
+            if (_targetFade > 0f || _fade > 0f) return;
 
             if (_pendingClip != null) {
                 StartPendingClip();

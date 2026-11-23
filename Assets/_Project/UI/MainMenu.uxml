@@ -34,6 +34,13 @@
                     <ui:VisualElement name="mode-list" />
                     <ui:Button name="back-button" text="RETOUR" class="glass menu-button menu-button--small" />
                 </ui:VisualElement>
+
+                <!-- Options (lignes générées par OptionsMenu.cs) -->
+                <ui:VisualElement name="options-panel" class="menu-panel menu-panel--hidden">
+                    <ui:Label text="OPTIONS" class="label-caption menu-panel__caption" />
+                    <ui:ScrollView name="options-list" class="glass options-card" vertical-scroller-visibility="Hidden" horizontal-scroller-visibility="Hidden" />
+                    <ui:Button name="options-back-button" text="RETOUR" class="glass menu-button menu-button--small" />
+                </ui:VisualElement>
             </ui:VisualElement>
 
             <ui:Label name="toast" text="Bientôt disponible" class="menu-toast menu-toast--hidden" />

@@ -12,6 +12,9 @@ namespace Tetris {
     /// <item>Sprint : fin à 40 lignes, classement au temps.</item>
     /// <item>Ultra : fin après 2 minutes, classement au score.</item>
     /// </list>
+    /// La partie est perdue si une pièce ne peut pas apparaître, ou si elle se pose en laissant une case
+    /// au-dessus de la ligne de limite (<see cref="Board.LimitY"/>).
+    /// Applique aussi les options Spoof Goof qui touchent aux règles (inversion, boussole, gravité).
     /// </summary>
     public class GameManager : MonoBehaviour {
         enum State { Countdown, Playing, Paused, Ended }
@@ -35,7 +38,8 @@ namespace Tetris {
         public int Level => Mode == GameMode.Marathon ? Mathf.Min(1 + Lines / _config.linesPerLevel, _config.marathonMaxLevel) : 1;
         public bool IsGameOver => _state == State.Ended;
 
-        float FallInterval => Mathf.Max(_config.fallInterval * Mathf.Pow(_config.levelSpeedFactor, Level - 1), _config.minFallInterval);
+        float FallInterval => Mathf.Max(_config.fallInterval * Mathf.Pow(_config.levelSpeedFactor, Level - 1), _config.minFallInterval)
+                              * SpoofGoofSettings.FallIntervalFactor;
 
         void OnEnable() {
             EventBus<MoveInputEvent>.Subscribe(OnMove);
@@ -104,6 +108,11 @@ namespace Tetris {
 
             if (_current.CanMove(Vector2Int.down)) {
                 _current.Move(Vector2Int.down);
+
+                // Inversion verticale : la ligne de limite est en bas, la pièce la traverse en tombant.
+                if (SpoofGoofSettings.IsInverted && _current.MinY <= _board.Height - 1 - _board.LimitY) {
+                    EndGame(true, "MAUVAIS SENS");
+                }
                 return;
             }
 
@@ -116,6 +125,11 @@ namespace Tetris {
                 Lines += cleared;
                 RefreshHud();
                 EventBus<ScoreChangedEvent>.Publish(new ScoreChangedEvent(Score, Lines, cleared));
+            }
+
+            if (_board.HasBlocksFrom(_board.LimitY)) {
+                EndGame(true, "GAME OVER");
+                return;
             }
 
             if (Mode == GameMode.Sprint && Lines >= _config.sprintLines) {
@@ -144,6 +158,7 @@ namespace Tetris {
         /// <summary>
         /// Termine la partie et affiche le résultat. <paramref name="isLoss"/> : la pile a atteint le haut
         /// (publie <see cref="GameOverEvent"/>). Un Sprint perdu n'a pas de temps valable, donc pas de record.
+        /// Pas de record non plus avec les options Spoof Goof qui changent les règles.
         /// </summary>
         public void EndGame(bool isLoss, string title) {
             if (_state == State.Ended) return;
@@ -152,10 +167,12 @@ namespace Tetris {
 
             bool hasResult = !(Mode == GameMode.Sprint && isLoss);
             float result = Mode == GameMode.Sprint ? _elapsed : Score;
-            bool isRecord = hasResult && ModeRecords.Submit(Mode, result);
+            bool recordsEnabled = !SpoofGoofSettings.DisablesRecords;
+            bool isRecord = hasResult && recordsEnabled && ModeRecords.Submit(Mode, result);
 
             string value = hasResult ? ModeRecords.Format(Mode, result) : $"{Lines} / {_config.sprintLines} lignes";
-            string recordLine = ModeRecords.TryGet(Mode, out float best) ? $"Record : {ModeRecords.Format(Mode, best)}" : "";
+            string recordLine = !recordsEnabled ? "Records désactivés par le Spoof Goof"
+                : ModeRecords.TryGet(Mode, out float best) ? $"Record : {ModeRecords.Format(Mode, best)}" : "";
             _hud.ShowResult(title, value, recordLine, isRecord);
 
             if (isLoss) {
@@ -187,7 +204,7 @@ namespace Tetris {
         void OnMove(MoveInputEvent e) {
             if (_state != State.Playing || _current == null || e.Direction == 0) return;
 
-            var direction = new Vector2Int(e.Direction, 0);
+            var direction = new Vector2Int(SpoofGoofSettings.IsCompassBroken ? -e.Direction : e.Direction, 0);
             if (_current.CanMove(direction)) {
                 _current.Move(direction);
             }

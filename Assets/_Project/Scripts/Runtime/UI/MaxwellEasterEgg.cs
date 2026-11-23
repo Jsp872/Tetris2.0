@@ -83,7 +83,7 @@ namespace Tetris {
         void AddCombo() {
             bool comboExpired = Time.unscaledTime - _releaseTime > _comboResetDelay;
             _speed = comboExpired ? 1f : Mathf.Min(_speed + _comboStep, _maxSpeed);
-            _audioSource.pitch = Mathf.Min(1f + (_speed - 1f) * _pitchPerSpeed, _maxPitch);
+            _audioSource.pitch = Mathf.Min(1f + (_speed - 1f) * _pitchPerSpeed, _maxPitch) * SpoofGoofSettings.Pitch;
 
             _comboLabel.text = $"SPEED x{_speed.ToString("0.0", CultureInfo.InvariantCulture)}";
             _comboLabel.AddToClassList(ComboPopClass);
@@ -97,6 +97,7 @@ namespace Tetris {
             _container.EnableInClassList(HiddenClass, !isActive);
 
             if (isActive) {
+                _audioSource.volume = GameSettings.MemeVolume;
                 _audioSource.Play();
             }
             else {

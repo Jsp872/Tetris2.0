@@ -4,6 +4,8 @@ namespace Tetris {
     /// <summary>
     /// Grille du jeu. La case (0, 0) est en bas à gauche, centrée sur la position du Board.
     /// Une case fait 1 unité : la case (x, y) est à la position du Board + (x, y).
+    /// Les pièces apparaissent dans les 3 lignes du haut (<see cref="LimitY"/> et au-dessus) :
+    /// une pièce posée qui laisse une case dans cette zone fait perdre.
     /// </summary>
     public class Board : MonoBehaviour {
         [SerializeField] int _width = 10;
@@ -14,6 +16,12 @@ namespace Tetris {
         public int Width => _width;
         public int Height => _height;
 
+        /// <summary>Ligne du pivot des pièces qui apparaissent (Bloc.Init).</summary>
+        public int SpawnY => _height - 2;
+
+        /// <summary>Première ligne de la zone d'apparition. La ligne de limite est dessinée juste en dessous.</summary>
+        public int LimitY => _height - 3;
+
         void Awake() {
             _grid = new Transform[_width, _height];
         }
@@ -21,6 +29,21 @@ namespace Tetris {
         /// <summary>Vrai si la case est dans la grille et vide.</summary>
         public bool IsFree(int x, int y) {
             return x >= 0 && x < _width && y >= 0 && y < _height && _grid[x, y] == null;
+        }
+
+        /// <summary>Visuel du bloc posé dans la case, ou null si elle est vide.</summary>
+        public Transform GetCell(int x, int y) {
+            return _grid[x, y];
+        }
+
+        /// <summary>Vrai si au moins une case est occupée à partir de la ligne <paramref name="fromY"/> (incluse).</summary>
+        public bool HasBlocksFrom(int fromY) {
+            for (int y = Mathf.Max(fromY, 0); y < _height; y++) {
+                for (int x = 0; x < _width; x++) {
+                    if (_grid[x, y] != null) return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>Occupe la case avec le visuel d'un bloc posé.</summary>

@@ -34,9 +34,12 @@ Dans la scène `Game`, l'objet `PlayerInputsHandler` porte le `PlayerInput` et l
 |---|---|---|---|
 | `MoveInputEvent` | A / D, Gauche / Droite | `Direction` : `-1` (gauche), `1` (droite), `0` (relâché) | La direction change |
 | `DownInputEvent` | Espace, Bas | `IsPressed` : `true` / `false` | Appui puis relâchement |
-| `RotateInputEvent` | W | aucun | Appui |
+| `RotateInputEvent` | R, Haut | aucun | Appui |
 | `PauseInputEvent` | Échap | aucun | Appui |
 | `MiscInputEvent` | J | aucun | Appui (réservé pour plus tard) |
+
+Les touches lettres sont liées par position physique, sur la base d'un clavier QWERTY. Sur un clavier AZERTY :
+A devient Q. D, R et J ne changent pas.
 
 Un événement n'est publié que si la valeur change. Maintenir une touche n'envoie rien en boucle :
 si le gameplay veut répéter un déplacement tant que la touche est tenue, c'est à lui de le faire.

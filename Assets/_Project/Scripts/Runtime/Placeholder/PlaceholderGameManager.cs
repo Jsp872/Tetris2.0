@@ -3,41 +3,38 @@ using UnityEngine;
 
 namespace Tetris.Placeholder {
     /// <summary>
-    /// PLACEHOLDER : spawn, gravité et déplacements pour tester le Board. À remplacer par le vrai Spawner.
-    /// Écoute MoveInputEvent (déplacement d'une case) et DownInputEvent (descente rapide tant que maintenu).
+    /// PLACEHOLDER : spawn, gravité et inputs pour tester Board et Bloc. À remplacer par le Spawner et le GameManager.
+    /// Move : déplacer, Down : descente rapide, Rotate : tourner, Pause : pause / reprise, Misc : log de debug.
     /// </summary>
     public class PlaceholderGameManager : MonoBehaviour {
-        static readonly Vector2Int[][] Shapes = {
-            new[] { new Vector2Int(-1, 0), new Vector2Int(0, 0), new Vector2Int(1, 0), new Vector2Int(2, 0) },  // I
-            new[] { new Vector2Int(0, 0), new Vector2Int(1, 0), new Vector2Int(0, 1), new Vector2Int(1, 1) },   // O
-            new[] { new Vector2Int(-1, 0), new Vector2Int(0, 0), new Vector2Int(1, 0), new Vector2Int(0, 1) },  // T
-            new[] { new Vector2Int(-1, 0), new Vector2Int(0, 0), new Vector2Int(0, 1), new Vector2Int(1, 1) },  // S
-            new[] { new Vector2Int(-1, 1), new Vector2Int(0, 1), new Vector2Int(0, 0), new Vector2Int(1, 0) },  // Z
-            new[] { new Vector2Int(-1, 1), new Vector2Int(-1, 0), new Vector2Int(0, 0), new Vector2Int(1, 0) }, // J
-            new[] { new Vector2Int(1, 1), new Vector2Int(-1, 0), new Vector2Int(0, 0), new Vector2Int(1, 0) },  // L
-        };
-
-        static readonly Color[] Colors = {
-            Color.cyan, Color.yellow, new Color(0.6f, 0f, 1f), Color.green, Color.red, Color.blue, new Color(1f, 0.5f, 0f),
-        };
-
         [SerializeField] Board _board;
+        [SerializeField] Bloc _blocPrefab;
+        [SerializeField] BlocSO[] _blocs;
+        [SerializeField] Sprite _backgroundSprite;
         [SerializeField] float _fallInterval = 0.8f;
         [SerializeField] float _softDropInterval = 0.05f;
 
-        PlaceholderBloc _current;
+        Bloc _current;
         float _fallTimer;
         bool _isSoftDropping;
+        bool _isPaused;
         int _totalLines;
 
         void OnEnable() {
             EventBus<MoveInputEvent>.Subscribe(OnMove);
             EventBus<DownInputEvent>.Subscribe(OnDown);
+            EventBus<RotateInputEvent>.Subscribe(OnRotate);
+            EventBus<PauseInputEvent>.Subscribe(OnPause);
+            EventBus<MiscInputEvent>.Subscribe(OnMisc);
         }
 
         void OnDisable() {
             EventBus<MoveInputEvent>.Unsubscribe(OnMove);
             EventBus<DownInputEvent>.Unsubscribe(OnDown);
+            EventBus<RotateInputEvent>.Unsubscribe(OnRotate);
+            EventBus<PauseInputEvent>.Unsubscribe(OnPause);
+            EventBus<MiscInputEvent>.Unsubscribe(OnMisc);
+            Time.timeScale = 1f;
         }
 
         void Start() {
@@ -45,14 +42,33 @@ namespace Tetris.Placeholder {
             SpawnNext();
         }
 
+        void OnPause(PauseInputEvent e) {
+            _isPaused = !_isPaused;
+            Time.timeScale = _isPaused ? 0f : 1f;
+            Debug.Log(_isPaused ? "Pause" : "Reprise");
+        }
+
+        void OnMisc(MiscInputEvent e) {
+            Debug.Log("Misc");
+        }
+
         void OnMove(MoveInputEvent e) {
-            if (_current != null && e.Direction != 0) {
-                _current.TryMove(new Vector2Int(e.Direction, 0));
+            if (_isPaused || _current == null || e.Direction == 0) return;
+
+            var direction = new Vector2Int(e.Direction, 0);
+            if (_current.CanMove(direction)) {
+                _current.Move(direction);
             }
         }
 
         void OnDown(DownInputEvent e) {
             _isSoftDropping = e.IsPressed;
+        }
+
+        void OnRotate(RotateInputEvent e) {
+            if (!_isPaused && _current != null && _current.CanRotate()) {
+                _current.Rotate();
+            }
         }
 
         void Update() {
@@ -62,7 +78,10 @@ namespace Tetris.Placeholder {
             if (_fallTimer < (_isSoftDropping ? _softDropInterval : _fallInterval)) return;
 
             _fallTimer = 0f;
-            if (!_current.TryMove(Vector2Int.down)) {
+            if (_current.CanMove(Vector2Int.down)) {
+                _current.Move(Vector2Int.down);
+            }
+            else {
                 LockCurrent();
             }
         }
@@ -81,14 +100,11 @@ namespace Tetris.Placeholder {
         }
 
         void SpawnNext() {
-            int index = Random.Range(0, Shapes.Length);
-            var spawnPosition = new Vector2Int(_board.Width / 2 - 1, _board.Height - 2);
-
-            _current = new GameObject("Bloc").AddComponent<PlaceholderBloc>();
-            _current.Init(Shapes[index], Colors[index], _board, spawnPosition);
+            _current = Instantiate(_blocPrefab);
+            _current.Init(_blocs[Random.Range(0, _blocs.Length)], _board);
             _fallTimer = 0f;
 
-            if (!_current.IsValid()) {
+            if (!_current.CanMove(Vector2Int.zero)) {
                 Debug.Log("Game Over");
                 Destroy(_current.gameObject);
                 _current = null;
@@ -102,7 +118,7 @@ namespace Tetris.Placeholder {
             background.transform.localScale = new Vector3(_board.Width, _board.Height, 1f);
 
             var spriteRenderer = background.AddComponent<SpriteRenderer>();
-            spriteRenderer.sprite = PlaceholderBloc.GetCellSprite();
+            spriteRenderer.sprite = _backgroundSprite;
             spriteRenderer.color = new Color(0.12f, 0.12f, 0.15f);
             spriteRenderer.sortingOrder = -1;
         }

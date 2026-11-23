@@ -301,6 +301,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09450cbd07235dd9e8337c59ae4d256b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Tetris.Runtime::Tetris.InputReader
+  _moveThreshold: 0.5
 --- !u!114 &556919287
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -558,6 +559,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Tetris.Runtime::Tetris.Placeholder.PlaceholderGameManager
   _board: {fileID: 1000000003}
+  _blocPrefab: {fileID: 4810000000000000003, guid: cd6c447ded554792bc0d55bdbcef8910, type: 3}
+  _blocs:
+  - {fileID: 11400000, guid: 1c2821769bd34ff7becc2634e282e232, type: 2}
+  - {fileID: 11400000, guid: 8e4b4e460a224f11b5e0e78c4ac21996, type: 2}
+  - {fileID: 11400000, guid: b17d1343162345a8ba7c145d603caa2f, type: 2}
+  - {fileID: 11400000, guid: f933d180b32e457cb63dd8b27ae8cda6, type: 2}
+  - {fileID: 11400000, guid: cb16ac93300f4b92a0e80bd52a23a2a2, type: 2}
+  - {fileID: 11400000, guid: aebd403c7f894576aec1807a5bd24c32, type: 2}
+  - {fileID: 11400000, guid: 4e535fb8739d43da991faf1ee5f5cc13, type: 2}
+  _backgroundSprite: {fileID: 7482667652216324306, guid: 51dbcaf3b24440238f41553da9f5a6f8, type: 3}
   _fallInterval: 0.8
   _softDropInterval: 0.05
 --- !u!1660057539 &9223372036854775807

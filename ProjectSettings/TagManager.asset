@@ -38,6 +38,18 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 752951607
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Board
+    uniqueID: 2150260141
+    locked: 0
+  - name: Pieces
+    uniqueID: 753615460
+    locked: 0
+  - name: Effects
+    uniqueID: 4040598300
     locked: 0

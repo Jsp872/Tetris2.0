@@ -112,3 +112,23 @@ InitTestScene*.unity*
 
 # Auto-generated cache in Assets folder
 /[Aa]ssets/[Ss]ceneDependencyCache*
+
+# ---------------------------------------------------------------------------
+# Project-specific
+# ---------------------------------------------------------------------------
+
+# Local Claude notes / working docs (not versioned)
+/[Dd]ocs/[Cc]laude/
+
+# Claude Code local settings
+.claude/settings.local.json
+
+# IDEs
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini

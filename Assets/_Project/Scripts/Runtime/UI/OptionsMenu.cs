@@ -60,10 +60,10 @@ namespace Tetris {
             _cancelReset?.Pause();
 
             AddSection("SON");
-            AddVolume("GÉNÉRAL", GameSettings.MasterVolume, v => GameSettings.MasterVolume = v);
-            AddVolume("MUSIQUE", GameSettings.MusicVolume, v => GameSettings.MusicVolume = v);
-            AddVolume("EFFETS", GameSettings.SfxVolume, v => GameSettings.SfxVolume = v);
-            AddVolume("MÈMES", GameSettings.MemeVolume, v => GameSettings.MemeVolume = v);
+            AddVolume("GÉNÉRAL", () => GameSettings.MasterVolume, v => GameSettings.MasterVolume = v);
+            AddVolume("MUSIQUE", () => GameSettings.MusicVolume, v => GameSettings.MusicVolume = v);
+            AddVolume("EFFETS", () => GameSettings.SfxVolume, v => GameSettings.SfxVolume = v);
+            AddVolume("MÈMES", () => GameSettings.MemeVolume, v => GameSettings.MemeVolume = v);
 
             AddSection("AFFICHAGE");
             AddDisplayRows();
@@ -274,8 +274,12 @@ namespace Tetris {
             _list.Add(CreateLabel(title, "options-section"));
         }
 
-        /// <summary>Volume : barre cliquable et glissable, gauche / droite par pas de 10 %.</summary>
-        void AddVolume(string title, float value, Action<float> onChanged) {
+        /// <summary>
+        /// Volume : barre cliquable et glissable, gauche / droite par pas de 10 %.
+        /// Suit aussi la valeur si elle change ailleurs (l'interface déplorable s'amuse avec).
+        /// </summary>
+        void AddVolume(string title, Func<float> getValue, Action<float> onChanged) {
+            float value = getValue();
             var bar = new VisualElement();
             bar.AddToClassList("options-volume__bar");
             var track = new VisualElement();
@@ -299,6 +303,10 @@ namespace Tetris {
             }
 
             VisualElement row = CreateRow(title, step => Set(Mathf.Round((value + step * VolumeStep) * 10f) / 10f, true));
+            row.schedule.Execute(() => {
+                float current = getValue();
+                if (!Mathf.Approximately(current, value)) Set(current, false);
+            }).Every(100);
             VisualElement control = row.Q(className: "options-row__control");
             control.Add(bar);
             control.Add(valueLabel);

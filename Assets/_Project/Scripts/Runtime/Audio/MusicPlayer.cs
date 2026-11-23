@@ -32,6 +32,15 @@ namespace Tetris {
         /// <summary>Musique de départ réglée dans l'inspecteur.</summary>
         public AudioClip DefaultMusic => _music;
 
+        /// <summary>Faux : le morceau s'arrête à la fin (la playlist enchaîne avec <see cref="IsFinished"/>).</summary>
+        public bool Loop {
+            get => _source.loop;
+            set => _source.loop = value;
+        }
+
+        /// <summary>Le morceau est arrivé à sa fin tout seul (pas coupé par un fondu ni en attente d'un autre).</summary>
+        public bool IsFinished => !_source.isPlaying && _pendingClip == null && _targetFade > 0f && _source.clip != null;
+
         /// <summary>Clip en cours (ou celui qui va démarrer après le fondu).</summary>
         public AudioClip CurrentClip => _pendingClip != null ? _pendingClip : _source.clip;
 

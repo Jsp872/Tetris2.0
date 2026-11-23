@@ -27,6 +27,8 @@ namespace Tetris {
             public List<string> owned = new();
             public string[] equipped;
             public string[] sounds;
+            public List<string> playlist = new();
+            public bool shuffle;
             public List<SpentCompliment> spent = new();
         }
 
@@ -56,6 +58,44 @@ namespace Tetris {
         public static LockerItem GetEquipped(LockerCategory category) {
             LockerItem item = LockerCatalog.Get(Data.equipped[(int)category]);
             return item != null && item.Category == category && Owns(item) ? item : LockerCatalog.Default(category);
+        }
+
+        /// <summary>
+        /// Playlist de la partie, dans l'ordre choisi dans le Casier (musiques possédées seulement).
+        /// Vide : la musique d'origine.
+        /// </summary>
+        public static IReadOnlyList<LockerItem> Playlist {
+            get {
+                var result = new List<LockerItem>();
+                foreach (string id in Data.playlist) {
+                    LockerItem item = LockerCatalog.Get(id);
+                    if (item != null && item.Category == LockerCategory.Music && Owns(item)) result.Add(item);
+                }
+                if (result.Count == 0) result.Add(LockerCatalog.Default(LockerCategory.Music));
+                return result;
+            }
+        }
+
+        /// <summary>Position dans la playlist (0 = première), ou -1.</summary>
+        public static int PlaylistIndex(LockerItem item) => Data.playlist.IndexOf(item.Id);
+
+        /// <summary>Ajoute la musique à la fin de la playlist, ou la retire si elle y est.</summary>
+        public static void TogglePlaylist(LockerItem item) {
+            if (!Owns(item) || item.Category != LockerCategory.Music) return;
+
+            if (!Data.playlist.Remove(item.Id)) Data.playlist.Add(item.Id);
+            Save();
+            Changed?.Invoke();
+        }
+
+        /// <summary>Lecture aléatoire : la partie commence sur une musique au hasard et la suivante est tirée au sort.</summary>
+        public static bool Shuffle {
+            get => Data.shuffle;
+            set {
+                Data.shuffle = value;
+                Save();
+                Changed?.Invoke();
+            }
         }
 
         /// <summary>Son équipé pour ce moment de la partie (le son de base si rien n'est équipé).</summary>
@@ -134,6 +174,7 @@ namespace Tetris {
             _data ??= new SaveData();
             _data.owned ??= new List<string>();
             _data.spent ??= new List<SpentCompliment>();
+            _data.playlist ??= new List<string>();
 
             _data.equipped = Resize(_data.equipped, Enum.GetValues(typeof(LockerCategory)).Length);
             _data.sounds = Resize(_data.sounds, Enum.GetValues(typeof(SoundSlot)).Length);

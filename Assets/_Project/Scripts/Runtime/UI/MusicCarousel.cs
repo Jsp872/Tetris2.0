@@ -58,6 +58,11 @@ namespace Tetris {
             _player.Play(_library.tracks[_index].clip);
         }
 
+        /// <summary>Passe à une musique au hasard (interface déplorable).</summary>
+        public void SelectRandom() {
+            if (Count > 1) Select(_index + Random.Range(1, Count));
+        }
+
         void Select(int index) {
             int direction = index > _index ? 1 : -1;
             _index = (index % Count + Count) % Count;

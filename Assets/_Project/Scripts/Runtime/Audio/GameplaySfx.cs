@@ -9,6 +9,7 @@ namespace Tetris {
     /// Les sons "ORIGINAL" de l'apparition et de la pose sont ceux réglés ici dans l'inspecteur.
     /// Les moments fréquents (apparition, déplacement, rotation, pose) ont chacun leur source : un nouveau son coupe
     /// le précédent au lieu de s'empiler. Lignes, Tetris et game over se superposent.
+    /// La descente (<see cref="SoundSlot.SoftDrop"/>) tourne en boucle tant que la touche est maintenue.
     /// Volume réglé par <see cref="GameSettings.SfxVolume"/>.
     /// </summary>
     public class GameplaySfx : MonoBehaviour {
@@ -25,9 +26,12 @@ namespace Tetris {
         readonly float[] _volumes = new float[System.Enum.GetValues(typeof(SoundSlot)).Length];
         readonly AudioSource[] _slotSources = new AudioSource[System.Enum.GetValues(typeof(SoundSlot)).Length];
         AudioSource _eventSource;
+        AudioSource _softDropSource;
 
         void Awake() {
             _eventSource = CreateSource();
+            _softDropSource = CreateSource();
+            _softDropSource.loop = true;
             foreach (SoundSlot slot in new[] { SoundSlot.Spawn, SoundSlot.Move, SoundSlot.Rotate, SoundSlot.Lock }) {
                 _slotSources[(int)slot] = CreateSource();
             }
@@ -49,6 +53,7 @@ namespace Tetris {
             EventBus<BlocRotatedEvent>.Subscribe(OnBlocRotated);
             EventBus<ScoreChangedEvent>.Subscribe(OnScoreChanged);
             EventBus<GameOverEvent>.Subscribe(OnGameOver);
+            EventBus<DownInputEvent>.Subscribe(OnDown);
         }
 
         void OnDisable() {
@@ -58,6 +63,7 @@ namespace Tetris {
             EventBus<BlocRotatedEvent>.Unsubscribe(OnBlocRotated);
             EventBus<ScoreChangedEvent>.Unsubscribe(OnScoreChanged);
             EventBus<GameOverEvent>.Unsubscribe(OnGameOver);
+            EventBus<DownInputEvent>.Unsubscribe(OnDown);
         }
 
         void OnBlocSpawned(BlocSpawnedEvent e) => Play(SoundSlot.Spawn, 0f);
@@ -75,7 +81,24 @@ namespace Tetris {
             Play(isTetris ? SoundSlot.Tetris : SoundSlot.Line, 0f);
         }
 
-        void OnGameOver(GameOverEvent e) => Play(SoundSlot.GameOver, 0f);
+        void OnGameOver(GameOverEvent e) {
+            _softDropSource.Stop();
+            Play(SoundSlot.GameOver, 0f);
+        }
+
+        /// <summary>Boucle de descente : démarre à l'appui, s'arrête au relâchement.</summary>
+        void OnDown(DownInputEvent e) {
+            AudioClip clip = _clips[(int)SoundSlot.SoftDrop];
+            if (!e.IsPressed || clip == null) {
+                _softDropSource.Stop();
+                return;
+            }
+
+            _softDropSource.clip = clip;
+            _softDropSource.pitch = SpoofGoofSettings.Pitch;
+            _softDropSource.volume = _volumes[(int)SoundSlot.SoftDrop] * GameSettings.SfxVolume;
+            _softDropSource.Play();
+        }
 
         void Play(SoundSlot slot, float pitchVariation) {
             AudioClip clip = _clips[(int)slot];

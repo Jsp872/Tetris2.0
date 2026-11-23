@@ -1270,3 +1270,203 @@ Button.shop-dialog__play:hover {
     margin: 0 6px 0 0;
     padding: 0;
 }
+
+/* ---------- Casier façon Fortnite (LockerScreen.cs, LockerPreview.cs) ---------- */
+
+.locker__preview {
+    width: 560px;
+    flex-shrink: 0;
+    margin: 0 30px 0 0;
+    padding: 16px;
+    border-radius: 30px;
+    align-items: center;
+}
+
+.preview__stage {
+    width: 528px;
+    height: 640px;
+    border-radius: 20px;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+}
+
+.preview__background {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -unity-background-scale-mode: scale-and-crop;
+}
+
+.preview__blob {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 140px;
+}
+
+.preview__board {
+    border-width: 2px;
+    border-radius: 12px;
+}
+
+.preview__cell {
+    position: absolute;
+    border-radius: 4px;
+}
+
+.preview__limit {
+    position: absolute;
+    left: 4px;
+    right: 4px;
+    height: 2px;
+}
+
+.preview__status {
+    font-size: 15px;
+    letter-spacing: 3px;
+    color: rgb(125, 230, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 12px 0 0 0;
+    padding: 0;
+}
+
+Button.preview__simulate {
+    width: 100%;
+    height: 66px;
+    margin: 12px 0 0 0;
+    border-radius: 33px;
+    font-size: 21px;
+    letter-spacing: 4px;
+    color: rgb(60, 35, 0);
+    background-color: rgb(255, 210, 70);
+    border-color: rgb(255, 240, 170);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    transition-property: scale, background-color;
+    transition-duration: 0.15s, 0.15s;
+}
+
+Button.preview__simulate:hover {
+    scale: 1.03 1.03;
+}
+
+Button.preview__simulate--on {
+    color: rgb(255, 255, 255);
+    background-color: rgb(230, 60, 90);
+    border-color: rgb(255, 160, 180);
+}
+
+.locker__right {
+    flex-grow: 1;
+    flex-shrink: 1;
+    min-width: 0;
+}
+
+.locker__loadout {
+    flex-grow: 1;
+}
+
+.loadout__row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 6px 0 10px 6px;
+}
+
+Button.loadout-tile {
+    width: 196px;
+    height: 236px;
+    margin: 0 16px 16px 0;
+    padding: 0;
+    border-width: 3px;
+    border-radius: 16px;
+    overflow: hidden;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    scale: 1 1;
+    transition-property: scale;
+    transition-duration: 0.15s;
+    transition-timing-function: ease-out-back;
+}
+
+Button.loadout-tile:hover {
+    scale: 1.06 1.06;
+}
+
+Button.loadout-tile:focus {
+    border-color: rgb(255, 255, 255);
+}
+
+.loadout-tile__thumb {
+    height: 150px;
+    flex-shrink: 0;
+    overflow: hidden;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.35);
+}
+
+.loadout-tile__thumb .item-thumb__text {
+    font-size: 22px;
+}
+
+.loadout-tile__slot {
+    font-size: 12px;
+    letter-spacing: 3px;
+    color: rgba(255, 255, 255, 0.65);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 8px 12px 0 12px;
+    padding: 0;
+}
+
+.loadout-tile__name {
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    white-space: normal;
+    margin: 2px 12px 0 12px;
+    padding: 0;
+}
+
+.locker__picker {
+    flex-grow: 1;
+    min-height: 0;
+}
+
+.picker__header {
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.picker__header Button.screen__button {
+    margin: 0 16px 0 0;
+}
+
+.picker__title {
+    flex-grow: 1;
+    font-size: 34px;
+    letter-spacing: 4px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 0 16px 0 0;
+    padding: 0;
+}
+
+.picker__hint {
+    font-size: 15px;
+    color: rgba(225, 232, 255, 0.7);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    white-space: normal;
+    margin: 10px 0 4px 6px;
+    padding: 0;
+    flex-shrink: 0;
+}

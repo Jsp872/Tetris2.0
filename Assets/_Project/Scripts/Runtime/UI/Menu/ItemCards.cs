@@ -107,7 +107,7 @@ namespace Tetris {
                 thumbnail.AddToClassList("item-card__thumb--cover");
                 return;
             }
-            BigText(thumbnail, item.IsRandom ? "?" : item.Name);
+            BigText(thumbnail, item.Name);
         }
 
         static void BackgroundThumbnail(VisualElement thumbnail, LockerItem item) {

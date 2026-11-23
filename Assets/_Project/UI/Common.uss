@@ -383,3 +383,56 @@ Button.deplorable__chat {
     width: 0%;
     background-color: rgb(80, 140, 255);
 }
+
+.deplorable__confirm {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.deplorable__confirm-panel {
+    width: 1040px;
+    padding: 28px 30px;
+    border-radius: 22px;
+    background-color: rgba(30, 24, 70, 0.95);
+    rotate: -1.2deg;
+}
+
+.deplorable__confirm-title {
+    font-size: 30px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    -unity-text-align: middle-center;
+    white-space: normal;
+    margin: 0 0 18px 0;
+    padding: 0;
+}
+
+.deplorable__confirm-grid {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+Button.deplorable__choice {
+    height: 46px;
+    margin: 6px;
+    padding: 0 16px;
+    border-radius: 23px;
+    border-width: 1.5px;
+    border-color: rgba(255, 255, 255, 0.35);
+    background-color: rgba(255, 255, 255, 0.1);
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-SemiBold.ttf");
+    -unity-font-definition: initial;
+}
+
+Button.deplorable__choice:hover {
+    background-color: rgba(255, 255, 255, 0.22);
+}

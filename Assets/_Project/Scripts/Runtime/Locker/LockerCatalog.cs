@@ -14,7 +14,7 @@ namespace Tetris {
     public enum BackgroundStyle { Liquid, Cover, Void, Disco }
 
     /// <summary>Moment de la partie où un son se joue. Le Casier équipe un son par moment.</summary>
-    public enum SoundSlot { Spawn, Move, Rotate, Lock, Line, Tetris, GameOver }
+    public enum SoundSlot { Spawn, Move, Rotate, Lock, Line, Tetris, GameOver, SoftDrop }
 
     /// <summary>
     /// Un objet du Casier. Les champs utilisés dépendent de la catégorie :
@@ -45,8 +45,6 @@ namespace Tetris {
         public string Artist;
         /// <summary>Musique ou son : garde le clip réglé dans la scène de jeu (Subway Surfers, pop d'origine...).</summary>
         public bool IsSceneDefault;
-        /// <summary>Musique : une musique possédée au hasard à chaque partie.</summary>
-        public bool IsRandom;
 
         public Color[] Colors;
         public CellStyle CellStyle;
@@ -135,7 +133,6 @@ namespace Tetris {
 
         static void AddMusic() {
             Free(LockerCategory.Music, "music.default", "SUBWAY SURFERS", "La musique d'origine. Un classique de la salle d'attente.").IsSceneDefault = true;
-            Free(LockerCategory.Music, "music.random", "ALÉATOIRE", "Une de tes musiques au hasard à chaque partie.").IsRandom = true;
 
             MusicLibrarySO library = LockerContent.Library;
             if (library != null && library.tracks != null) {
@@ -255,12 +252,21 @@ namespace Tetris {
                     LockerItem original = Free(LockerCategory.Sounds, $"sfx.original.{slot}", "ORIGINAL", "Le son d'origine du jeu.");
                     original.Slot = slot;
                     original.IsSceneDefault = true;
+                    original.Resource = $"Locker/Sfx/original/{(slot == SoundSlot.Lock ? "lock" : "spawn")}_original";
                     original.Tagline = slot == SoundSlot.Lock ? "POP" : "BLOUP";
                 }
                 LockerItem silence = Free(LockerCategory.Sounds, $"sfx.none.{slot}", "SILENCE", "Rien. Le calme absolu.");
                 silence.Slot = slot;
                 silence.Tagline = "...";
             }
+
+            LockerItem elevator = Free(LockerCategory.Sounds, "sfx.original.elevator", "MUSIQUE D'ASCENSEUR", "Pour descendre en douceur.");
+            elevator.Slot = SoundSlot.SoftDrop;
+            elevator.Resource = "Locker/Sfx/original/softdrop_elevator";
+            elevator.Tagline = "DING DONG";
+
+            Pack("descente", "BANDES-SONS DE DESCENTE", Rarity.Legendary, "YAKETY SAX",
+                "Une musique qui tourne tant que tu fais descendre la pièce : Yakety Sax, Déjà Vu, Gas Gas Gas, et le générique de Oui-Oui par Paulok.");
 
             Pack("politique", "POLITIQUE FRANÇAISE", Rarity.Mythic, "FOR SURE",
                 "Zemmour tousse, Macron valide, Lassalle s'emballe et Sarkozy s'indigne. Qui aurait pu prédire ?");
@@ -353,6 +359,22 @@ namespace Tetris {
             Sound("memes", SoundSlot.GameOver, "gameover_continued", "TO BE CONTINUED");
             Sound("memes", SoundSlot.GameOver, "gameover_violin", "VIOLON TRISTE");
             Sound("memes", SoundSlot.GameOver, "gameover_ouinan", "OUI NAN NAAAAN");
+
+            Sound("descente", SoundSlot.SoftDrop, "softdrop_ouioui", "GÉNÉRIQUE OUI-OUI (PAULOK)");
+            Sound("descente", SoundSlot.SoftDrop, "softdrop_yakety", "YAKETY SAX");
+            Sound("descente", SoundSlot.SoftDrop, "softdrop_dejavu", "DÉJÀ VU");
+            Sound("descente", SoundSlot.SoftDrop, "softdrop_gas", "GAS GAS GAS");
+            Sound("descente", SoundSlot.SoftDrop, "softdrop_ninety", "RUNNING IN THE 90S");
+            Sound("descente", SoundSlot.SoftDrop, "softdrop_tokyo", "TOKYO DRIFT");
+            Sound("descente", SoundSlot.SoftDrop, "softdrop_mariostar", "ÉTOILE DE MARIO");
+            Sound("descente", SoundSlot.SoftDrop, "softdrop_sonic", "SONIC SE NOIE");
+            Sound("descente", SoundSlot.SoftDrop, "softdrop_mission", "MISSION IMPOSSIBLE");
+            Sound("descente", SoundSlot.SoftDrop, "softdrop_jeopardy", "JEOPARDY");
+            Sound("descente", SoundSlot.SoftDrop, "softdrop_curb", "CURB YOUR ENTHUSIASM");
+            Sound("fnaf", SoundSlot.SoftDrop, "softdrop_musicbox", "BOÎTE À MUSIQUE");
+            Sound("windows", SoundSlot.SoftDrop, "softdrop_errorsong", "LA CHANSON DES ERREURS");
+            Sound("amongus", SoundSlot.SoftDrop, "softdrop_drip", "DRIP");
+            Sound("memes", SoundSlot.SoftDrop, "softdrop_bennyhill", "BENNY HILL");
         }
 
         /// <summary>Un pack de la boutique : il donne tous les sons dont <see cref="LockerItem.PackId"/> est son identifiant.</summary>

@@ -5,9 +5,9 @@ using UnityEngine.UIElements;
 namespace Tetris {
     /// <summary>
     /// Playlist en jeu : le même carrousel que le menu principal (élément "music-carousel" du HUD),
-    /// avec les musiques possédées dans le Casier. Flèches, molette ou clic sur une cover pour changer,
-    /// ou N (suivante) et B (précédente) au clavier. La musique choisie est jouée tout de suite et équipée
-    /// (sauf si "Aléatoire" est équipé : il le reste).
+    /// avec la playlist composée dans le Casier. Flèches, molette ou clic sur une cover pour changer,
+    /// ou N (suivante) et B (précédente) au clavier. À la fin d'un morceau, la playlist passe au suivant
+    /// (au hasard en lecture aléatoire). Une playlist d'une seule musique la joue en boucle.
     /// Les boutons ne prennent pas le focus, pour que Espace et Entrée restent aux commandes du jeu.
     /// </summary>
     public class GameplayPlaylist {
@@ -31,7 +31,7 @@ namespace Tetris {
 
         public GameplayPlaylist(VisualElement root, MusicPlayer player) {
             _player = player;
-            _tracks = LockerContent.GetOwnedMusic();
+            _tracks = new List<LockerItem>(PlayerInventory.Playlist);
             _carousel = root.Q("music-carousel");
             if (_carousel == null || _tracks.Count == 0) {
                 _carousel = null;
@@ -63,9 +63,27 @@ namespace Tetris {
             SyncWithCurrentMusic();
         }
 
-        public void Next() => Select(_index + 1, 1);
+        public void Next() => Select(PlayerInventory.Shuffle && _tracks.Count > 2 ? RandomOtherIndex() : _index + 1, 1);
+
+        int RandomOtherIndex() {
+            int index = Random.Range(0, _tracks.Count - 1);
+            return index >= _index ? index + 1 : index;
+        }
+
+        /// <summary>Morceau suivant à la fin du morceau en cours.</summary>
+        public void AdvanceIfFinished() {
+            if (_carousel == null) return;
+
+            _player.Loop = _tracks.Count <= 1;
+            if (_player.IsFinished) Next();
+        }
 
         public void Previous() => Select(_index - 1, -1);
+
+        /// <summary>Une autre musique au hasard (interface déplorable).</summary>
+        public void SelectRandom() {
+            if (_carousel != null && _tracks.Count > 1) Select(RandomOtherIndex(), 1);
+        }
 
         /// <summary>Se place sur la musique choisie au lancement (MusicPlayer.Start), sans la relancer.</summary>
         public void SyncWithCurrentMusic() {
@@ -80,7 +98,6 @@ namespace Tetris {
             _index = (index % _tracks.Count + _tracks.Count) % _tracks.Count;
             LockerItem track = _tracks[_index];
             LockerContent.CurrentGameplayMusic = track;
-            if (!PlayerInventory.GetEquipped(LockerCategory.Music).IsRandom) PlayerInventory.Equip(track);
 
             AudioClip clip = track.IsSceneDefault ? _player.DefaultMusic : LockerContent.GetMusicClip(track);
             if (clip != null) _player.Play(clip);

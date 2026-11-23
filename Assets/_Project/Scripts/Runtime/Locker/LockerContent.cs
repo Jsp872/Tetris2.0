@@ -30,7 +30,7 @@ namespace Tetris {
 
         // ---------- Musique ----------
 
-        /// <summary>Clip de la musique. Null pour la musique d'origine de la scène et pour "Aléatoire".</summary>
+        /// <summary>Clip de la musique. Null pour la musique d'origine de la scène.</summary>
         public static AudioClip GetMusicClip(LockerItem item) {
             if (item == null) return null;
             if (item.LibraryIndex >= 0 && Library != null) return Library.tracks[item.LibraryIndex].clip;
@@ -60,25 +60,13 @@ namespace Tetris {
             return sprite;
         }
 
-        /// <summary>Musiques possédées, sans "Aléatoire".</summary>
-        public static List<LockerItem> GetOwnedMusic() {
-            var result = new List<LockerItem>();
-            foreach (LockerItem item in LockerCatalog.InCategory(LockerCategory.Music)) {
-                if (!item.IsRandom && PlayerInventory.Owns(item)) result.Add(item);
-            }
-            return result;
-        }
-
         /// <summary>
-        /// Musique de la partie : celle équipée dans le Casier (tirée au hasard pour "Aléatoire").
+        /// Première musique de la partie : la première de la playlist du Casier, ou une au hasard en lecture aléatoire.
         /// <paramref name="sceneDefault"/> sert pour la musique d'origine et si le clip est introuvable.
         /// </summary>
         public static AudioClip ResolveGameplayMusic(AudioClip sceneDefault) {
-            LockerItem item = PlayerInventory.GetEquipped(LockerCategory.Music);
-            if (item.IsRandom) {
-                List<LockerItem> owned = GetOwnedMusic();
-                item = owned[Random.Range(0, owned.Count)];
-            }
+            IReadOnlyList<LockerItem> playlist = PlayerInventory.Playlist;
+            LockerItem item = playlist[PlayerInventory.Shuffle ? Random.Range(0, playlist.Count) : 0];
 
             CurrentGameplayMusic = item;
             AudioClip clip = item.IsSceneDefault ? null : GetMusicClip(item);
@@ -106,6 +94,7 @@ namespace Tetris {
             SoundSlot.Lock => "POSE",
             SoundSlot.Line => "LIGNE",
             SoundSlot.Tetris => "TETRIS",
+            SoundSlot.SoftDrop => "DESCENTE",
             _ => "GAME OVER",
         };
 

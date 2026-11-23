@@ -25,6 +25,18 @@ namespace Tetris {
         bool _usesCover;
         Vector3 _cameraOrigin;
 
+        /// <summary>Composant de la partie en cours, ou null hors partie.</summary>
+        public static LockerGameplay Instance { get; private set; }
+
+        /// <summary>Change la musique au hasard (interface déplorable).</summary>
+        public void RandomTrack() => _playlist?.SelectRandom();
+
+        void Awake() => Instance = this;
+
+        void OnDestroy() {
+            if (Instance == this) Instance = null;
+        }
+
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
         static void Register() {
             SceneManager.sceneLoaded -= OnSceneLoaded;
@@ -107,6 +119,7 @@ namespace Tetris {
                 else if (keyboard.bKey.wasPressedThisFrame) Select(false);
             }
             _playlist?.Update();
+            _playlist?.AdvanceIfFinished();
         }
 
         void Select(bool next) {

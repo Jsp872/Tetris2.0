@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0b9c4086b714892b3bb08f1c7c750a9, type: 3}
+  m_Name: GameConfig
+  m_EditorClassIdentifier: Tetris.Runtime::Tetris.GameConfigSO
+  fallInterval: 0.8
+  softDropInterval: 0.05
+  levelSpeedFactor: 0.85
+  minFallInterval: 0.05
+  lineScores: 00000000640000002c010000f401000020030000
+  countdown: 3
+  linesPerLevel: 10
+  marathonMaxLevel: 15
+  sprintLines: 40
+  ultraDuration: 120

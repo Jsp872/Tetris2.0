@@ -51,6 +51,21 @@
     color: rgb(190, 225, 255);
 }
 
+.stat--mode {
+    padding-top: 18px;
+    padding-bottom: 20px;
+}
+
+.stat__mode {
+    font-size: 30px;
+    letter-spacing: 4px;
+    color: rgb(125, 230, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 0;
+    padding: 0;
+}
+
 /* ---------- Prochaines pièces ---------- */
 
 .next__list {
@@ -203,6 +218,109 @@
     width: 630px;
     height: 423px;
     -unity-background-scale-mode: scale-to-fit;
+}
+
+/* ---------- Écran de fin : résultat, record, boutons ---------- */
+
+.overlay__value {
+    font-size: 64px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    margin: 6px 0 0 0;
+    padding: 0;
+}
+
+.overlay__record {
+    font-size: 20px;
+    letter-spacing: 2px;
+    color: rgba(225, 232, 255, 0.7);
+    -unity-font: url("../Art/Fonts/Poppins-Medium.ttf");
+    -unity-font-definition: initial;
+    margin: 2px 0 0 0;
+    padding: 0;
+}
+
+.overlay__record--new {
+    color: rgb(255, 215, 110);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    text-shadow: 0 0 14px rgba(255, 200, 80, 0.8);
+}
+
+.overlay__buttons {
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+Button.overlay-button {
+    width: 220px;
+    height: 70px;
+    margin: 0 10px;
+    padding: 0;
+    border-radius: 35px;
+    font-size: 24px;
+    letter-spacing: 4px;
+    color: rgb(255, 255, 255);
+    -unity-text-align: middle-center;
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    scale: 1 1;
+    transition-property: scale, background-color, border-color;
+    transition-duration: 0.18s, 0.18s, 0.18s;
+    transition-timing-function: ease-out-back, ease-out, ease-out;
+}
+
+Button.overlay-button:hover,
+Button.overlay-button:focus {
+    scale: 1.05 1.05;
+    background-color: rgba(255, 255, 255, 0.18);
+    border-color: rgba(140, 225, 255, 0.55);
+    border-top-color: rgba(255, 255, 255, 0.75);
+}
+
+Button.overlay-button:active {
+    scale: 0.96 0.96;
+}
+
+Button.overlay-button--primary {
+    background-color: rgba(125, 200, 255, 0.2);
+    border-color: rgba(140, 225, 255, 0.4);
+    border-top-color: rgba(255, 255, 255, 0.7);
+}
+
+/* ---------- Compte à rebours ---------- */
+
+.countdown {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    -unity-text-align: middle-center;
+    font-size: 220px;
+    color: rgb(255, 255, 255);
+    -unity-font: url("../Art/Fonts/Poppins-Bold.ttf");
+    -unity-font-definition: initial;
+    text-shadow: 0 10px 40px rgba(60, 120, 255, 0.8);
+    margin: 0;
+    padding: 0;
+    opacity: 1;
+    scale: 1 1;
+    transition-property: opacity, scale;
+    transition-duration: 0.25s, 0.35s;
+    transition-timing-function: ease-out, ease-out-back;
+}
+
+.countdown--pop {
+    opacity: 0;
+    scale: 1.8 1.8;
+    transition-duration: 0s, 0s;
+}
+
+.countdown--hidden {
+    opacity: 0;
+    scale: 0.7 0.7;
 }
 
 /* ---------- Mèmes ---------- */

@@ -3,8 +3,13 @@
     <Style src="HUD.uss" />
     <ui:VisualElement name="root" class="root" picking-mode="Ignore">
 
-        <!-- Colonne gauche : score et lignes -->
+        <!-- Colonne gauche : mode, score, lignes, niveau ou temps -->
         <ui:VisualElement class="side side--left" picking-mode="Ignore">
+            <ui:VisualElement class="glass stat stat--mode">
+                <ui:VisualElement class="glass__sheen" />
+                <ui:Label text="MODE" class="label-caption" />
+                <ui:Label name="mode-value" text="MARATHON" class="stat__mode" />
+            </ui:VisualElement>
             <ui:VisualElement class="glass stat">
                 <ui:VisualElement class="glass__sheen" />
                 <ui:Label text="SCORE" class="label-caption" />
@@ -14,6 +19,11 @@
                 <ui:VisualElement class="glass__sheen" />
                 <ui:Label text="LIGNES" class="label-caption" />
                 <ui:Label name="lines-value" text="0" class="stat__value" />
+            </ui:VisualElement>
+            <ui:VisualElement class="glass stat">
+                <ui:VisualElement class="glass__sheen" />
+                <ui:Label name="third-caption" text="NIVEAU" class="label-caption" />
+                <ui:Label name="third-value" text="1" class="stat__value" />
             </ui:VisualElement>
         </ui:VisualElement>
 
@@ -45,12 +55,21 @@
             <ui:VisualElement class="meme-plankton__image" picking-mode="Ignore" />
         </ui:VisualElement>
 
-        <!-- Pause / Game Over -->
+        <!-- Compte à rebours avant la partie -->
+        <ui:Label name="countdown" text="3" class="countdown countdown--hidden" picking-mode="Ignore" />
+
+        <!-- Pause / fin de partie -->
         <ui:VisualElement name="overlay" class="overlay overlay--hidden" picking-mode="Ignore">
             <ui:VisualElement class="glass overlay__card">
                 <ui:VisualElement class="glass__sheen" />
                 <ui:Label name="overlay-title" text="PAUSE" class="overlay__title" />
                 <ui:Label name="overlay-subtitle" text="Échap pour reprendre" class="overlay__subtitle" />
+                <ui:Label name="overlay-value" text="" class="overlay__value" />
+                <ui:Label name="overlay-record" text="" class="overlay__record" />
+                <ui:VisualElement class="overlay__buttons">
+                    <ui:Button name="overlay-primary" text="REJOUER" class="glass overlay-button overlay-button--primary" />
+                    <ui:Button name="overlay-secondary" text="MENU" class="glass overlay-button" />
+                </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>
 

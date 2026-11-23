@@ -24,4 +24,13 @@ namespace Tetris {
             IsPressed = isPressed;
         }
     }
+
+    /// <summary>Publié à l'appui de l'action "Rotate".</summary>
+    public readonly struct RotateInputEvent : IEvent { }
+
+    /// <summary>Publié à l'appui de l'action "Pause".</summary>
+    public readonly struct PauseInputEvent : IEvent { }
+
+    /// <summary>Publié à l'appui de l'action "Misc". Réservé pour un usage futur.</summary>
+    public readonly struct MiscInputEvent : IEvent { }
 }
